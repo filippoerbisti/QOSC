@@ -65,7 +65,7 @@ const Feed = () => {
         </IonHeader>
         <Notifications open={showNotifications} onDidDismiss={() => setShowNotifications(false)} />
 
-        <div className='w-1/4 mx-auto'>
+        <div className='w-3/4 mx-auto'>
           <IonSearchbar animated={true}  placeholder="Search..."></IonSearchbar>
         </div>
         
