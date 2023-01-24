@@ -6,14 +6,33 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "static": "next build && next export"
   },
   "dependencies": {
+    "@capacitor/android": "^4.6.2",
+    "@capacitor/core": "^4.6.2",
+    "@capacitor/ios": "^4.6.2",
+    "@capacitor/share": "^4.1.0",
+    "@capacitor/status-bar": "^4.1.1",
+    "@ionic/react": "^6.5.0",
+    "@ionic/react-router": "^6.5.0",
     "@next/font": "13.1.4",
+    "classnames": "^2.3.2",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.4",
+    "ionicons": "^6.1.1",
     "next": "13.1.4",
+    "next-transpile-modules": "^10.0.0",
+    "pullstate": "^1.25.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "reselect": "^4.1.7"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^4.6.2",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.4"
   }
 }
