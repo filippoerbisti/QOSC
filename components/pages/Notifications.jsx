@@ -30,7 +30,7 @@ const Notifications = ({ open, onDidDismiss }) => {
   const notifications = Store.useState(getNotifications);
 
   return (
-    <IonModal isOpen={open} onDidDismiss={onDidDismiss} className='px-2'>
+    <IonModal isOpen={open} onDidDismiss={onDidDismiss}>
       <IonHeader>
         <IonToolbar>
           <IonTitle>Notifications</IonTitle>

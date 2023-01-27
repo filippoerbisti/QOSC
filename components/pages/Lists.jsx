@@ -1,6 +1,5 @@
 import Store from '../../store';
 import * as selectors from '../../store/selectors';
-import { useRef, useState } from 'react'; 
 import {
   IonPage,
   IonHeader,
@@ -11,11 +10,7 @@ import {
   IonLabel,
   IonList,
   IonReorder,
-  IonReorderGroup,
-  IonButtons,
-  IonButton,
-  IonModal,
-  IonInput,
+  IonReorderGroup
 } from '@ionic/react';
 
 const ListEntry = ({ list, ...props }) => (
@@ -50,67 +45,22 @@ const AllLists = ({ onSelect }) => {
 };
 
 const Lists = () => {
-  const modal = useRef(null);
-  const input = useRef(null);
-
-  const [message, setMessage] = useState(
-    'This modal example uses triggers to automatically open a modal when the button is clicked.'
-  );
-
-  function confirm() {
-    modal.current?.dismiss(input.current?.value, 'confirm');
-  }
-
-  function onWillDismiss(ev) {
-    if (ev.detail.role === 'confirm') {
-      setMessage(`Hello, ${ev.detail.data}!`);
-    }
-  }
-
   return (
     <IonPage>
-      <IonHeader translucent={true}>
+      <IonHeader>
         <IonToolbar>
           <IonTitle>Create</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen={true}>
+      <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Lists</IonTitle>
+            <IonTitle size="large">Create</IonTitle>
           </IonToolbar>
         </IonHeader>
-
-        <IonButton id="open-modal" expand="block" className='w-2/5 mx-auto'>
-          Open
-        </IonButton>
-        <p className='text-center'>{message}</p>
-        <IonModal ref={modal} trigger="open-modal" onWillDismiss={(ev) => onWillDismiss(ev)}>
-          <IonHeader>
-            <IonToolbar>
-              <IonButtons slot="start">
-                <IonButton onClick={() => modal.current?.dismiss()}>Cancel</IonButton>
-              </IonButtons>
-              <IonTitle>Welcome</IonTitle>
-              <IonButtons slot="end">
-                <IonButton strong={true} onClick={() => confirm()}>
-                  Confirm
-                </IonButton>
-              </IonButtons>
-            </IonToolbar>
-          </IonHeader>
-          <IonContent className="ion-padding">
-            <IonItem>
-              <IonLabel position="stacked">Enter your name</IonLabel>
-              <IonInput ref={input} type="text" placeholder="Your name" />
-            </IonItem>
-          </IonContent>
-        </IonModal>
-
         <IonList>
           <AllLists />
         </IonList>
-
       </IonContent>
     </IonPage>
   );

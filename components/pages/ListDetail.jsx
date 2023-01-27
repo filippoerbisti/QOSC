@@ -40,6 +40,8 @@ const ListDetail = ({ match }) => {
   const { listId } = params;
   const loadedList = lists.find(l => l.id === listId);
 
+  console.log(listId)
+
   return (
     <IonPage>
       <IonHeader>

@@ -10,38 +10,21 @@ import {
 } from '@ionic/react';
 import Store from '../../store';
 import * as selectors from '../../store/selectors';
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
   
-const FeedDetail = ({  }) => {
-    const router = useRouter();
-    const [listId, setListId] = useState(router.query.all[2]);
-    const lists = Store.useState(selectors.getHomeItems);
+const ContactDetail = ({ }) => {
+    const lists = Store.useState(selectors.getContacts);
 
-    const [loadedList, setLoadedList] = useState(lists.find(l => l.id == listId));
-
-
-    // if(router.query.all[2] != undefined && typeof listId === undefined) {
-    //     console.log('cc')
-    //     setListId(router.query.all[2]); // router.query = tabs[0]/feed[1]/id[2]
-    //     setLoadedList(lists.find(l => l.id == listId))
-    // }
-
-    // useEffect(() => {
-    //     setListId();
-    //     setListId(router.query.all[2]); // router.query = tabs[0]/feed[1]/id[2]
-    //     console.log('vamo')
-    //     // loadedList = lists.find(l => l.id == listId);
-    // }, [listId, setListId, loadedList, setLoadedList])
-
-    console.log(listId)
+    const params = useParams();
+    const { id } = params;
+    const loadedList = lists.find(l => l.id == id);
 
     return (
       <IonPage>
-        {/* <IonHeader>
+        <IonHeader>
           <IonToolbar>
             <IonButtons slot="start">
-              <IonBackButton defaultHref="/tabs/feed" />
+              <IonBackButton defaultHref="/tabs/home" />
             </IonButtons>
             <IonTitle>{loadedList.author}</IonTitle>
           </IonToolbar>
@@ -60,10 +43,10 @@ const FeedDetail = ({  }) => {
 
                 <IonButton fill="clear" style={{float: 'right'}}>Action 1</IonButton>
             </IonCard>
-        </IonContent> */}
+        </IonContent>
       </IonPage>
     );
 };
   
-export default FeedDetail;
+export default ContactDetail;
   

@@ -1,10 +1,10 @@
 import { Redirect, Route } from 'react-router-dom';
 import { IonRouterOutlet, IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
 import { home, addCircle, cog } from 'ionicons/icons';
 
-import Home from './Feed';
-import FeedDetail from './FeedDetail';
+import Home from './Home';
+import ContactDetail from './ContactDetail';
+import GroupDetail from './GroupDetail';
 import Lists from './Lists';
 import ListDetail from './ListDetail';
 import Settings from './Settings';
@@ -13,23 +13,24 @@ const Tabs = () => {
   return (
     <IonTabs>
       <IonRouterOutlet>
-        <Route path="/tabs/feed" render={() => <Home />} exact={true} />
-        <Route path="/tabs/feed/:feedId" render={() => <FeedDetail />} exact={true} />
+        <Route path="/tabs/home" render={() => <Home />} exact={true} />
+        <Route path="/tabs/home/contact/:id" render={() => <ContactDetail />} exact={true} />
+        <Route path="/tabs/home/group/:id" render={() => <GroupDetail />} exact={true} />
         <Route path="/tabs/lists" render={() => <Lists />} exact={true} />
         <Route path="/tabs/lists/:listId" render={() => <ListDetail />} exact={true} />
         <Route path="/tabs/settings" render={() => <Settings />} exact={true} />
-        <Route path="/tabs" render={() => <Redirect to="/tabs/feed" />} exact={true} />
+        <Route path="/tabs" render={() => <Redirect to="/tabs/home" />} exact={true} />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
-        <IonTabButton tab="tab1" href="/tabs/feed">
+        <IonTabButton tab="home" href="/tabs/home">
           <IonIcon icon={home} />
           <IonLabel>Home</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="tab2" href="/tabs/lists">
+        <IonTabButton tab="create" href="/tabs/lists">
           <IonIcon icon={addCircle} />
           <IonLabel>Create</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="tab3" href="/tabs/settings">
+        <IonTabButton tab="settings" href="/tabs/settings">
           <IonIcon icon={cog} />
           <IonLabel>Settings</IonLabel>
         </IonTabButton>
