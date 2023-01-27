@@ -134,7 +134,7 @@ export const groups = [
     text: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
     author: 'Esk - Abbinazione',
     authorAvatar: '/img/max.jpg',
-    image: '/img/max.jpg',
+    image: 'https://images.unsplash.com/photo-1610235554447-41505d7962f8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=882&q=80',
   },
   {
     id: 2,
@@ -142,7 +142,7 @@ export const groups = [
     text: 'dui faucibus in ornare quam viverra orci sagittis eu volutpat odio facilisis mauris sit amet massa vitae tortor condimentum lacinia quis vel eros donec ac odio tempor orci dapibus ultrices',
     author: 'Centro SNAI',
     authorAvatar: '/img/max.jpg',
-    image: '/img/max.jpg',
+    image: 'https://images.unsplash.com/photo-1610235554447-41505d7962f8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=882&q=80',
   },
   {
     id: 3,
@@ -150,7 +150,7 @@ export const groups = [
     text: 'tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum odio eu feugiat pretium nibh ipsum consequat nisl vel pretium lectus quam id leo in vitae turpis massa',
     author: 'Acua',
     authorAvatar: '/img/max.jpg',
-    image: '/img/max.jpg',
+    image: 'https://images.unsplash.com/photo-1610235554447-41505d7962f8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=882&q=80',
   },
   {
     id: 4,
@@ -158,7 +158,7 @@ export const groups = [
     text: 'non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at',
     author: 'Napoli Sotterranea',
     authorAvatar: '/img/max.jpg',
-    image: '/img/max.jpg',
+    image: 'https://images.unsplash.com/photo-1610235554447-41505d7962f8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=882&q=80',
   },
   {
     id: 5,
@@ -166,7 +166,7 @@ export const groups = [
     text: 'nisl vel pretium lectus quam id leo in vitae turpis massa sed elementum tempus egestas sed sed risus pretium quam vulputate dignissim suspendisse in est ante in nibh mauris cursus',
     author: 'Pippo, Zema, Fiore, Dome, Soniace',
     authorAvatar: '/img/max.jpg',
-    image: '/img/max.jpg',
+    image: 'https://images.unsplash.com/photo-1610235554447-41505d7962f8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=882&q=80',
   },
 ];
 

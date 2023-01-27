@@ -204,3 +204,9 @@ ion-card-header.ios {
   -moz-box-shadow: 0px 0px 5px 5px #0099e0;
   box-shadow: 0px 0px 5px 5px #0099e0;
 }
+
+
+
+.sc-ion-label-ios-h h2 {
+  font-size: larger !important;
+}

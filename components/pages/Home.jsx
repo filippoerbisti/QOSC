@@ -125,13 +125,13 @@ const ContactCard = ({ id, title, author, image }) => {
   }
 
   return (
-    <IonItemSliding ref={slidingItem}>
+    <IonItemSliding ref={slidingItem} className='my-2'>
       <IonItemOptions side="start">
         <IonItemOption color="success" onClick={archive} expandable>Archive</IonItemOption>
       </IonItemOptions>
 
       <IonItem className="" routerLink={`/tabs/home/contact/${id}`}>
-        <IonAvatar slot="start">
+        <IonAvatar slot="start" className='w-16 h-16'>
           <IonImg src={image} />
         </IonAvatar>
         <IonLabel>
@@ -148,7 +148,7 @@ const ContactCard = ({ id, title, author, image }) => {
   );
 };
 
-const GroupCard = ({ id, title, author, image }) => {
+const GroupCard = ({ id, title, author, authorAvatar }) => {
   const [present] = useIonActionSheet();
   const [presentAlert] = useIonAlert();
   const slidingItem = useRef(null);
@@ -247,7 +247,7 @@ const GroupCard = ({ id, title, author, image }) => {
 
       <IonItem className="" routerLink={`/tabs/home/group/${id}`}>
         <IonAvatar slot="start">
-          <IonImg src={image} />
+          <IonImg src={authorAvatar} />
         </IonAvatar>
         <IonLabel>
           <h2>{author}</h2>
@@ -264,11 +264,15 @@ const GroupCard = ({ id, title, author, image }) => {
 };
 
 const Home = () => {
-  const contacts = Store.useState(getContacts);
-  const groups = Store.useState(getGroups);
+  // const contacts = Store.useState(getContacts);
+  // const groups = Store.useState(getGroups);
+
+  const [contacts, setContacts] = useState(Store.useState(getContacts));
+  const [groups, setGroups] = useState(Store.useState(getGroups));
   const [showNotifications, setShowNotifications] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [segment, setSegment] = useState('contacts');
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     setTimeout(() => {
@@ -291,6 +295,19 @@ const Home = () => {
     setTimeout(() => {
       setLoaded(true);
     }, 1000);
+  }
+
+  //Handling the input on our search bar
+  const handleChange = (e) => {
+    setQuery(e.target.value);
+    if(segment == 'contacts')
+      // if (query != "")
+        setContacts(contacts.filter(contact => contact.author.toLowerCase().startsWith(e.target.value)))
+      // else
+      //   setContacts(Store.useState(getContacts))
+
+    if(segment == 'groups')
+      setGroups(groups.filter(group => group.author.toLowerCase().startsWith(e.target.value)))
   }
 
   return (
@@ -320,71 +337,85 @@ const Home = () => {
           <IonRefresherContent></IonRefresherContent>
         </IonRefresher>
 
-        <IonSegment value={segment} swipe-gesture={true} onIonChange={handleSwipeSegment}>
-          <IonSegmentButton value="contacts">
-            <IonLabel>Contatti</IonLabel>
-          </IonSegmentButton>
-          <IonSegmentButton value="groups">
-            <IonLabel>Gruppi</IonLabel>
-          </IonSegmentButton>
-        </IonSegment>
+        <div className='mx-2'>
+          <IonSegment value={segment} swipe-gesture={true} onIonChange={handleSwipeSegment}>
+            <IonSegmentButton value="contacts">
+              <IonLabel>Contatti</IonLabel>
+            </IonSegmentButton>
+            <IonSegmentButton value="groups">
+              <IonLabel>Gruppi</IonLabel>
+            </IonSegmentButton>
+          </IonSegment>
+        </div>
 
-        <IonSearchbar animated={true}  placeholder="Search..."></IonSearchbar>
         
-        {loaded && segment == 'contacts' && 
-          <IonList>
-            {contacts.map((i, index) => (
-              <ContactCard {...i} key={index} style={{width: '100%'}} />
-            ))}
-          </IonList>
+        
+        {loaded && segment == 'contacts' && <>
+            <IonSearchbar animated={true}  placeholder="Search..." value={query} onIonChange={handleChange}></IonSearchbar>
+            <IonList>
+              {contacts.map((i, index) => (
+                <ContactCard {...i} key={index} style={{width: '100%'}} />
+              ))}
+            </IonList>
+          </>
         }
 
-        {!loaded && segment == 'contacts' &&
-          <IonList>
-            {contacts.map((i, index) => (
-              <IonItem key={index}>
-                <IonThumbnail slot="start">
-                  <IonSkeletonText animated={true}></IonSkeletonText>
-                </IonThumbnail>
-                <IonLabel>
-                  <h3>
-                    <IonSkeletonText animated={true} style={{ 'width': '80%' }}></IonSkeletonText>
-                  </h3>
-                  <p>
-                    <IonSkeletonText animated={true} style={{ 'width': '60%' }}></IonSkeletonText>
-                  </p>
-                </IonLabel>
-              </IonItem>
-            ))}
-          </IonList>
+        {!loaded && segment == 'contacts' && <>
+            <h3>
+              <IonSkeletonText animated={true} style={{ 'width': '100%', 'height': '40px' }}></IonSkeletonText>
+            </h3>
+            <IonList>
+              {contacts.map((i, index) => (
+                <IonItem key={index}>
+                  <IonThumbnail slot="start">
+                    <IonSkeletonText animated={true}></IonSkeletonText>
+                  </IonThumbnail>
+                  <IonLabel>
+                    <h3>
+                      <IonSkeletonText animated={true} style={{ 'width': '80%' }}></IonSkeletonText>
+                    </h3>
+                    <p>
+                      <IonSkeletonText animated={true} style={{ 'width': '60%' }}></IonSkeletonText>
+                    </p>
+                  </IonLabel>
+                </IonItem>
+              ))}
+            </IonList>
+          </>
         }
 
-        {loaded && segment == 'groups' && 
-          <IonList>
-            {groups.map((i, index) => (
-              <GroupCard {...i} key={index} style={{width: '100%'}} />
-            ))}
-          </IonList>
+        {loaded && segment == 'groups' && <>
+            <IonSearchbar animated={true}  placeholder="Search..." value={query} onIonChange={handleChange}></IonSearchbar>
+            <IonList>
+              {groups.map((i, index) => (
+                <GroupCard {...i} key={index} style={{width: '100%'}} />
+              ))}
+            </IonList>
+          </>
         }
 
-        {!loaded && segment == 'groups' &&
-          <IonList>
-            {groups.map((i, index) => (
-              <IonItem key={index}>
-                <IonThumbnail slot="start">
-                  <IonSkeletonText animated={true}></IonSkeletonText>
-                </IonThumbnail>
-                <IonLabel>
-                  <h3>
-                    <IonSkeletonText animated={true} style={{ 'width': '80%' }}></IonSkeletonText>
-                  </h3>
-                  <p>
-                    <IonSkeletonText animated={true} style={{ 'width': '60%' }}></IonSkeletonText>
-                  </p>
-                </IonLabel>
-              </IonItem>
-            ))}
-          </IonList>
+        {!loaded && segment == 'groups' && <>
+            <h3>
+              <IonSkeletonText animated={true} style={{ 'width': '100%', 'height': '40px' }}></IonSkeletonText>
+            </h3>
+            <IonList>
+              {groups.map((i, index) => (
+                <IonItem key={index}>
+                  <IonThumbnail slot="start">
+                    <IonSkeletonText animated={true}></IonSkeletonText>
+                  </IonThumbnail>
+                  <IonLabel>
+                    <h3>
+                      <IonSkeletonText animated={true} style={{ 'width': '80%' }}></IonSkeletonText>
+                    </h3>
+                    <p>
+                      <IonSkeletonText animated={true} style={{ 'width': '60%' }}></IonSkeletonText>
+                    </p>
+                  </IonLabel>
+                </IonItem>
+              ))}
+            </IonList>
+          </>
         }
 
       </IonContent>
