@@ -23,7 +23,7 @@ window.matchMedia("(prefers-color-scheme: dark)").addListener(async (status) => 
 
 const AppShell = () => {
   return (
-    <IonApp>
+    <IonApp style={{maxWidth: '500px', margin: 'auto'}}>
       <IonReactRouter>
         <IonRouterOutlet id="main">
           <Route path="/tabs" render={() => <Tabs />} />

@@ -71,7 +71,7 @@ const Lists = () => {
     <IonPage>
       <IonHeader translucent={true}>
         <IonToolbar>
-          <IonTitle>Lists</IonTitle>
+          <IonTitle>Create</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen={true}>
