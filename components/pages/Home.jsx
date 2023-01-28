@@ -33,10 +33,13 @@ import { notificationsOutline } from 'ionicons/icons';
 import { getContacts, getGroups } from '../../store/selectors';
 import { Share } from '@capacitor/share';
 
-const ContactCard = ({ id, title, author, image }) => {
+const ContactCard = ({ id, name, surname, picture, context, phoneNum, mail }) => {
   const [present] = useIonActionSheet();
-  const [presentAlert] = useIonAlert();
   const slidingItem = useRef(null);
+
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
   const share = async () => {
 		await Share.share({
@@ -78,23 +81,21 @@ const ContactCard = ({ id, title, author, image }) => {
     close();
     return new Promise((resolve, reject) => {
       present({
-        header: 'Call to action',
-        subHeader: 'Example subheader',
+        // header: 'Call to action',
         buttons: [
           {
-            text: 'Delete',
-            role: 'destructive',
+            text: 'Message',
             data: {
-              action: 'delete',
+              action: 'message',
             },
-            handler: () => alert('cancella to mare diocan')
+            handler: () => window.open("sms:" + phoneNum)
           },
           {
-            text: 'Share',
+            text: 'Email',
             data: {
-              action: 'share',
+              action: 'email',
             },
-            handler: () => share()
+            handler: () => window.open("mailto:" + mail)
           },
           {
             text: 'Cancel',
@@ -108,16 +109,9 @@ const ContactCard = ({ id, title, author, image }) => {
     });
   }
 
-  function archive() {
+  function call() {
     close();
-    return new Promise((resolve, reject) => {
-      presentAlert({
-        header: 'Alert',
-        subHeader: 'Important message',
-        message: 'This is an alert!',
-        buttons: ['OK'],
-      })
-    });
+    window.open("tel:" + phoneNum);
   }
 
   function close() {
@@ -127,16 +121,16 @@ const ContactCard = ({ id, title, author, image }) => {
   return (
     <IonItemSliding ref={slidingItem} className='my-2'>
       <IonItemOptions side="start">
-        <IonItemOption color="success" onClick={archive} expandable>Archive</IonItemOption>
+        <IonItemOption color="success" onClick={call} expandable>Call</IonItemOption>
       </IonItemOptions>
 
       <IonItem  routerLink={`/tabs/home/contact/${id}`}>
         <IonAvatar slot="start" className='w-14 h-14'>
-          <IonImg src={image} />
+          <IonImg src={picture} />
         </IonAvatar>
         <IonLabel className="py-1">
-          <h2>{author}</h2>
-          <p>{title}</p>
+          <h2>{capitalizeFirstLetter(name)} {capitalizeFirstLetter(surname)}</h2>
+          <p>{capitalizeFirstLetter(context)}</p>
         </IonLabel>
       </IonItem>
 

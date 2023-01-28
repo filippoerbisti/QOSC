@@ -8,7 +8,8 @@ import {
   IonContent,
   IonList,
   IonCheckbox, IonInput, IonItem, IonLabel, IonRange, IonSelect, IonSelectOption, IonToggle,
-  IonDatetime, IonDatetimeButton, IonModal
+  IonDatetime, IonDatetimeButton, IonModal,
+  IonPopover, IonButton
 } from '@ionic/react';
 
 const Create = () => {
@@ -22,7 +23,13 @@ const Create = () => {
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large" className='mt-1'>Create</IonTitle>
+            <IonTitle size="large" className='mt-1'>
+              Create
+              {/* <IonButton id="click-trigger">Left-Click Me</IonButton>
+              <IonPopover trigger="click-trigger" triggerAction="click">
+                <IonContent class="ion-padding">Hello World!</IonContent>
+              </IonPopover> */}
+            </IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonList>
@@ -50,9 +57,9 @@ const Create = () => {
           </IonItem>
 
           <IonItem>
-            <IonLabel>Select</IonLabel>
-            <IonSelect placeholder="Make a Selection">
-              <IonSelectOption value="">No Game Console</IonSelectOption>
+            <IonLabel>Group</IonLabel>
+            <IonSelect placeholder="Link Group">
+              <IonSelectOption value="">Any group</IonSelectOption>
               <IonSelectOption value="nes">NES</IonSelectOption>
               <IonSelectOption value="n64">Nintendo64</IonSelectOption>
               <IonSelectOption value="ps">PlayStation</IonSelectOption>
@@ -63,19 +70,14 @@ const Create = () => {
           </IonItem>
 
           <IonItem>
-            <IonLabel>Toggle</IonLabel>
+            <IonLabel>Enable Notifications</IonLabel>
             <IonToggle slot="end"></IonToggle>
           </IonItem>
-
-          <IonItem>
-            <IonLabel>Checkbox</IonLabel>
-            <IonCheckbox slot="end"></IonCheckbox>
-          </IonItem>
-
+{/* 
           <IonItem>
             <IonLabel position="stacked">Range</IonLabel>
             <IonRange></IonRange>
-          </IonItem>
+          </IonItem> */}
         </IonList>
       </IonContent>
     </IonPage>

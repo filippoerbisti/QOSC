@@ -13,13 +13,32 @@ import { chevronDownCircle, create, logoWhatsapp, mail, call, trash } from 'ioni
 import Store from '../../store';
 import * as selectors from '../../store/selectors';
 import { useParams } from 'react-router-dom';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
   
 const ContactDetail = ({ }) => {
-    const lists = Store.useState(selectors.getContacts);
+    const router = useRouter();
+    const [lists, setLists] = useState(Store.useState(selectors.getContacts))
 
     const params = useParams();
     const { id } = params;
     const loadedList = lists.find(l => l.id == id);
+
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    function sendWhatsapp(phoneNum) {
+      window.open(`https://wa.me/${phoneNum}`)
+    }
+
+    function phoneCall(phoneNum) {
+      window.open('tel:' + phoneNum)
+    }
+
+    function sendMail(mail) {
+      window.open('mailto:' + mail)
+    }
 
     return (
       <IonPage>
@@ -28,7 +47,7 @@ const ContactDetail = ({ }) => {
             <IonButtons slot="start">
               <IonBackButton defaultHref="/tabs/home" />
             </IonButtons>
-            <IonTitle>{loadedList.author}</IonTitle>
+            <IonTitle>{capitalizeFirstLetter(loadedList.name)} {capitalizeFirstLetter(loadedList.surname)}</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonContent>
@@ -38,27 +57,27 @@ const ContactDetail = ({ }) => {
               </IonFabButton>
               <IonFabList side="bottom">
                 <IonFabButton>
-                  <IonIcon icon={create}></IonIcon>
+                  <IonIcon icon={create} onClick={() => alert('Modifica' + loadedList.name +' '+ loadedList.surname)}></IonIcon>
                 </IonFabButton>
                 <IonFabButton>
-                  <IonIcon icon={trash}></IonIcon>
+                  <IonIcon icon={trash} onClick={() => alert('Cancella' + loadedList.name +' '+ loadedList.surname)}></IonIcon>
                 </IonFabButton>
                 <IonFabButton>
-                  <IonIcon icon={logoWhatsapp}></IonIcon>
+                  <IonIcon icon={logoWhatsapp} onClick={() => sendWhatsapp(loadedList.phoneNum)}></IonIcon>
                 </IonFabButton>
                 <IonFabButton>
-                  <IonIcon icon={call}></IonIcon>
+                  <IonIcon icon={call} onClick={() => phoneCall(loadedList.phoneNum)}></IonIcon>
                 </IonFabButton>
                 <IonFabButton>
-                  <IonIcon icon={mail}></IonIcon>
+                  <IonIcon icon={mail} onClick={() => sendMail(loadedList.mail)}></IonIcon>
                 </IonFabButton>
               </IonFabList>
             </IonFab>
             <IonCard>
                 <img alt="Silhouette of mountains" src={loadedList.image} style={{width: '100%', height: '200px'}} />
                 <IonCardHeader>
-                    <IonCardTitle>{loadedList.author}</IonCardTitle>
-                    <IonCardSubtitle>{loadedList.title}</IonCardSubtitle>
+                    <IonCardTitle>{capitalizeFirstLetter(loadedList.name)} {capitalizeFirstLetter(loadedList.surname)}</IonCardTitle>
+                    <IonCardSubtitle>{capitalizeFirstLetter(loadedList.context)}</IonCardSubtitle>
                 </IonCardHeader>
 
                 <IonCardContent>
