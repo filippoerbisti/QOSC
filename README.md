@@ -1,38 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# QOSC
+QOSC - Quickly Organize Social Contacts
 
-## Getting Started
 
-First, run the development server:
+Structure:
+- QOClient (Next js & TailwindCSS & Ionic)
+- QOServer (Laravel App)
+- Database MySQL (Heroku)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Cross platform application (using Capacitor)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![immagine](https://user-images.githubusercontent.com/80033304/200505238-64d9c18f-d5ca-4124-97e9-44150f444ff2.png)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+![immagine](https://user-images.githubusercontent.com/80033304/200508462-001dba2e-bbea-4881-9751-fc94614a6208.png)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+`npm run static => next build && next export `
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+(build in folder ./out)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+`npx cap sync => to sync changes in ios & android folder`
 
-## Learn More
+![immagine](https://user-images.githubusercontent.com/80033304/200509557-2c998731-d4b2-4226-aa54-7fc73b08ae68.png)
 
-To learn more about Next.js, take a look at the following resources:
+`npx cap open ios => will open ./ios folder in XCode`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+`npx cap open android => will open ./android folder in Android Studio`
