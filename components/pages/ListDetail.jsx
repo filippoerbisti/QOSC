@@ -37,10 +37,8 @@ const ListItemEntry = ({ list, item }) => (
 const ListDetail = ({ match }) => {
   const lists = Store.useState(selectors.getLists);
   const params = useParams();
-  const { listId } = params;
-  const loadedList = lists.find(l => l.id === listId);
-
-  console.log(listId)
+  const { settingId } = params;
+  const loadedList = lists.find(l => l.id === settingId);
 
   return (
     <IonPage>

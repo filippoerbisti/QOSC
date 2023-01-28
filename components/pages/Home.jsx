@@ -130,11 +130,11 @@ const ContactCard = ({ id, title, author, image }) => {
         <IonItemOption color="success" onClick={archive} expandable>Archive</IonItemOption>
       </IonItemOptions>
 
-      <IonItem className="" routerLink={`/tabs/home/contact/${id}`}>
-        <IonAvatar slot="start" className='w-16 h-16'>
+      <IonItem  routerLink={`/tabs/home/contact/${id}`}>
+        <IonAvatar slot="start" className='w-14 h-14'>
           <IonImg src={image} />
         </IonAvatar>
-        <IonLabel>
+        <IonLabel className="py-1">
           <h2>{author}</h2>
           <p>{title}</p>
         </IonLabel>
@@ -240,16 +240,16 @@ const GroupCard = ({ id, title, author, authorAvatar }) => {
   }
 
   return (
-    <IonItemSliding ref={slidingItem}>
+    <IonItemSliding ref={slidingItem} className='my-2'>
       <IonItemOptions side="start">
         <IonItemOption color="success" onClick={archive} expandable>Archive</IonItemOption>
       </IonItemOptions>
 
-      <IonItem className="" routerLink={`/tabs/home/group/${id}`}>
-        <IonAvatar slot="start">
+      <IonItem routerLink={`/tabs/home/group/${id}`}>
+        <IonAvatar slot="start" className='w-14 h-14'>
           <IonImg src={authorAvatar} />
         </IonAvatar>
-        <IonLabel>
+        <IonLabel className="py-1">
           <h2>{author}</h2>
           <p>{title}</p>
         </IonLabel>
@@ -328,7 +328,7 @@ const Home = () => {
       <IonContent fullscreen> {/*className="ion-padding"*/}
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Home</IonTitle>
+            <IonTitle size="large" className='mt-1'>Home</IonTitle>
           </IonToolbar>
         </IonHeader>
         <Notifications open={showNotifications} onDidDismiss={() => setShowNotifications(false)} />
@@ -348,8 +348,6 @@ const Home = () => {
           </IonSegment>
         </div>
 
-        
-        
         {loaded && segment == 'contacts' && <>
             <IonSearchbar animated={true}  placeholder="Search..." value={query} onIonChange={handleChange}></IonSearchbar>
             <IonList>
@@ -362,15 +360,15 @@ const Home = () => {
 
         {!loaded && segment == 'contacts' && <>
             <h3>
-              <IonSkeletonText animated={true} style={{ 'width': '100%', 'height': '40px' }}></IonSkeletonText>
+              <IonSkeletonText animated={true} style={{ 'width': 'auto', 'height': '38px', 'margin': '10px' }}></IonSkeletonText>
             </h3>
             <IonList>
               {contacts.map((i, index) => (
-                <IonItem key={index}>
-                  <IonThumbnail slot="start">
+                <IonItem key={index} className='my-2'>
+                  <IonThumbnail slot="start" className='rounded'>
                     <IonSkeletonText animated={true}></IonSkeletonText>
                   </IonThumbnail>
-                  <IonLabel>
+                  <IonLabel className="py-1">
                     <h3>
                       <IonSkeletonText animated={true} style={{ 'width': '80%' }}></IonSkeletonText>
                     </h3>
@@ -396,15 +394,15 @@ const Home = () => {
 
         {!loaded && segment == 'groups' && <>
             <h3>
-              <IonSkeletonText animated={true} style={{ 'width': '100%', 'height': '40px' }}></IonSkeletonText>
+              <IonSkeletonText animated={true} style={{ 'width': 'auto', 'height': '38px', 'margin': '10px' }}></IonSkeletonText>
             </h3>
             <IonList>
               {groups.map((i, index) => (
-                <IonItem key={index}>
+                <IonItem key={index} className='my-2'>
                   <IonThumbnail slot="start">
                     <IonSkeletonText animated={true}></IonSkeletonText>
                   </IonThumbnail>
-                  <IonLabel>
+                  <IonLabel className="py-1">
                     <h3>
                       <IonSkeletonText animated={true} style={{ 'width': '80%' }}></IonSkeletonText>
                     </h3>

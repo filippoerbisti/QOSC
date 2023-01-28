@@ -6,8 +6,10 @@ import {
     IonPage,
     IonTitle,
     IonToolbar,
-    IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle
+    IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle,
+    IonFab, IonFabButton, IonFabList, IonIcon
 } from '@ionic/react';
+import { chevronDownCircle, create, logoWhatsapp, mail, call, trash } from 'ionicons/icons';
 import Store from '../../store';
 import * as selectors from '../../store/selectors';
 import { useParams } from 'react-router-dom';
@@ -30,6 +32,28 @@ const ContactDetail = ({ }) => {
           </IonToolbar>
         </IonHeader>
         <IonContent>
+            <IonFab slot="fixed" vertical="top" horizontal="end" edge={true}>
+              <IonFabButton size="small">
+                <IonIcon icon={chevronDownCircle}></IonIcon>
+              </IonFabButton>
+              <IonFabList side="bottom">
+                <IonFabButton>
+                  <IonIcon icon={create}></IonIcon>
+                </IonFabButton>
+                <IonFabButton>
+                  <IonIcon icon={trash}></IonIcon>
+                </IonFabButton>
+                <IonFabButton>
+                  <IonIcon icon={logoWhatsapp}></IonIcon>
+                </IonFabButton>
+                <IonFabButton>
+                  <IonIcon icon={call}></IonIcon>
+                </IonFabButton>
+                <IonFabButton>
+                  <IonIcon icon={mail}></IonIcon>
+                </IonFabButton>
+              </IonFabList>
+            </IonFab>
             <IonCard>
                 <img alt="Silhouette of mountains" src={loadedList.image} style={{width: '100%', height: '200px'}} />
                 <IonCardHeader>
@@ -40,8 +64,6 @@ const ContactDetail = ({ }) => {
                 <IonCardContent>
                     {loadedList.text}
                 </IonCardContent>
-
-                <IonButton fill="clear" style={{float: 'right'}}>Action 1</IonButton>
             </IonCard>
         </IonContent>
       </IonPage>

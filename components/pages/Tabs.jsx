@@ -5,7 +5,7 @@ import { home, addCircle, cog } from 'ionicons/icons';
 import Home from './Home';
 import ContactDetail from './ContactDetail';
 import GroupDetail from './GroupDetail';
-import Lists from './Lists';
+import Create from './Create';
 import ListDetail from './ListDetail';
 import Settings from './Settings';
 
@@ -16,9 +16,9 @@ const Tabs = () => {
         <Route path="/tabs/home" render={() => <Home />} exact={true} />
         <Route path="/tabs/home/contact/:id" render={() => <ContactDetail />} exact={true} />
         <Route path="/tabs/home/group/:id" render={() => <GroupDetail />} exact={true} />
-        <Route path="/tabs/lists" render={() => <Lists />} exact={true} />
-        <Route path="/tabs/lists/:listId" render={() => <ListDetail />} exact={true} />
+        <Route path="/tabs/create" render={() => <Create />} exact={true} />
         <Route path="/tabs/settings" render={() => <Settings />} exact={true} />
+        <Route path="/tabs/settings/:settingId" render={() => <ListDetail />} exact={true} />
         <Route path="/tabs" render={() => <Redirect to="/tabs/home" />} exact={true} />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
@@ -26,7 +26,7 @@ const Tabs = () => {
           <IonIcon icon={home} />
           <IonLabel>Home</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="create" href="/tabs/lists">
+        <IonTabButton tab="create" href="/tabs/create">
           <IonIcon icon={addCircle} />
           <IonLabel>Create</IonLabel>
         </IonTabButton>
