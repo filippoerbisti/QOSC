@@ -100,7 +100,7 @@ const ContactCard = ({ id, name, surname, picture, nickname, phoneNum, mail }) =
   }
 
   function call() {
-    close();
+    //close();
     window.open("tel:" + phoneNum);
   }
 
