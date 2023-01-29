@@ -13,7 +13,7 @@ export const contacts = [
     mail: "filippo.erbisti@gmail.com",
     credit: 10,
     debit: 5,
-    text: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
+    notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
     picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104028/QOSC/91953484-6F90-488A-8ADC-8A970BA98BD6_mckb4w.jpg'
   },
   {
@@ -30,7 +30,7 @@ export const contacts = [
     mail: "mario.rossi@gmail.com",
     credit: 10,
     debit: 5,
-    text: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
+    notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
     picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104027/QOSC/422182D1-6321-4C92-8763-4E3A9B383D2B_l69m70.jpg'
   },
   {
@@ -47,7 +47,7 @@ export const contacts = [
     mail: "mario.rossi@gmail.com",
     credit: 10,
     debit: 5,
-    text: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
+    notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
     picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104028/QOSC/54047806-72DA-459C-9539-D6E56CFB12AD_o6zdel.jpg'
   },
   {
@@ -64,7 +64,7 @@ export const contacts = [
     mail: "mario.rossi@gmail.com",
     credit: 10,
     debit: 5,
-    text: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
+    notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
     picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/8C15795B-BBFA-4C6E-81C3-9D24F4C3C904_v0hkko.jpg'
   },
   {
@@ -81,7 +81,7 @@ export const contacts = [
     mail: "mario.rossi@gmail.com",
     credit: 10,
     debit: 5,
-    text: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
+    notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
     picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/D5469039-6465-41B6-B5D6-61ED42408A0E_gadfii.jpg'
   },
   {
@@ -98,7 +98,7 @@ export const contacts = [
     mail: "mario.rossi@gmail.com",
     credit: 10,
     debit: 5,
-    text: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
+    notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
     picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104028/QOSC/54047806-72DA-459C-9539-D6E56CFB12AD_o6zdel.jpg'
   },
   {
@@ -115,7 +115,7 @@ export const contacts = [
     mail: "mario.rossi@gmail.com",
     credit: 10,
     debit: 5,
-    text: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
+    notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
     picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/3C68D933-C571-4ACD-99E3-85702FB80FAF_nehs5n.jpg'
   },
   {
@@ -132,7 +132,7 @@ export const contacts = [
     mail: "mario.rossi@gmail.com",
     credit: 10,
     debit: 5,
-    text: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
+    notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
     picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104027/QOSC/422182D1-6321-4C92-8763-4E3A9B383D2B_l69m70.jpg'
   },
   {
@@ -149,7 +149,7 @@ export const contacts = [
     mail: "mario.rossi@gmail.com",
     credit: 10,
     debit: 5,
-    text: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
+    notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
     picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/3C68D933-C571-4ACD-99E3-85702FB80FAF_nehs5n.jpg'
   },
   {
@@ -166,7 +166,7 @@ export const contacts = [
     mail: "mario.rossi@gmail.com",
     credit: 10,
     debit: 5,
-    text: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
+    notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
     picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/8C15795B-BBFA-4C6E-81C3-9D24F4C3C904_v0hkko.jpg'
   },
   {
@@ -183,7 +183,7 @@ export const contacts = [
     mail: "mario.rossi@gmail.com",
     credit: 10,
     debit: 5,
-    text: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
+    notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
     picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/D5469039-6465-41B6-B5D6-61ED42408A0E_gadfii.jpg'
   },
   {
@@ -200,7 +200,7 @@ export const contacts = [
     mail: "mario.rossi@gmail.com",
     credit: 10,
     debit: 5,
-    text: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
+    notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
     picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/D5469039-6465-41B6-B5D6-61ED42408A0E_gadfii.jpg'
   },
   {
@@ -217,7 +217,7 @@ export const contacts = [
     mail: "mario.rossi@gmail.com",
     credit: 10,
     debit: 5,
-    text: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
+    notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
     picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104027/QOSC/422182D1-6321-4C92-8763-4E3A9B383D2B_l69m70.jpg'
   },
   {
@@ -234,7 +234,7 @@ export const contacts = [
     mail: "mario.rossi@gmail.com",
     credit: 10,
     debit: 5,
-    text: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
+    notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
     picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/D5469039-6465-41B6-B5D6-61ED42408A0E_gadfii.jpg'
   },
   {
@@ -251,7 +251,7 @@ export const contacts = [
     mail: "mario.rossi@gmail.com",
     credit: 10,
     debit: 5,
-    text: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
+    notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
     picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104028/QOSC/91953484-6F90-488A-8ADC-8A970BA98BD6_mckb4w.jpg'
   }
 ];
@@ -259,43 +259,38 @@ export const contacts = [
 export const groups = [
   {
     id: 1,
-    title: 'Pippo, Fiore, Zema',
-    text: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
-    author: 'Esk - Abbinazione',
-    authorAvatar: '/img/max.jpg',
-    image: 'https://images.unsplash.com/photo-1610235554447-41505d7962f8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=882&q=80',
+    partecipants: [13, 14, 15],
+    notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
+    name: 'Esk - Abbinazione',
+    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/8C15795B-BBFA-4C6E-81C3-9D24F4C3C904_v0hkko.jpg'
   },
   {
     id: 2,
-    title: 'Pippo, Simo, Ale, Franz',
-    text: 'dui faucibus in ornare quam viverra orci sagittis eu volutpat odio facilisis mauris sit amet massa vitae tortor condimentum lacinia quis vel eros donec ac odio tempor orci dapibus ultrices',
-    author: 'Centro SNAI',
-    authorAvatar: '/img/max.jpg',
-    image: 'https://images.unsplash.com/photo-1610235554447-41505d7962f8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=882&q=80',
+    partecipants: [11, 12],
+    notes: 'dui faucibus in ornare quam viverra orci sagittis eu volutpat odio facilisis mauris sit amet massa vitae tortor condimentum lacinia quis vel eros donec ac odio tempor orci dapibus ultrices',
+    name: 'Centro SNAI',
+    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104028/QOSC/54047806-72DA-459C-9539-D6E56CFB12AD_o6zdel.jpg'
   },
   {
     id: 3,
-    title: 'Ni**a, Daniel',
-    text: 'tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum odio eu feugiat pretium nibh ipsum consequat nisl vel pretium lectus quam id leo in vitae turpis massa',
-    author: 'Acua',
-    authorAvatar: '/img/max.jpg',
-    image: 'https://images.unsplash.com/photo-1610235554447-41505d7962f8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=882&q=80',
+    partecipants: [1, 9, 10],
+    notes: 'tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum odio eu feugiat pretium nibh ipsum consequat nisl vel pretium lectus quam id leo in vitae turpis massa',
+    name: 'Acua',
+    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/D5469039-6465-41B6-B5D6-61ED42408A0E_gadfii.jpg'
   },
   {
     id: 4,
-    title: 'Napoli, Napoletani, Fiore, Dome, Zema',
-    text: 'non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at',
-    author: 'Napoli Sotterranea',
-    authorAvatar: '/img/max.jpg',
-    image: 'https://images.unsplash.com/photo-1610235554447-41505d7962f8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=882&q=80',
+    partecipants: [2, 4, 6, 8],
+    notes: 'non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at',
+    name: 'Napoli Sotterranea',
+    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104027/QOSC/422182D1-6321-4C92-8763-4E3A9B383D2B_l69m70.jpg'
   },
   {
     id: 5,
-    title: 'Squadra FantaSTICA',
-    text: 'nisl vel pretium lectus quam id leo in vitae turpis massa sed elementum tempus egestas sed sed risus pretium quam vulputate dignissim suspendisse in est ante in nibh mauris cursus',
-    author: 'Pippo, Zema, Fiore, Dome, Soniace',
-    authorAvatar: '/img/max.jpg',
-    image: 'https://images.unsplash.com/photo-1610235554447-41505d7962f8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=882&q=80',
+    partecipants: [1, 3, 6, 8],
+    notes: 'nisl vel pretium lectus quam id leo in vitae turpis massa sed elementum tempus egestas sed sed risus pretium quam vulputate dignissim suspendisse in est ante in nibh mauris cursus',
+    name: 'Squadra FantaSTICA',
+    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/D5469039-6465-41B6-B5D6-61ED42408A0E_gadfii.jpg'
   },
 ];
 

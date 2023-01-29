@@ -23,7 +23,6 @@ import {
   useIonActionSheet,
   IonSegment, 
   IonSegmentButton,
-  useIonAlert,
   IonSkeletonText,
   IonThumbnail,
 } from '@ionic/react';
@@ -31,7 +30,6 @@ import Notifications from './Notifications';
 import { useEffect, useRef, useState } from 'react';
 import { notificationsOutline } from 'ionicons/icons';
 import { getContacts, getGroups } from '../../store/selectors';
-import { Share } from '@capacitor/share';
 
 const ContactCard = ({ id, name, surname, picture, nickname, phoneNum, mail }) => {
   const [present] = useIonActionSheet();
@@ -40,15 +38,6 @@ const ContactCard = ({ id, name, surname, picture, nickname, phoneNum, mail }) =
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-
-  const share = async () => {
-		await Share.share({
-			title: 'Pippami tutto',
-			text: 'Learn how diventare enormi, massa, bulk!',
-			url: 'https://www.youtube.com/watch?v=zJY5y7vScjQ',
-			dialogTitle: 'Share with friends'
-		});
-	};
 
   function canDismiss() {
     close();
@@ -120,11 +109,11 @@ const ContactCard = ({ id, name, surname, picture, nickname, phoneNum, mail }) =
 
   return (
     <IonItemSliding ref={slidingItem} className='my-2'>
-      <IonItemOptions side="start">
-        <IonItemOption color="success" onClick={call} expandable>Call</IonItemOption>
+      <IonItemOptions side="start" onIonSwipe={() => call()}>
+        <IonItemOption color="success" onClick={() => call()} expandable>Call</IonItemOption>
       </IonItemOptions>
 
-      <IonItem  routerLink={`/tabs/home/contact/${id}`}>
+      <IonItem routerLink={`/tabs/home/contact/${id}`}>
         <IonAvatar slot="start" className='w-14 h-14'>
           <IonImg src={picture} />
         </IonAvatar>
@@ -134,27 +123,21 @@ const ContactCard = ({ id, name, surname, picture, nickname, phoneNum, mail }) =
         </IonLabel>
       </IonItem>
 
-      <IonItemOptions side="end">
-        <IonItemOption onClick={otherActions} expandable>Others</IonItemOption>
-        <IonItemOption color="danger" onClick={canDismiss} expandable>Delete</IonItemOption>
+      <IonItemOptions side="end" onIonSwipe={() => canDismiss()}>
+        <IonItemOption onClick={() => otherActions()} expandable>Others</IonItemOption>
+        <IonItemOption color="danger" onClick={() => canDismiss()} expandable>Delete</IonItemOption>
       </IonItemOptions>
     </IonItemSliding>
   );
 };
 
-const GroupCard = ({ id, title, author, authorAvatar }) => {
+const GroupCard = ({ id, name, picture, partecipants }) => {
   const [present] = useIonActionSheet();
-  const [presentAlert] = useIonAlert();
   const slidingItem = useRef(null);
 
-  const share = async () => {
-		await Share.share({
-			title: 'Pippami tutto',
-			text: 'Learn how diventare enormi, massa, bulk!',
-			url: 'https://www.youtube.com/watch?v=zJY5y7vScjQ',
-			dialogTitle: 'Share with friends'
-		});
-	};
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
   function canDismiss() {
     close();
@@ -183,75 +166,24 @@ const GroupCard = ({ id, title, author, authorAvatar }) => {
     });
   }
 
-  function otherActions() {
-    close();
-    return new Promise((resolve, reject) => {
-      present({
-        header: 'Call to action',
-        subHeader: 'Example subheader',
-        buttons: [
-          {
-            text: 'Delete',
-            role: 'destructive',
-            data: {
-              action: 'delete',
-            },
-            handler: () => alert('cancella to mare diocan')
-          },
-          {
-            text: 'Share',
-            data: {
-              action: 'share',
-            },
-            handler: () => share()
-          },
-          {
-            text: 'Cancel',
-            role: 'cancel',
-            data: {
-              action: 'cancel',
-            },
-          },
-        ],
-      });
-    });
-  }
-
-  function archive() {
-    close();
-    return new Promise((resolve, reject) => {
-      presentAlert({
-        header: 'Alert',
-        subHeader: 'Important message',
-        message: 'This is an alert!',
-        buttons: ['OK'],
-      })
-    });
-  }
-
   function close() {
     slidingItem.current?.close();
   }
 
   return (
     <IonItemSliding ref={slidingItem} className='my-2'>
-      <IonItemOptions side="start">
-        <IonItemOption color="success" onClick={archive} expandable>Archive</IonItemOption>
-      </IonItemOptions>
-
       <IonItem routerLink={`/tabs/home/group/${id}`}>
         <IonAvatar slot="start" className='w-14 h-14'>
-          <IonImg src={authorAvatar} />
+          <IonImg src={picture} />
         </IonAvatar>
         <IonLabel className="py-1">
-          <h2>{author}</h2>
-          <p>{title}</p>
+          {/* <h2>{capitalizeFirstLetter(name)}</h2> */}
+          {/* <p>{capitalizeFirstLetter(partecipants.forEach((partecipant) => partecipant.name))}</p> */}
         </IonLabel>
       </IonItem>
 
       <IonItemOptions side="end">
-        <IonItemOption onClick={otherActions} expandable>Others</IonItemOption>
-        <IonItemOption color="danger" onClick={canDismiss} expandable>Delete</IonItemOption>
+        <IonItemOption color="danger" onClick={() => canDismiss()} expandable>Delete</IonItemOption>
       </IonItemOptions>
     </IonItemSliding>
   );
