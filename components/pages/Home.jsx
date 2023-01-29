@@ -30,6 +30,7 @@ import Notifications from './Notifications';
 import { useEffect, useRef, useState } from 'react';
 import { notificationsOutline } from 'ionicons/icons';
 import { getContacts, getGroups } from '../../store/selectors';
+import * as selectors from '../../store/selectors';
 
 const ContactCard = ({ id, name, surname, picture, nickname, phoneNum, mail }) => {
   const [present] = useIonActionSheet();
@@ -170,6 +171,12 @@ const GroupCard = ({ id, name, picture, partecipants }) => {
     slidingItem.current?.close();
   }
 
+  const contacts = Store.useState(selectors.getContacts)
+  const partecipantsContact = []
+  for (var i = 0; i < partecipants.length; i++) {
+    partecipantsContact.push(contacts.filter(contact => contact.id == partecipants[i]))
+  }
+
   return (
     <IonItemSliding ref={slidingItem} className='my-2'>
       <IonItem routerLink={`/tabs/home/group/${id}`}>
@@ -177,8 +184,8 @@ const GroupCard = ({ id, name, picture, partecipants }) => {
           <IonImg src={picture} />
         </IonAvatar>
         <IonLabel className="py-1">
-          {/* <h2>{capitalizeFirstLetter(name)}</h2> */}
-          {/* <p>{capitalizeFirstLetter(partecipants.forEach((partecipant) => partecipant.name))}</p> */}
+          <h2>{capitalizeFirstLetter(name)}</h2>
+          <p>{partecipantsContact.map((partecipant) => (capitalizeFirstLetter(partecipant[0].name)) + ' ' + capitalizeFirstLetter(partecipant[0].surname) + ', ')}</p>
         </IonLabel>
       </IonItem>
 
@@ -190,9 +197,6 @@ const GroupCard = ({ id, name, picture, partecipants }) => {
 };
 
 const Home = () => {
-  // const contacts = Store.useState(getContacts);
-  // const groups = Store.useState(getGroups);
-
   const [contacts, setContacts] = useState(Store.useState(getContacts));
   const [groups, setGroups] = useState(Store.useState(getGroups));
   const [showNotifications, setShowNotifications] = useState(false);

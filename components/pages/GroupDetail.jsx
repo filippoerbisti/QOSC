@@ -30,8 +30,6 @@ const GroupDetail = ({ }) => {
 
     const contacts = Store.useState(selectors.getContacts)
     const partecipants = []
-    
-
     for (var i = 0; i < loadedList.partecipants.length; i++) {
       partecipants.push(contacts.filter(contact => contact.id == loadedList.partecipants[i]))
     }
@@ -56,8 +54,6 @@ const GroupDetail = ({ }) => {
       presentToast('top')
       setOnEdit(...[true])
     }
-
-    console.log(partecipants)
 
     return (
       <IonPage>
