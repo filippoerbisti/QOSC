@@ -246,7 +246,7 @@ export const contacts = [
     dateLastSeen: '2022-12-10',
     placeLastContact: 'Chiamata',
     placeLastSeen: 'Capodanno',
-    birthday: '19/05-2000',
+    birthday: '2000-05-22',
     phoneNum: '3382359226',
     mail: "mario.rossi@gmail.com",
     credit: 10,
