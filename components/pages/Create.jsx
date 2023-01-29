@@ -1,5 +1,3 @@
-import Store from '../../store';
-import * as selectors from '../../store/selectors';
 import {
   IonPage,
   IonHeader,
@@ -7,12 +5,27 @@ import {
   IonTitle,
   IonContent,
   IonList,
-  IonCheckbox, IonInput, IonItem, IonLabel, IonRange, IonSelect, IonSelectOption, IonToggle,
+  IonInput, IonItem, IonLabel, IonSelect, IonSelectOption, IonToggle, IonTextarea,
   IonDatetime, IonDatetimeButton, IonModal,
-  IonPopover, IonButton
+  IonPopover, IonButton,
+  useIonToast
 } from '@ionic/react';
 
 const Create = () => {
+  const [present] = useIonToast();
+
+  const presentToast = (position) => {
+    present({
+      message: 'Contatto salvato con successo!',
+      duration: 1500,
+      position: position
+    });
+  };
+
+  const save = () => {
+    presentToast('top')
+  }
+
   return (
     <IonPage>
       <IonHeader>
@@ -34,26 +47,67 @@ const Create = () => {
         </IonHeader>
         <IonList>
           <IonItem>
-            <IonLabel position="fixed">Nickname</IonLabel>
-            <IonInput clearInput={true} placeholder="Nome e Cognome"></IonInput>
+            <IonLabel className='pr-4'>Nome</IonLabel>
+            <IonInput clearInput={true} type="text"></IonInput>
           </IonItem>
-
+          <IonItem>
+            <IonLabel className='pr-4'>Cognome</IonLabel>
+            <IonInput clearInput={true} type="text"></IonInput>
+          </IonItem>
+          <IonItem>
+            <IonLabel className='pr-4'>Nickname</IonLabel>
+            <IonInput clearInput={true} type="text"></IonInput>
+          </IonItem>
           <IonItem>
             <IonLabel position="fixed">Telefono</IonLabel>
             <IonInput clearInput={true} type="tel" placeholder="888-888-8888"></IonInput>
           </IonItem>
-
           <IonItem>
             <IonLabel position="fixed">Email</IonLabel>
             <IonInput clearInput={true} type="email" placeholder="email@domain.com"></IonInput>
           </IonItem>
-
           <IonItem>
-            <IonLabel position="fixed">Compleanno</IonLabel>
+            <IonLabel position='fixed'>Compleanno</IonLabel>
             <IonDatetimeButton className='w-full flex justify-end' datetime="datetime"></IonDatetimeButton>
             <IonModal keepContentsMounted={true}>
               <IonDatetime id="datetime" presentation='date'></IonDatetime>
             </IonModal>
+          </IonItem>
+          <div className='flex'>
+            <IonItem>
+              <IonLabel className='pr-4'>Credito</IonLabel>
+              <IonInput clearInput={true} type="number"></IonInput>
+            </IonItem>
+            <IonItem>
+              <IonLabel className='pr-4'>Debito</IonLabel>
+              <IonInput clearInput={true} type="number"></IonInput>
+            </IonItem>
+          </div>
+          <IonItem>
+            <IonLabel position='fixed'>Ultima uscita</IonLabel>
+            <IonDatetimeButton className='w-full flex justify-end' datetime="datetime2"></IonDatetimeButton>
+            <IonModal keepContentsMounted={true}>
+              <IonDatetime id="datetime2" presentation='date'></IonDatetime>
+            </IonModal>
+          </IonItem>
+          <IonItem>
+            <IonLabel className='pr-4'>Dove</IonLabel>
+            <IonInput clearInput={true} type="text"></IonInput>
+          </IonItem>
+          <IonItem>
+            <IonLabel position='fixed'>Ultimo Contatto</IonLabel>
+            <IonDatetimeButton className='w-full flex justify-end' datetime="datetime3"></IonDatetimeButton>
+            <IonModal keepContentsMounted={true}>
+              <IonDatetime id="datetime3" presentation='date'></IonDatetime>
+            </IonModal>
+          </IonItem>
+          <IonItem>
+            <IonLabel className='pr-4'>Dove</IonLabel>
+            <IonInput clearInput={true} type="text"></IonInput>
+          </IonItem>
+          <IonItem counter={true}>
+            <IonLabel position="floating">Note</IonLabel>
+            <IonTextarea autoGrow={true} maxlength={200}></IonTextarea>
           </IonItem>
 
           <IonItem>
@@ -73,11 +127,7 @@ const Create = () => {
             <IonLabel>Enable Notifications</IonLabel>
             <IonToggle slot="end"></IonToggle>
           </IonItem>
-{/* 
-          <IonItem>
-            <IonLabel position="stacked">Range</IonLabel>
-            <IonRange></IonRange>
-          </IonItem> */}
+          <IonButton expand="block" className='m-4 h-8' onClick={() => save()}>SALVA</IonButton>
         </IonList>
       </IonContent>
     </IonPage>

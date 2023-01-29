@@ -33,7 +33,7 @@ import { notificationsOutline } from 'ionicons/icons';
 import { getContacts, getGroups } from '../../store/selectors';
 import { Share } from '@capacitor/share';
 
-const ContactCard = ({ id, name, surname, picture, context, phoneNum, mail }) => {
+const ContactCard = ({ id, name, surname, picture, nickname, phoneNum, mail }) => {
   const [present] = useIonActionSheet();
   const slidingItem = useRef(null);
 
@@ -130,7 +130,7 @@ const ContactCard = ({ id, name, surname, picture, context, phoneNum, mail }) =>
         </IonAvatar>
         <IonLabel className="py-1">
           <h2>{capitalizeFirstLetter(name)} {capitalizeFirstLetter(surname)}</h2>
-          <p>{capitalizeFirstLetter(context)}</p>
+          <p>{capitalizeFirstLetter(nickname)}</p>
         </IonLabel>
       </IonItem>
 
@@ -294,11 +294,13 @@ const Home = () => {
   //Handling the input on our search bar
   const handleChange = (e) => {
     setQuery(e.target.value);
+    console.log('c')
     if(segment == 'contacts')
-      // if (query != "")
-        setContacts(contacts.filter(contact => contact.author.toLowerCase().startsWith(e.target.value)))
+      if (e.target.value != "")
+        setContacts(contacts.filter(contact => contact.name.toLowerCase().startsWith(e.target.value)))
       // else
-      //   setContacts(Store.useState(getContacts))
+      // console.log(contacts)
+        // setContacts(...[Store.useState(getContacts))
 
     if(segment == 'groups')
       setGroups(groups.filter(group => group.author.toLowerCase().startsWith(e.target.value)))
