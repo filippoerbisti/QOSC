@@ -25,11 +25,13 @@ import {
   IonSegmentButton,
   IonSkeletonText,
   IonThumbnail,
+  IonText,
+  IonBadge
 } from '@ionic/react';
 import Notifications from './Notifications';
 import { useEffect, useRef, useState } from 'react';
 import { notificationsOutline } from 'ionicons/icons';
-import { getContacts, getGroups } from '../../store/selectors';
+import { getNotifications, getContacts, getGroups } from '../../store/selectors';
 import * as selectors from '../../store/selectors';
 
 const ContactCard = ({ id, name, surname, picture, nickname, phoneNum, mail }) => {
@@ -100,7 +102,7 @@ const ContactCard = ({ id, name, surname, picture, nickname, phoneNum, mail }) =
   }
 
   function call() {
-    //close();
+    close();
     window.open("tel:" + phoneNum);
   }
 
@@ -197,12 +199,17 @@ const GroupCard = ({ id, name, picture, partecipants }) => {
 };
 
 const Home = () => {
-  const [contacts, setContacts] = useState(Store.useState(getContacts));
-  const [groups, setGroups] = useState(Store.useState(getGroups));
+  const notifications = Store.useState(getNotifications)
+
+  const contacts = Store.useState(getContacts)
+  const [filteredContacts, setFilteredContacts] = useState(Store.useState(getContacts));
+  const groups = Store.useState(getGroups);
+  const [filteredGroups, setFilteredGroups] = useState(Store.useState(getGroups));
   const [showNotifications, setShowNotifications] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [segment, setSegment] = useState('contacts');
-  const [query, setQuery] = useState('');
+  const [contactQuery, setContactQuery] = useState('');
+  const [groupQuery, setGroupQuery] = useState('');
 
   useEffect(() => {
     setTimeout(() => {
@@ -229,17 +236,21 @@ const Home = () => {
 
   //Handling the input on our search bar
   const handleChange = (e) => {
-    setQuery(e.target.value);
-    console.log('c')
-    if(segment == 'contacts')
+    if(segment == 'contacts') {
+      setContactQuery(e.target.value);
       if (e.target.value != "")
-        setContacts(contacts.filter(contact => contact.name.toLowerCase().startsWith(e.target.value.toLowerCase())))
-      // else
-      // console.log(contacts)
-        // setContacts(...[Store.useState(getContacts))
+        setFilteredContacts(...[contacts.filter(contact => contact.name.toLowerCase().startsWith(e.target.value.toLowerCase()))])
+      else 
+        setFilteredContacts(...[contacts])
+    }
 
-    if(segment == 'groups')
-      setGroups(groups.filter(group => group.name.toLowerCase().startsWith(e.target.value.toLowerCase())))
+    if(segment == 'groups') {
+      setGroupQuery(e.target.value);
+      if (e.target.value != "")
+        setFilteredGroups(...[groups.filter(group => group.name.toLowerCase().startsWith(e.target.value.toLowerCase()))])
+      else 
+        setFilteredGroups(...[groups])
+    }
   }
 
   return (
@@ -252,7 +263,10 @@ const Home = () => {
           </IonButtons>
           <IonButtons slot="end" className='mr-2'>
             <IonButton onClick={() => setShowNotifications(true)}>
-              <IonIcon icon={notificationsOutline} />
+              <IonIcon icon={notificationsOutline} className='w-7 h-7' />
+              {notifications.length > 0 &&
+                <IonBadge>{notifications.length}</IonBadge>
+              }
             </IonButton>
           </IonButtons>
         </IonToolbar>
@@ -281,11 +295,19 @@ const Home = () => {
         </div>
 
         {loaded && segment == 'contacts' && <>
-            <IonSearchbar animated={true}  placeholder="Search..." value={query} onIonChange={handleChange}></IonSearchbar>
+            <IonSearchbar animated={true}  placeholder="Search..." value={contactQuery} onIonChange={handleChange}></IonSearchbar>
             <IonList>
-              {contacts.map((i, index) => (
-                <ContactCard {...i} key={index} style={{width: '100%'}} />
-              ))}
+              {filteredContacts.length > 0 && <>
+                  {filteredContacts.map((i, index) => (
+                    <ContactCard {...i} key={index} style={{width: '100%'}} />
+                  ))}
+                </>
+              }
+
+              {filteredContacts.length == 0 && <>
+                  <IonText className='w-full block text-center my-4'>Nessun risultato per la ricerca</IonText>
+                </>
+              }
             </IonList>
           </>
         }
@@ -295,7 +317,7 @@ const Home = () => {
               <IonSkeletonText animated={true} style={{ 'width': 'auto', 'height': '38px', 'margin': '10px' }}></IonSkeletonText>
             </h3>
             <IonList>
-              {contacts.map((i, index) => (
+              {filteredContacts.map((i, index) => (
                 <IonItem key={index} className='my-2'>
                   <IonThumbnail slot="start" className='rounded'>
                     <IonSkeletonText animated={true}></IonSkeletonText>
@@ -315,11 +337,19 @@ const Home = () => {
         }
 
         {loaded && segment == 'groups' && <>
-            <IonSearchbar animated={true}  placeholder="Search..." value={query} onIonChange={handleChange}></IonSearchbar>
+            <IonSearchbar animated={true}  placeholder="Search..." value={groupQuery} onIonChange={handleChange}></IonSearchbar>
             <IonList>
-              {groups.map((i, index) => (
-                <GroupCard {...i} key={index} style={{width: '100%'}} />
-              ))}
+              {filteredGroups.length > 0 && <>
+                  {filteredGroups.map((i, index) => (
+                    <GroupCard {...i} key={index} style={{width: '100%'}} />
+                  ))}
+                </>
+              }
+
+              {filteredGroups.length == 0 && <>
+                  <IonText className='w-full block text-center my-4'>Nessun risultato per la ricerca</IonText>
+                </>
+              }
             </IonList>
           </>
         }
@@ -329,7 +359,7 @@ const Home = () => {
               <IonSkeletonText animated={true} style={{ 'width': 'auto', 'height': '38px', 'margin': '10px' }}></IonSkeletonText>
             </h3>
             <IonList>
-              {groups.map((i, index) => (
+              {filteredGroups.map((i, index) => (
                 <IonItem key={index} className='my-2'>
                   <IonThumbnail slot="start">
                     <IonSkeletonText animated={true}></IonSkeletonText>
