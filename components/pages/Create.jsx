@@ -145,7 +145,7 @@ const Create = () => {
                 <IonSelect placeholder="Group">
                   <IonSelectOption value="">Nessuno</IonSelectOption>
                   {groups.map((group, index) => (
-                    <IonSelectOption key={index} value={group.author}>{group.author}</IonSelectOption>
+                    <IonSelectOption key={index} value={group.id}>{group.name}</IonSelectOption>
                   ))}
                 </IonSelect>
               </IonItem>
