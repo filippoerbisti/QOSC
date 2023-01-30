@@ -233,13 +233,13 @@ const Home = () => {
     console.log('c')
     if(segment == 'contacts')
       if (e.target.value != "")
-        setContacts(contacts.filter(contact => contact.name.toLowerCase().startsWith(e.target.value)))
+        setContacts(contacts.filter(contact => contact.name.toLowerCase().startsWith(e.target.value.toLowerCase())))
       // else
       // console.log(contacts)
         // setContacts(...[Store.useState(getContacts))
 
     if(segment == 'groups')
-      setGroups(groups.filter(group => group.author.toLowerCase().startsWith(e.target.value)))
+      setGroups(groups.filter(group => group.name.toLowerCase().startsWith(e.target.value.toLowerCase())))
   }
 
   return (
