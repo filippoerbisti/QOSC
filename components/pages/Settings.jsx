@@ -10,7 +10,7 @@ import {
   IonLabel,
   IonReorder,
   IonReorderGroup,
-  IonSelect, IonSelectOption
+  IonSelect, IonSelectOption, IonText
 } from '@ionic/react';
 import Store from '../../store';
 import * as selectors from '../../store/selectors';
@@ -95,7 +95,11 @@ const Settings = () => {
             </IonSelect>
           </IonItem>
           <AllSettings />
+          
         </IonList>
+        <IonText color='medium' className='w-full text-center mb-4 bottom-0 absolute italic text-xs'>
+          <pre>Versione 2.0.0</pre>
+        </IonText>
       </IonContent>
     </IonPage>
   );
