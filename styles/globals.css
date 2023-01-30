@@ -225,7 +225,7 @@ ion-card-header.ios {
 ion-badge {
   --background: red;
   --color: white;
-  font-size: smaller !important;
+  font-size: x-small !important;
   border-radius: 100% !important;
   position:  absolute !important;
   left: 1rem !important;
