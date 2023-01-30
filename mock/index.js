@@ -295,10 +295,10 @@ export const groups = [
 ];
 
 export const notifications = [
-  { title: 'New friend request', when: '6 hr' },
-  { title: 'Please change your password', when: '1 day' },
-  { title: 'You have a new message', when: '2 weeks' },
-  { title: 'Welcome to the app!', when: '1 month' },
+  { id: 1, title: 'New friend request', when: '6 hr' },
+  { id: 2, title: 'Please change your password', when: '1 day' },
+  { id: 3, title: 'You have a new message', when: '2 weeks' },
+  { id: 4, title: 'Welcome to the app!', when: '1 month' },
 ];
 
 // Some fake lists
