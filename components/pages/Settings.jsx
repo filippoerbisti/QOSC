@@ -9,7 +9,8 @@ import {
   IonToggle,
   IonLabel,
   IonReorder,
-  IonReorderGroup
+  IonReorderGroup,
+  IonSelect, IonSelectOption
 } from '@ionic/react';
 import Store from '../../store';
 import * as selectors from '../../store/selectors';
@@ -69,6 +70,29 @@ const Settings = () => {
                 });
               }}
             />
+          </IonItem>
+          <IonItem>
+            <IonLabel>Choose Languages</IonLabel>
+            <IonSelect placeholder="Language">
+              <IonSelectOption value="EN">English</IonSelectOption>
+              <IonSelectOption value="IT">Italiano</IonSelectOption>
+              <IonSelectOption value="ES">Español</IonSelectOption>
+              <IonSelectOption value="DE">Deutsch</IonSelectOption>
+              <IonSelectOption value="FR">Française</IonSelectOption>
+            </IonSelect>
+          </IonItem>
+          <IonItem>
+            <IonLabel>Default order by</IonLabel>
+            <IonSelect placeholder="Surname A-Z">
+              <IonSelectOption value="">Surname A-Z</IonSelectOption>
+              <IonSelectOption value="">Name Z-A</IonSelectOption>
+              <IonSelectOption value="">Surname A-Z</IonSelectOption>
+              <IonSelectOption value="">Name Z-A</IonSelectOption>
+              <IonSelectOption value="">Last Seen Asc</IonSelectOption>
+              <IonSelectOption value="">Last Seen Desc</IonSelectOption>
+              <IonSelectOption value="">Last Contact Asc</IonSelectOption>
+              <IonSelectOption value="">Last Contact Desc</IonSelectOption>
+            </IonSelect>
           </IonItem>
           <AllSettings />
         </IonList>
