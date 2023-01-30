@@ -10,6 +10,7 @@ import {
   IonItem,
   IonNote,
   IonLabel,
+  IonText,
 } from '@ionic/react';
 import Store from '../../store';
 import { getNotifications } from '../../store/selectors';
@@ -46,6 +47,11 @@ const Notifications = ({ open, onDidDismiss }) => {
     setNotifications([...notifics]);
   }
 
+  const clearAllNotif = () => {
+    notifics.splice(0, notifics.length);
+    setNotifications([...notifics]);
+  }
+
   return (
     <IonModal isOpen={open} onDidDismiss={onDidDismiss}>
       <IonHeader>
@@ -62,6 +68,15 @@ const Notifications = ({ open, onDidDismiss }) => {
             <IonTitle size="large" className='mt-1'>Notifications</IonTitle>
           </IonToolbar>
         </IonHeader>
+        <div className='flex flex-col'>
+          {notifications.length > 0 && <>
+              <IonText color="medium" className='pr-2 pt-3 text-right underline cursor-pointer' onClick={() => clearAllNotif()}>Elimina tutte le notifiche</IonText>
+            </>
+          }
+          {notifications.length == 0 && <>
+              <IonText color="medium" className='pr-2 pt-3 text-center'>Nessuna nuova notifica</IonText>
+            </>
+          }
         <IonList>
           {notifications.map((notification, i) => (
             <IonItem key={i}>
@@ -73,6 +88,7 @@ const Notifications = ({ open, onDidDismiss }) => {
             </IonItem>
           ))}
         </IonList>
+        </div>
       </IonContent>
     </IonModal>
   );
