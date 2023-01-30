@@ -143,7 +143,7 @@ const Create = () => {
               <IonItem>
                 <IonLabel>Collega Gruppo</IonLabel>
                 <IonSelect placeholder="Group">
-                  <IonSelectOption value="">Nessuno</IonSelectOption>
+                  <IonSelectOption value="-1">Nessuno</IonSelectOption>
                   {groups.map((group, index) => (
                     <IonSelectOption key={index} value={group.id}>{group.name}</IonSelectOption>
                   ))}
@@ -173,7 +173,7 @@ const Create = () => {
               <IonItem>
                 <IonLabel>Collega Contatti</IonLabel>
                 <IonSelect placeholder="Contatti" multiple={true}>
-                  <IonSelectOption value="" disabled>Nessuno</IonSelectOption>
+                  <IonSelectOption value="-1">Nessuno</IonSelectOption>
                   {contacts.map((contact, index) => (
                     <IonSelectOption key={index} value={contact.id}>{capitalizeFirstLetter(contact.name) + ' ' + capitalizeFirstLetter(contact.surname)}</IonSelectOption>
                   ))}
