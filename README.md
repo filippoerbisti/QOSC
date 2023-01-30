@@ -24,3 +24,15 @@ Cross platform application (using Capacitor)
 `npx cap open ios => will open ./ios folder in XCode`
 
 `npx cap open android => will open ./android folder in Android Studio`
+
+### Build application in Android Studio
+
+Once you use `npx cap sync` and then `npx cap open android` will open ./android folder in Android Studio
+</br>
+Create APK in Android Studio
+- In the Android menu, go to Build > Build Bundle(s) / APK (s) > Build APK(s).
+- Android Studio will start building the APK for you. Once done, a pop-up on the bottom right will notify you of its completion. Click the ‘locate’ button in this dialog.
+- The ‘locate’ button should open File Explorer with the debug folder open that contains a file called “app-debug.apk”.
+- That’s it. Rename this file and share!
+</br>
+Output folder: *\android\app\build\outputs\apk\debug*
