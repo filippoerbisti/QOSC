@@ -46,12 +46,12 @@ const ContactCard = ({ id, name, surname, picture, nickname, phoneNum, mail }) =
     close();
     return new Promise((resolve, reject) => {
       present({
-        header: 'Are you sure?',
+        header: 'Sei sicuro di eliminare ' + capitalizeFirstLetter(name) + ' ' + capitalizeFirstLetter(surname) + '?',
         buttons: [
           {
-            text: 'Yes',
+            text: 'Si',
             role: 'confirm',
-            handler: () => alert('succhiamelo scemo')
+            handler: () => alert('Contatto eliminato!')
           },
           {
             text: 'No',
@@ -146,12 +146,12 @@ const GroupCard = ({ id, name, picture, partecipants }) => {
     close();
     return new Promise((resolve, reject) => {
       present({
-        header: 'Are you sure?',
+        header: 'Sei sicuro di eliminare ' + capitalizeFirstLetter(name) + '?',
         buttons: [
           {
-            text: 'Yes',
+            text: 'Si',
             role: 'confirm',
-            handler: () => alert('succhiamelo scemo')
+            handler: () => alert('Gruppo eliminato!')
           },
           {
             text: 'No',
