@@ -261,11 +261,11 @@ const Home = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonButtons slot="end" className='mr-2'>
+          <IonButtons slot="end" className='right-2'>
             <IonButton onClick={() => setShowNotifications(true)}>
               <IonIcon icon={notificationsOutline} className='w-7 h-7' />
               {notifications.length > 0 &&
-                <IonBadge>{notifications.length}</IonBadge>
+                <IonBadge>{notifications.length <= 9 ? notifications.length : '9+'}</IonBadge>
               }
             </IonButton>
           </IonButtons>
