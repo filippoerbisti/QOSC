@@ -20,19 +20,17 @@ import { useState } from 'react';
   
 const GroupDetail = ({ }) => {
     const [lists, setLists] = useState(Store.useState(selectors.getGroups))
+    const contacts = Store.useState(selectors.getContacts)
     const [onEdit, setOnEdit] = useState(true);
-
     const params = useParams();
     const { id } = params;
     const loadedList = lists.find(l => l.id == id);
-
-    const [present] = useIonToast();
-
-    const contacts = Store.useState(selectors.getContacts)
     const partecipants = []
     for (var i = 0; i < loadedList.partecipants.length; i++) {
       partecipants.push(contacts.filter(contact => contact.id == loadedList.partecipants[i]))
     }
+
+    const [present] = useIonToast();
 
     const presentToast = (position) => {
       present({
@@ -91,8 +89,8 @@ const GroupDetail = ({ }) => {
                 </div>
               </IonCardHeader>
               <IonItem className='flex items-start'>
-                <IonText>Partecipanti</IonText>
-                <ul className='ml-6'>
+                <IonText className='mt-2'>Partecipanti</IonText>
+                <ul className='ml-6 mb-2'>
                   {partecipants.map((partecipant, index) => (
                     <IonItem key={index} routerLink={`/tabs/home/contact/${partecipant[0].id}`}>
                       - {capitalizeFirstLetter(partecipant[0].name)} {capitalizeFirstLetter(partecipant[0].surname)}
@@ -114,7 +112,7 @@ const GroupDetail = ({ }) => {
             </IonItem>
             <IonItem>
               <IonLabel className='pr-4'>Nome Gruppo</IonLabel>
-              <IonInput clearInput={true} type="text" value={capitalizeFirstLetter(loadedList.name)} disabled={onEdit}></IonInput>
+              <IonInput clearInput={true} type="text" placeholder='Nome Gruppo' value={capitalizeFirstLetter(loadedList.name)} disabled={onEdit}></IonInput>
             </IonItem>
               <IonButton expand="block" className='m-4 h-8' onClick={() => save()}>SALVA</IonButton>
             </>
