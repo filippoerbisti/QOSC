@@ -78,20 +78,20 @@ const ContactDetail = ({ }) => {
                 <IonIcon icon={chevronDownCircle}></IonIcon>
               </IonFabButton>
               <IonFabList side="bottom">
-                <IonFabButton>
-                  <IonIcon icon={create} onClick={() => edit()}></IonIcon>
+                <IonFabButton onClick={() => edit()}>
+                  <IonIcon icon={create}></IonIcon>
                 </IonFabButton>
-                <IonFabButton>
-                  <IonIcon icon={trash} onClick={() => alert('Cancella ' + loadedList.name +' '+ loadedList.surname)}></IonIcon>
+                <IonFabButton onClick={() => alert('Cancella ' + loadedList.name +' '+ loadedList.surname)}>
+                  <IonIcon icon={trash}></IonIcon>
                 </IonFabButton>
-                <IonFabButton>
-                  <IonIcon icon={logoWhatsapp} onClick={() => sendWhatsapp(loadedList.phoneNum)}></IonIcon>
+                <IonFabButton onClick={() => sendWhatsapp(loadedList.phoneNum)}>
+                  <IonIcon icon={logoWhatsapp}></IonIcon>
                 </IonFabButton>
-                <IonFabButton>
-                  <IonIcon icon={call} onClick={() => phoneCall(loadedList.phoneNum)}></IonIcon>
+                <IonFabButton onClick={() => phoneCall(loadedList.phoneNum)}>
+                  <IonIcon icon={call}></IonIcon>
                 </IonFabButton>
-                <IonFabButton>
-                  <IonIcon icon={mail} onClick={() => sendMail(loadedList.mail)}></IonIcon>
+                <IonFabButton onClick={() => sendMail(loadedList.mail)}>
+                  <IonIcon icon={mail}></IonIcon>
                 </IonFabButton>
               </IonFabList>
             </IonFab>

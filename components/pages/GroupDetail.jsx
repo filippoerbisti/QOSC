@@ -72,11 +72,11 @@ const GroupDetail = ({ }) => {
                 <IonIcon icon={chevronDownCircle}></IonIcon>
               </IonFabButton>
               <IonFabList side="bottom">
-                <IonFabButton>
-                  <IonIcon icon={create} onClick={() => edit()}></IonIcon>
+                <IonFabButton onClick={() => edit()}>
+                  <IonIcon icon={create}></IonIcon>
                 </IonFabButton>
-                <IonFabButton>
-                  <IonIcon icon={trash} onClick={() => alert('Cancella ' + loadedList.name)}></IonIcon>
+                <IonFabButton onClick={() => alert('Cancella ' + loadedList.name)}>
+                  <IonIcon icon={trash}></IonIcon>
                 </IonFabButton>
               </IonFabList>
             </IonFab>
