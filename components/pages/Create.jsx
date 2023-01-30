@@ -105,11 +105,11 @@ const Create = () => {
               <div className='flex'>
                 <IonItem>
                   <IonLabel className='pr-4'>Credito</IonLabel>
-                  <IonInput clearInput={true} type="number" placeholder='+10€'></IonInput>
+                  <IonInput clearInput={true} type="number" placeholder='+ 10 €'></IonInput>
                 </IonItem>
                 <IonItem>
                   <IonLabel className='pr-4'>Debito</IonLabel>
-                  <IonInput clearInput={true} type="number" placeholder='-10€'></IonInput>
+                  <IonInput clearInput={true} type="number" placeholder='- 10 €'></IonInput>
                 </IonItem>
               </div>
               <IonItem>
