@@ -305,7 +305,7 @@ const Home = () => {
               }
 
               {filteredContacts.length == 0 && <>
-                  <IonText className='w-full block text-center my-4'>Nessun risultato per la ricerca</IonText>
+                  <IonText color="medium" className='w-full block text-center my-4'>Nessun risultato per la ricerca</IonText>
                 </>
               }
             </IonList>
@@ -347,7 +347,7 @@ const Home = () => {
               }
 
               {filteredGroups.length == 0 && <>
-                  <IonText className='w-full block text-center my-4'>Nessun risultato per la ricerca</IonText>
+                  <IonText color="medium" className='w-full block text-center my-4'>Nessun risultato per la ricerca</IonText>
                 </>
               }
             </IonList>

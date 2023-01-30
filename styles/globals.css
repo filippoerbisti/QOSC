@@ -207,11 +207,20 @@ ion-card-header.ios {
 
 
 
-.sc-ion-label-ios-h h2 {
+.sc-ion-label-ios-h h2,
+.sc-ion-label-md-h h2 {
   font-size: large !important;
   font-weight: bold !important;
 }
 
+.sc-ion-label-ios-h,
+.sc-ion-label-md-h,
+.sc-ion-input-ios:not(.cloned-input),
+.sc-ion-input-md:not(.cloned-input),
+.sc-ion-textarea-ios:not(.cloned-input),
+.sc-ion-textarea-md:not(.cloned-input) {
+  opacity: 1 !important;
+}
 
 ion-badge {
   --background: red;
