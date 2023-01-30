@@ -234,6 +234,7 @@ ion-badge {
   height: 1rem !important;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 ion-fab-button::part(native) {
