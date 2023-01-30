@@ -38,11 +38,12 @@ const NotificationItem = ({ notification, notifications }) => {
 };
 
 const Notifications = ({ open, onDidDismiss }) => {
-  const [notifications, setNotifications] = useState(Store.useState(getNotifications))
+  const notifics = Store.useState(getNotifications)
+  const [notifications, setNotifications] = useState(notifics)
 
   function removePost(i){
-    notifications.splice(i, 1);
-    setNotifications([...notifications]);
+    notifics.splice(i, 1);
+    setNotifications([...notifics]);
   }
 
   return (
