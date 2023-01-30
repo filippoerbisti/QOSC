@@ -14,7 +14,8 @@ export const contacts = [
     credit: 10,
     debit: 5,
     notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
-    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104028/QOSC/91953484-6F90-488A-8ADC-8A970BA98BD6_mckb4w.jpg'
+    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104028/QOSC/91953484-6F90-488A-8ADC-8A970BA98BD6_mckb4w.jpg',
+    groupId: 5
   },
   {
     id: 2,
@@ -31,7 +32,8 @@ export const contacts = [
     credit: 10,
     debit: 5,
     notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
-    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104027/QOSC/422182D1-6321-4C92-8763-4E3A9B383D2B_l69m70.jpg'
+    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104027/QOSC/422182D1-6321-4C92-8763-4E3A9B383D2B_l69m70.jpg',
+    groupId: 4
   },
   {
     id: 3,
@@ -48,7 +50,8 @@ export const contacts = [
     credit: 10,
     debit: 5,
     notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
-    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104028/QOSC/54047806-72DA-459C-9539-D6E56CFB12AD_o6zdel.jpg'
+    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104028/QOSC/54047806-72DA-459C-9539-D6E56CFB12AD_o6zdel.jpg',
+    groupId: 5
   },
   {
     id: 4,
@@ -65,7 +68,8 @@ export const contacts = [
     credit: 10,
     debit: 5,
     notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
-    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/8C15795B-BBFA-4C6E-81C3-9D24F4C3C904_v0hkko.jpg'
+    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/8C15795B-BBFA-4C6E-81C3-9D24F4C3C904_v0hkko.jpg',
+    groupId: 4
   },
   {
     id: 5,
@@ -82,7 +86,8 @@ export const contacts = [
     credit: 10,
     debit: 5,
     notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
-    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/D5469039-6465-41B6-B5D6-61ED42408A0E_gadfii.jpg'
+    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/D5469039-6465-41B6-B5D6-61ED42408A0E_gadfii.jpg',
+    groupId: 3
   },
   {
     id: 6,
@@ -99,7 +104,8 @@ export const contacts = [
     credit: 10,
     debit: 5,
     notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
-    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104028/QOSC/54047806-72DA-459C-9539-D6E56CFB12AD_o6zdel.jpg'
+    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104028/QOSC/54047806-72DA-459C-9539-D6E56CFB12AD_o6zdel.jpg',
+    groupId: 5
   },
   {
     id: 7,
@@ -116,7 +122,8 @@ export const contacts = [
     credit: 10,
     debit: 5,
     notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
-    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/3C68D933-C571-4ACD-99E3-85702FB80FAF_nehs5n.jpg'
+    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/3C68D933-C571-4ACD-99E3-85702FB80FAF_nehs5n.jpg',
+    groupId: -1
   },
   {
     id: 8,
@@ -133,7 +140,8 @@ export const contacts = [
     credit: 10,
     debit: 5,
     notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
-    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104027/QOSC/422182D1-6321-4C92-8763-4E3A9B383D2B_l69m70.jpg'
+    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104027/QOSC/422182D1-6321-4C92-8763-4E3A9B383D2B_l69m70.jpg',
+    groupId: 4
   },
   {
     id: 9,
@@ -150,7 +158,8 @@ export const contacts = [
     credit: 10,
     debit: 5,
     notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
-    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/3C68D933-C571-4ACD-99E3-85702FB80FAF_nehs5n.jpg'
+    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/3C68D933-C571-4ACD-99E3-85702FB80FAF_nehs5n.jpg',
+    groupId: 3
   },
   {
     id: 10,
@@ -167,7 +176,8 @@ export const contacts = [
     credit: 10,
     debit: 5,
     notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
-    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/8C15795B-BBFA-4C6E-81C3-9D24F4C3C904_v0hkko.jpg'
+    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/8C15795B-BBFA-4C6E-81C3-9D24F4C3C904_v0hkko.jpg',
+    groupId: 3
   },
   {
     id: 11,
@@ -184,7 +194,8 @@ export const contacts = [
     credit: 10,
     debit: 5,
     notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
-    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/D5469039-6465-41B6-B5D6-61ED42408A0E_gadfii.jpg'
+    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/D5469039-6465-41B6-B5D6-61ED42408A0E_gadfii.jpg',
+    groupId: 2
   },
   {
     id: 12,
@@ -201,7 +212,8 @@ export const contacts = [
     credit: 10,
     debit: 5,
     notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
-    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/D5469039-6465-41B6-B5D6-61ED42408A0E_gadfii.jpg'
+    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/D5469039-6465-41B6-B5D6-61ED42408A0E_gadfii.jpg',
+    groupId: 2
   },
   {
     id: 13,
@@ -218,7 +230,8 @@ export const contacts = [
     credit: 10,
     debit: 5,
     notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
-    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104027/QOSC/422182D1-6321-4C92-8763-4E3A9B383D2B_l69m70.jpg'
+    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104027/QOSC/422182D1-6321-4C92-8763-4E3A9B383D2B_l69m70.jpg',
+    groupId: 1
   },
   {
     id: 14,
@@ -235,7 +248,8 @@ export const contacts = [
     credit: 10,
     debit: 5,
     notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
-    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/D5469039-6465-41B6-B5D6-61ED42408A0E_gadfii.jpg'
+    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/D5469039-6465-41B6-B5D6-61ED42408A0E_gadfii.jpg',
+    groupId: 1
   },
   {
     id: 15,
@@ -252,7 +266,8 @@ export const contacts = [
     credit: 10,
     debit: 5,
     notes: 'sed augue lacus viverra vitae congue eu consequat ac felis donec et odio pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec',
-    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104028/QOSC/91953484-6F90-488A-8ADC-8A970BA98BD6_mckb4w.jpg'
+    picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104028/QOSC/91953484-6F90-488A-8ADC-8A970BA98BD6_mckb4w.jpg',
+    groupId: 1
   }
 ];
 
@@ -273,21 +288,21 @@ export const groups = [
   },
   {
     id: 3,
-    partecipants: [1, 9, 10],
+    partecipants: [5, 9, 10],
     notes: 'tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum odio eu feugiat pretium nibh ipsum consequat nisl vel pretium lectus quam id leo in vitae turpis massa',
     name: 'Acua',
     picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/D5469039-6465-41B6-B5D6-61ED42408A0E_gadfii.jpg'
   },
   {
     id: 4,
-    partecipants: [2, 4, 6, 8],
+    partecipants: [2, 4, 8],
     notes: 'non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at',
     name: 'Napoli Sotterranea',
     picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104027/QOSC/422182D1-6321-4C92-8763-4E3A9B383D2B_l69m70.jpg'
   },
   {
     id: 5,
-    partecipants: [1, 3, 6, 8],
+    partecipants: [1, 3, 6],
     notes: 'nisl vel pretium lectus quam id leo in vitae turpis massa sed elementum tempus egestas sed sed risus pretium quam vulputate dignissim suspendisse in est ante in nibh mauris cursus',
     name: 'Squadra FantaSTICA',
     picture: 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/D5469039-6465-41B6-B5D6-61ED42408A0E_gadfii.jpg'
