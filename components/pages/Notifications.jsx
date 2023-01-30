@@ -63,14 +63,14 @@ const Notifications = ({ open, onDidDismiss }) => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
+        {/* <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large" className='mt-1'>Notifications</IonTitle>
           </IonToolbar>
-        </IonHeader>
+        </IonHeader> */}
         <div className='flex flex-col'>
           {notifications.length > 0 && <>
-              <IonText color="medium" className='pr-2 pt-3 text-right underline cursor-pointer' onClick={() => clearAllNotif()}>Elimina tutte le notifiche</IonText>
+              <IonText color="medium" className='pr-2 pt-1 text-right underline cursor-pointer' onClick={() => clearAllNotif()}>Elimina tutte le notifiche</IonText>
             </>
           }
           {notifications.length == 0 && <>
