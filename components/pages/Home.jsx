@@ -32,9 +32,8 @@ import Notifications from './Notifications';
 import { useEffect, useRef, useState } from 'react';
 import { notificationsOutline } from 'ionicons/icons';
 import { getNotifications, getContacts, getGroups } from '../../store/selectors';
-import * as selectors from '../../store/selectors';
 
-const ContactCard = ({ id, name, surname, picture, nickname, phoneNum, mail }) => {
+const ContactCard = ({ id, name, surname, picture, nickname, phoneNum, mail, deleteContact }) => {
   const [present] = useIonActionSheet();
   const slidingItem = useRef(null);
 
@@ -51,7 +50,7 @@ const ContactCard = ({ id, name, surname, picture, nickname, phoneNum, mail }) =
           {
             text: 'Si',
             role: 'confirm',
-            handler: () => alert('Contatto eliminato!')
+            handler: () => deleteContact()
           },
           {
             text: 'No',
@@ -134,7 +133,7 @@ const ContactCard = ({ id, name, surname, picture, nickname, phoneNum, mail }) =
   );
 };
 
-const GroupCard = ({ id, name, picture, partecipants }) => {
+const GroupCard = ({ contacts, id, name, picture, partecipants, deleteGroup }) => {
   const [present] = useIonActionSheet();
   const slidingItem = useRef(null);
 
@@ -151,7 +150,7 @@ const GroupCard = ({ id, name, picture, partecipants }) => {
           {
             text: 'Si',
             role: 'confirm',
-            handler: () => alert('Gruppo eliminato!')
+            handler: () => deleteGroup()
           },
           {
             text: 'No',
@@ -173,10 +172,10 @@ const GroupCard = ({ id, name, picture, partecipants }) => {
     slidingItem.current?.close();
   }
 
-  const contacts = Store.useState(selectors.getContacts)
   const partecipantsContact = []
   for (var i = 0; i < partecipants.length; i++) {
-    partecipantsContact.push(contacts.filter(contact => contact.id == partecipants[i]))
+    if(contacts.filter(contact => contact.id == partecipants[i]).length > 0)
+      partecipantsContact.push(contacts.filter(contact => contact.id == partecipants[i]))
   }
 
   return (
@@ -191,7 +190,7 @@ const GroupCard = ({ id, name, picture, partecipants }) => {
         </IonLabel>
       </IonItem>
 
-      <IonItemOptions side="end">
+      <IonItemOptions side="end" onIonSwipe={() => canDismiss()}>
         <IonItemOption color="danger" onClick={() => canDismiss()} expandable>Delete</IonItemOption>
       </IonItemOptions>
     </IonItemSliding>
@@ -253,6 +252,17 @@ const Home = () => {
     }
   }
 
+  const deleteContact = (index) => {
+    contacts.splice(index, 1);
+    setFilteredContacts([...contacts]);
+  }
+
+  const deleteGroup = (index) => {
+    groups.splice(index, 1);
+    setFilteredGroups([...groups]);
+    
+  }
+
   return (
     <IonPage>
       <IonHeader>
@@ -299,7 +309,7 @@ const Home = () => {
             <IonList>
               {filteredContacts.length > 0 && <>
                   {filteredContacts.map((i, index) => (
-                    <ContactCard {...i} key={index} style={{width: '100%'}} />
+                    <ContactCard {...i} key={index} deleteContact={() => deleteContact(index)} style={{width: '100%'}} />
                   ))}
                 </>
               }
@@ -341,7 +351,7 @@ const Home = () => {
             <IonList>
               {filteredGroups.length > 0 && <>
                   {filteredGroups.map((i, index) => (
-                    <GroupCard {...i} key={index} style={{width: '100%'}} />
+                    <GroupCard {...i} key={index} contacts={contacts} deleteGroup={() => deleteGroup(index)} style={{width: '100%'}} />
                   ))}
                 </>
               }
