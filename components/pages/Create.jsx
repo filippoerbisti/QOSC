@@ -48,14 +48,17 @@ const Create = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Create</IonTitle>
-          <IonButtons slot="end" className='mr-2'>
+          <IonTitle>
+            {createContact && <>Crea Gruppo</>}
+            {!createContact && <>Crea Contatto</>}
+          </IonTitle>
+          <IonButtons slot="end" className='right-2'>
             <IonButton id="click-trigger">
-              <IonIcon icon={addOutline} />
+              <IonIcon icon={addOutline} className='w-7 h-7' />
             </IonButton>
             <IonPopover trigger="click-trigger" triggerAction="click" dismissOnSelect>
-              <IonContent class="ion-padding">
-                <a onClick={() => switchCreateContGroup()} className='cursor-pointer'>
+              <IonContent class="ion-padding" forceOverscroll={false}>
+                <a onClick={() => switchCreateContGroup()} style={{color: 'var(--ion-color-primary)'}} className='cursor-pointer underline'>
                   {createContact && <>Crea Gruppo</>}
                   {!createContact && <>Crea Contatto</>}
                 </a>
