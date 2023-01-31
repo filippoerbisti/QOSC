@@ -192,7 +192,7 @@ const ContactDetail = ({ }) => {
           {!onEdit && <>
               <IonItem>
                 <IonLabel>Collega Gruppo</IonLabel>
-                <IonSelect placeholder="Group">
+                <IonSelect placeholder="Group" value={loadedList.groupId}>
                   <IonSelectOption value="-1">Nessuno</IonSelectOption>
                   {groups.map((group, index) => (
                     <IonSelectOption key={index} value={group.id}>{group.name}</IonSelectOption>
