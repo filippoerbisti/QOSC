@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.example.app',
-  appName: 'music',
+  appId: 'app.vercel.qosc',
+  appName: 'QOSC',
   webDir: 'out',
   bundledWebRuntime: false,
   server: {
