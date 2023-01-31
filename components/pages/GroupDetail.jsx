@@ -121,10 +121,10 @@ const GroupDetail = ({ }) => {
           {!onEdit && <>
               <IonItem>
                 <IonLabel>Collega Contatti</IonLabel>
-                <IonSelect placeholder="Contatti" multiple={true}>
-                  <IonSelectOption value="" disabled>Nessuno</IonSelectOption>
+                <IonSelect placeholder="Contatti" multiple={true} value={partecipants.map((p, i) => partecipants[i][0].id)}>
+                  <IonSelectOption value="-1" disabled>Nessuno</IonSelectOption>
                   {contacts.map((contact, index) => (
-                    <IonSelectOption key={index}>{capitalizeFirstLetter(contact.name) + ' ' + capitalizeFirstLetter(contact.surname)}</IonSelectOption>
+                    <IonSelectOption key={index} value={contact.id}>{capitalizeFirstLetter(contact.name) + ' ' + capitalizeFirstLetter(contact.surname)}</IonSelectOption>
                   ))}
                 </IonSelect>
               </IonItem>
