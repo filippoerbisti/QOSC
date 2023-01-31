@@ -17,30 +17,35 @@ import { getNotifications } from '../../store/selectors';
 import { close } from 'ionicons/icons';
 import { useState } from 'react';
 
-const NotificationItem = ({ notification, notifications }) => {
-  function removePost(notification){
-    let index = notifications.indexOf(notification);
-
-    if(index > -1){
-      notifications.splice(index, 1);
-    }
-  }
-
-  return (
-
-  <IonItem>
-    <IonLabel>{notification.title}</IonLabel>
-    <IonNote slot="end">{notification.when}</IonNote>
-    <IonButton slot="end" fill="clear" color="dark" onClick={() => removePost(notification)}>
-      <IonIcon icon={close} />
-    </IonButton>
-  </IonItem>
-  )
-};
-
 const Notifications = ({ open, onDidDismiss }) => {
   const notifics = Store.useState(getNotifications)
   const [notifications, setNotifications] = useState(notifics)
+  const pastTime = []
+
+  for (var i = 0; i < notifications.length; i++) {
+    let now = new Date()
+    let dateNotification = new Date(notifications[i].when)
+    let difference = now.getTime() - dateNotification.getTime()
+    let daysDifference = Math.floor(difference/1000/60/60/24);
+      difference -= daysDifference*1000*60*60*24
+    let hoursDifference = Math.floor(difference/1000/60/60);
+      difference -= hoursDifference*1000*60*60
+    let minutesDifference = Math.floor(difference/1000/60);
+      difference -= minutesDifference*1000*60
+    
+    if (daysDifference > 0)
+      pastTime.push(daysDifference + ' days')
+    else {
+      if (hoursDifference > 0)
+        pastTime.push(hoursDifference + ' hr')
+      else {
+        if (minutesDifference > 0)
+          pastTime.push(minutesDifference + ' min')
+        else
+          pastTime.push('Just now')
+      }
+    }
+  }
 
   function removePost(i){
     notifics.splice(i, 1);
@@ -81,7 +86,7 @@ const Notifications = ({ open, onDidDismiss }) => {
           {notifications.map((notification, i) => (
             <IonItem key={i}>
               <IonLabel>{notification.title}</IonLabel>
-              <IonNote slot="end">{notification.when}</IonNote>
+              <IonNote slot="end">{pastTime[i]}</IonNote>
               <IonButton slot="end" fill="clear" color="dark" onClick={() => removePost(i)}>
                 <IonIcon icon={close} />
               </IonButton>

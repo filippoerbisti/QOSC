@@ -310,10 +310,8 @@ export const groups = [
 ];
 
 export const notifications = [
-  { id: 1, title: 'New friend request', when: '6 hr' },
-  { id: 2, title: 'Please change your password', when: '1 day' },
-  { id: 3, title: 'You have a new message', when: '2 weeks' },
-  { id: 4, title: 'Welcome to the app!', when: '1 month' },
+  { id: 1, title: 'Welcome to the app!', when: 1675153230529 }, //timestamp
+  { id: 2, title: 'Notification test', when: 1675159230329 }, //timestamp
 ];
 
 // Some fake lists
