@@ -187,7 +187,7 @@ const GroupCard = ({ id, name, picture, partecipants }) => {
         </IonAvatar>
         <IonLabel className="py-1">
           <h2>{capitalizeFirstLetter(name)}</h2>
-          <p>{partecipantsContact.map((partecipant) => (capitalizeFirstLetter(partecipant[0].name)) + ' ' + capitalizeFirstLetter(partecipant[0].surname) + ', ')}</p>
+          <p>{partecipantsContact.map((partecipant, i) => i != partecipantsContact.length - 1 ? (capitalizeFirstLetter(partecipant[0].name) + ' ' + capitalizeFirstLetter(partecipant[0].surname) + ', ') : (capitalizeFirstLetter(partecipant[0].name) + ' ' + capitalizeFirstLetter(partecipant[0].surname)))}</p>
         </IonLabel>
       </IonItem>
 
