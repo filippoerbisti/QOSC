@@ -29,9 +29,14 @@ const GroupDetail = ({ }) => {
   const { id } = params;
   const loadedList = grou.find(l => l.id == id);
   const partecipants = []
-  for (var i = 0; i < loadedList.partecipants.length; i++) {
-    partecipants.push(contacts.filter(contact => contact.id == loadedList.partecipants[i]))
-  }
+  var ids = contacts.map(c => c.id)
+  var groupPartecipants = loadedList.partecipants.map(p => {
+    if(ids.indexOf(p) > -1) return p
+  })
+  loadedList.partecipants.map((i) => {
+    if (groupPartecipants.includes(i))
+      partecipants.push(contacts.filter(contact => contact.id == i))
+  })
 
   const [present] = useIonToast();
 
