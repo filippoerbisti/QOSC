@@ -30,7 +30,7 @@ const ContactDetail = ({ }) => {
   const loadedList = contac.find(l => l.id == id);
   let userGroupId = -1
   if(loadedList.groupId != -1)
-    userGroupId = groups.find(group => group.id == loadedList.groupId)
+    userGroupId = groups.find(group => group.id == loadedList.groupId) == undefined ? -1 : groups.find(group => group.id == loadedList.groupId)
 
   const [present] = useIonToast();
 
