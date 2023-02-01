@@ -79,19 +79,19 @@ const Create = () => {
         {createContact && <>
             <IonList>
               <IonItem>
-                <IonLabel className='pr-4'>Nome</IonLabel>
+                <IonLabel className='pr-4' position="fixed">Nome</IonLabel>
                 <IonInput clearInput={true} type="text" placeholder='Nome'></IonInput>
               </IonItem>
               <IonItem>
-                <IonLabel className='pr-4'>Cognome</IonLabel>
+                <IonLabel className='pr-4' position="fixed">Cognome</IonLabel>
                 <IonInput clearInput={true} type="text" placeholder='Cognome'></IonInput>
               </IonItem>
               <IonItem>
-                <IonLabel className='pr-4'>Nickname</IonLabel>
+                <IonLabel className='pr-4' position="fixed">Nickname</IonLabel>
                 <IonInput clearInput={true} type="text" placeholder='Nickname'></IonInput>
               </IonItem>
               <IonItem>
-                <IonLabel position="fixed">Telefono</IonLabel>
+                <IonLabel className='pr-4' position="fixed">Telefono</IonLabel>
                 <IonInput clearInput={true} type="tel" placeholder="888-888-8888"></IonInput>
               </IonItem>
               <IonItem>
@@ -99,42 +99,40 @@ const Create = () => {
                 <IonInput clearInput={true} type="email" placeholder="email@domain.com"></IonInput>
               </IonItem>
               <IonItem>
-                <IonLabel position='fixed'>Compleanno</IonLabel>
+                <IonLabel className='fixed'>Compleanno</IonLabel>
                 <IonDatetimeButton className='w-full flex justify-end' datetime="datetime"></IonDatetimeButton>
                 <IonModal keepContentsMounted={true}>
-                  <IonDatetime id="datetime" presentation='date'></IonDatetime>
+                  <IonDatetime id="datetime" presentation='date' showDefaultButtons={true}></IonDatetime>
                 </IonModal>
               </IonItem>
-              {/* <div className='flex'> */}
-                <IonItem>
-                  <IonLabel className='pr-8'>Credito</IonLabel>
-                  <IonInput clearInput={true} type="number" placeholder='+ 10 €'></IonInput>
-                </IonItem>
-                <IonItem>
-                  <IonLabel className='pr-8'>Debito</IonLabel>
-                  <IonInput clearInput={true} type="number" placeholder='- 10 €'></IonInput>
-                </IonItem>
-              {/* </div> */}
               <IonItem>
-                <IonLabel position='fixed'>Ultima uscita</IonLabel>
+                <IonLabel className='pr-8' position="fixed">Credito</IonLabel>
+                <IonInput clearInput={true} type="number" placeholder='+ 10 €'></IonInput>
+              </IonItem>
+              <IonItem>
+                <IonLabel className='pr-8' position="fixed">Debito</IonLabel>
+                <IonInput clearInput={true} type="number" placeholder='- 10 €'></IonInput>
+              </IonItem>
+              <IonItem>
+                <IonLabel className='fixed'>Ultima uscita</IonLabel>
                 <IonDatetimeButton className='w-full flex justify-end' datetime="datetime2"></IonDatetimeButton>
                 <IonModal keepContentsMounted={true}>
-                  <IonDatetime id="datetime2" presentation='date'></IonDatetime>
+                  <IonDatetime id="datetime2" presentation='date' showDefaultButtons={true}></IonDatetime>
                 </IonModal>
               </IonItem>
               <IonItem>
-                <IonLabel className='pr-4'>Dove</IonLabel>
+                <IonLabel className='pr-4' position="fixed">Dove</IonLabel>
                 <IonInput clearInput={true} type="text" placeholder='Luogo'></IonInput>
               </IonItem>
               <IonItem>
-                <IonLabel position='fixed'>Ultimo Contatto</IonLabel>
+                <IonLabel className='fixed'>Ultimo Contatto</IonLabel>
                 <IonDatetimeButton className='w-full flex justify-end' datetime="datetime3"></IonDatetimeButton>
                 <IonModal keepContentsMounted={true}>
-                  <IonDatetime id="datetime3" presentation='date'></IonDatetime>
+                  <IonDatetime id="datetime3" presentation='date' showDefaultButtons={true}></IonDatetime>
                 </IonModal>
               </IonItem>
               <IonItem>
-                <IonLabel className='pr-4'>Dove</IonLabel>
+                <IonLabel className='pr-4' position="fixed">Dove</IonLabel>
                 <IonInput clearInput={true} type="text" placeholder='Luogo'></IonInput>
               </IonItem>
               <IonItem counter={true} className='flex flex-col'>
