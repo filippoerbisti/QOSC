@@ -84,112 +84,109 @@ const ContactDetail = ({ }) => {
       </IonHeader>
       <IonContent>
         {onEdit && <>
-          <IonFab slot="fixed" vertical="top" horizontal="end" edge={true}>
-            <IonFabButton size="small">
-              <IonIcon icon={chevronDownCircle}></IonIcon>
-            </IonFabButton>
-            <IonFabList side="bottom">
-              <IonFabButton onClick={() => editContact()}>
-                <IonIcon icon={create}></IonIcon>
+            <IonFab slot="fixed" vertical="top" horizontal="end" edge={true}>
+              <IonFabButton size="small">
+                <IonIcon icon={chevronDownCircle}></IonIcon>
               </IonFabButton>
-              <IonFabButton onClick={() => deleteContact(loadedList.id)}>
-                <IonIcon icon={trash}></IonIcon>
-              </IonFabButton>
-              <IonFabButton onClick={() => sendWhatsapp(loadedList.phoneNum)}>
-                <IonIcon icon={logoWhatsapp}></IonIcon>
-              </IonFabButton>
-              <IonFabButton onClick={() => phoneCall(loadedList.phoneNum)}>
-                <IonIcon icon={call}></IonIcon>
-              </IonFabButton>
-              <IonFabButton onClick={() => sendMail(loadedList.mail)}>
-                <IonIcon icon={mail}></IonIcon>
-              </IonFabButton>
-            </IonFabList>
-          </IonFab>
-        </>
-      }
+              <IonFabList side="bottom">
+                <IonFabButton onClick={() => editContact()}>
+                  <IonIcon icon={create}></IonIcon>
+                </IonFabButton>
+                <IonFabButton onClick={() => deleteContact(loadedList.id)}>
+                  <IonIcon icon={trash}></IonIcon>
+                </IonFabButton>
+                <IonFabButton onClick={() => sendWhatsapp(loadedList.phoneNum)}>
+                  <IonIcon icon={logoWhatsapp}></IonIcon>
+                </IonFabButton>
+                <IonFabButton onClick={() => phoneCall(loadedList.phoneNum)}>
+                  <IonIcon icon={call}></IonIcon>
+                </IonFabButton>
+                <IonFabButton onClick={() => sendMail(loadedList.mail)}>
+                  <IonIcon icon={mail}></IonIcon>
+                </IonFabButton>
+              </IonFabList>
+            </IonFab>
+          </>
+        }
 
-      {onEdit &&
-        <IonCardHeader class='flex items-center'>
-          <img alt="pic" src={loadedList.picture} className='w-14 h-14 rounded-full' />
-          <div className='ml-4'>
-            <IonCardTitle>{capitalizeFirstLetter(loadedList.name)} {capitalizeFirstLetter(loadedList.surname)}</IonCardTitle>
-            <IonCardSubtitle>{capitalizeFirstLetter(loadedList.nickname)}</IonCardSubtitle>
-          </div>
-        </IonCardHeader>
-      } 
-
-      {!onEdit && <>
-        <IonItem>
-          <div className='m-2 flex items-center'>
+        {onEdit &&
+          <IonCardHeader class='flex items-center'>
             <img alt="pic" src={loadedList.picture} className='w-14 h-14 rounded-full' />
-            <p className='ml-2' onClick={() => document.querySelector('#uploadPicture').click()}>Clicca per modificare la foto</p>
-            <input id='uploadPicture' type="file" hidden  />
-            {/* onChange={(e) => loadedList.picture = (e.target.files)} */}
-          </div>
-        </IonItem>
-        <IonItem>
-          <IonLabel className='pr-4'>Nome</IonLabel>
-          <IonInput clearInput={true} type="text" placeholder='Nome' value={capitalizeFirstLetter(loadedList.name)} disabled={onEdit}></IonInput>
-        </IonItem>
-        <IonItem>
-          <IonLabel className='pr-4'>Cognome</IonLabel>
-          <IonInput clearInput={true} type="text" placeholder='Cognome' value={capitalizeFirstLetter(loadedList.surname)} disabled={onEdit}></IonInput>
-        </IonItem>
-        <IonItem>
-            <IonLabel className='pr-4'>Nickname</IonLabel>
-            <IonInput clearInput={true} type="text" placeholder='Nickname' value={capitalizeFirstLetter(loadedList.nickname)} disabled={onEdit}></IonInput>
-          </IonItem>
-          <IonButton expand="block" className='m-4 h-8' onClick={() => save(loadedList.id)}>SALVA</IonButton>
-        </>
-      }
+            <div className='ml-4'>
+              <IonCardTitle>{capitalizeFirstLetter(loadedList.name)} {capitalizeFirstLetter(loadedList.surname)}</IonCardTitle>
+              <IonCardSubtitle>{capitalizeFirstLetter(loadedList.nickname)}</IonCardSubtitle>
+            </div>
+          </IonCardHeader>
+        } 
 
-      <div>
+        {!onEdit && <>
+          <IonItem>
+            <div className='m-2 flex items-center'>
+              <img alt="pic" src={loadedList.picture} className='w-14 h-14 rounded-full' />
+              <p className='ml-2' onClick={() => document.querySelector('#uploadPicture').click()}>Clicca per modificare la foto</p>
+              <input id='uploadPicture' type="file" hidden  />
+              {/* onChange={(e) => loadedList.picture = (e.target.files)} */}
+            </div>
+          </IonItem>
+          <IonItem>
+            <IonLabel className='pr-4' position='fixed'>Nome</IonLabel>
+            <IonInput clearInput={true} type="text" placeholder='Nome' value={capitalizeFirstLetter(loadedList.name)} disabled={onEdit}></IonInput>
+          </IonItem>
+          <IonItem>
+            <IonLabel className='pr-4' position='fixed'>Cognome</IonLabel>
+            <IonInput clearInput={true} type="text" placeholder='Cognome' value={capitalizeFirstLetter(loadedList.surname)} disabled={onEdit}></IonInput>
+          </IonItem>
+          <IonItem>
+              <IonLabel className='pr-4' position='fixed'>Nickname</IonLabel>
+              <IonInput clearInput={true} type="text" placeholder='Nickname' value={capitalizeFirstLetter(loadedList.nickname)} disabled={onEdit}></IonInput>
+            </IonItem>
+            <IonButton expand="block" className='m-4 h-8' onClick={() => save(loadedList.id)}>SALVA</IonButton>
+          </>
+        }
+
         <IonItem>
-          <IonLabel className='pr-4'>Telefono</IonLabel>
+          <IonLabel className='pr-4' position='fixed'>Telefono</IonLabel>
           <IonInput clearInput={true} type="tel" placeholder="888-888-8888" value={loadedList.phoneNum} disabled={onEdit}></IonInput>
         </IonItem>
         <IonItem>
-          <IonLabel className='pr-4'>Email</IonLabel>
+          <IonLabel className='pr-4' position='fixed'>Email</IonLabel>
           <IonInput clearInput={true} type="email" placeholder="email@domain.com" value={loadedList.mail} disabled={onEdit}></IonInput>
         </IonItem>
         <IonItem>
           <IonLabel position='fixed'>Compleanno</IonLabel>
           <IonDatetimeButton className='w-full flex justify-end' datetime="datetime"></IonDatetimeButton>
           <IonModal keepContentsMounted={true}>
-            <IonDatetime id="datetime" presentation='date' value={new Date(loadedList.birthday).toISOString()} disabled={onEdit}></IonDatetime>
+            <IonDatetime id="datetime" presentation='date' showDefaultButtons={true} value={new Date(loadedList.birthday).toISOString()} disabled={onEdit}></IonDatetime>
           </IonModal>
         </IonItem>
-        <div className='flex'>
-          <IonItem>
-            <IonLabel className='pr-4'>Credito</IonLabel>
-            <IonInput clearInput={true} type="number" placeholder='+ 10 €' value={loadedList.credit} disabled={onEdit}></IonInput>
-          </IonItem>
-          <IonItem>
-            <IonLabel className='pr-4'>Debito</IonLabel>
-            <IonInput clearInput={true} type="number" placeholder='- 10 €' value={loadedList.debit} disabled={onEdit}></IonInput>
-          </IonItem>
-        </div>
         <IonItem>
-          <IonLabel position='fixed'>Ultima uscita</IonLabel>
+          <IonLabel className='pr-8' position='fixed'>Credito</IonLabel>
+          <IonInput clearInput={true} type="number" placeholder='+ 10 €' value={loadedList.credit} disabled={onEdit}></IonInput>
+        </IonItem>
+        <IonItem>
+          <IonLabel className='pr-8' position='fixed'>Debito</IonLabel>
+          <IonInput clearInput={true} type="number" placeholder='- 10 €' value={loadedList.debit} disabled={onEdit}></IonInput>
+        </IonItem>
+        <IonItem>
+          <IonLabel position='fixed' className='fixed-label-datapicker'>Ultima uscita</IonLabel>
           <IonDatetimeButton className='w-full flex justify-end' datetime="datetime2"></IonDatetimeButton>
           <IonModal keepContentsMounted={true}>
-            <IonDatetime id="datetime2" presentation='date' value={new Date(loadedList.dateLastSeen).toISOString()} disabled={onEdit}></IonDatetime>
+            <IonDatetime id="datetime2" presentation='date' showDefaultButtons={true} value={new Date(loadedList.dateLastSeen).toISOString()} disabled={onEdit}></IonDatetime>
           </IonModal>
         </IonItem>
         <IonItem>
-          <IonLabel className='pr-4'>Dove</IonLabel>
+          <IonLabel className='pr-4' position='fixed'>Dove</IonLabel>
           <IonInput clearInput={true} type="text" placeholder='Luogo' value={loadedList.placeLastSeen} disabled={onEdit}></IonInput>
         </IonItem>
         <IonItem>
-          <IonLabel position='fixed'>Ultimo Contatto</IonLabel>
+          <IonLabel position='fixed' className='fixed-label-datapicker'>Ultimo Contatto</IonLabel>
           <IonDatetimeButton className='w-full flex justify-end' datetime="datetime3"></IonDatetimeButton>
           <IonModal keepContentsMounted={true}>
-            <IonDatetime id="datetime3" presentation='date' value={new Date(loadedList.dateLastContact).toISOString()} disabled={onEdit}></IonDatetime>
+            <IonDatetime id="datetime3" presentation='date' showDefaultButtons={true} value={new Date(loadedList.dateLastContact).toISOString()} disabled={onEdit}></IonDatetime>
           </IonModal>
         </IonItem>
         <IonItem>
-          <IonLabel className='pr-4'>Dove</IonLabel>
+          <IonLabel className='pr-4' position='fixed'>Dove</IonLabel>
           <IonInput clearInput={true} type="text" placeholder='Luogo' value={loadedList.placeLastContact} disabled={onEdit}></IonInput>
         </IonItem>
         <IonItem counter={true}>
@@ -218,7 +215,6 @@ const ContactDetail = ({ }) => {
         {!onEdit && 
           <IonButton expand="block" className='m-4 h-8' onClick={() => save(loadedList.id)}>SALVA</IonButton>
         }
-      </div>
       </IonContent>
     </IonPage>
   );
