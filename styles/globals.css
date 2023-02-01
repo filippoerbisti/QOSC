@@ -263,3 +263,25 @@ ion-item ion-skeleton-text,
 ion-skeleton-text.ios {
   --border-radius: 9999px;
 }
+
+
+
+
+
+
+/* style in test */
+/* .input-euro {
+  position: relative;
+}
+.input-euro input {
+  padding-right:18px;
+  text-align:end; 
+}
+.input-euro:before {
+  position: absolute;
+  top: 25%;
+  content:"€";
+}
+.input-euro:before {
+  right: 5px;
+} */
