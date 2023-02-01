@@ -191,7 +191,7 @@ const ContactDetail = ({ }) => {
         </IonItem>
         <IonItem counter={true}>
           <IonLabel position="floating">Note</IonLabel>
-          <IonTextarea autoGrow={true} maxlength={200} placeholder='Scrivi commenti' value={loadedList.notes.slice(0, 200)} disabled={onEdit}></IonTextarea>
+          <IonTextarea rows={1} autoGrow={true} maxlength={200} placeholder='Scrivi commenti' value={loadedList.notes.slice(0, 200)} disabled={onEdit}></IonTextarea>
         </IonItem>
         {!onEdit && <>
             <IonItem>
