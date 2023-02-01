@@ -312,7 +312,7 @@ export const groups = [
 export const notifications = [
   { id: 1, title: 'Welcome to the app!', when: 1675153230529 }, //timestamp
   { id: 2, title: 'Notification test', when: 1675159230329 }, //timestamp
-  { id: 3, title: 'Contact Created', when: 1675238032392 }, //timestamp
+  // { id: 3, title: 'Contact Created', when: 1675238032392 }, //timestamp
 ];
 
 // Some fake lists
