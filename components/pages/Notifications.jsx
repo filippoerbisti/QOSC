@@ -19,6 +19,10 @@ import { useState } from 'react';
 
 const Notifications = ({ open, onDidDismiss }) => {
   const notifics = Store.useState(getNotifications)
+  // Order by notifications
+  notifics.sort(function(x, y){
+    return y.when - x.when;
+  })
   const [notifications, setNotifications] = useState(notifics)
   const pastTime = []
 
@@ -75,7 +79,7 @@ const Notifications = ({ open, onDidDismiss }) => {
         </IonHeader> */}
         <div className='flex flex-col'>
           {notifications.length > 0 && <>
-              <IonText color="medium" className='pr-2 pt-1 text-right underline cursor-pointer' onClick={() => clearAllNotif()}>Elimina tutte le notifiche</IonText>
+              <IonText color="medium" className='pr-2 pt-1 text-right underline cursor-pointer' onClick={() => clearAllNotif()} style={{color: 'var(--ion-color-primary)'}}>Elimina tutte le notifiche</IonText>
             </>
           }
           {notifications.length == 0 && <>

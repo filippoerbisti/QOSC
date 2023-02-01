@@ -54,7 +54,7 @@ const Create = () => {
           </IonTitle>
           <IonButtons slot="end" className='right-2'>
             <IonButton id="click-trigger">
-              <IonIcon icon={addOutline} className='w-7 h-7' />
+              <IonIcon icon={addOutline} className='w-7 h-7' style={{color: 'var(--ion-color-primary)'}} />
             </IonButton>
             <IonPopover trigger="click-trigger" triggerAction="click" dismissOnSelect>
               <IonContent class="ion-padding" forceOverscroll={false}>
@@ -105,16 +105,16 @@ const Create = () => {
                   <IonDatetime id="datetime" presentation='date'></IonDatetime>
                 </IonModal>
               </IonItem>
-              <div className='flex'>
+              {/* <div className='flex'> */}
                 <IonItem>
-                  <IonLabel className='pr-4'>Credito</IonLabel>
+                  <IonLabel className='pr-8'>Credito</IonLabel>
                   <IonInput clearInput={true} type="number" placeholder='+ 10 €'></IonInput>
                 </IonItem>
                 <IonItem>
-                  <IonLabel className='pr-4'>Debito</IonLabel>
+                  <IonLabel className='pr-8'>Debito</IonLabel>
                   <IonInput clearInput={true} type="number" placeholder='- 10 €'></IonInput>
                 </IonItem>
-              </div>
+              {/* </div> */}
               <IonItem>
                 <IonLabel position='fixed'>Ultima uscita</IonLabel>
                 <IonDatetimeButton className='w-full flex justify-end' datetime="datetime2"></IonDatetimeButton>
