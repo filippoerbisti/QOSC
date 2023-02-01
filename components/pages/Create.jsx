@@ -14,33 +14,43 @@ import {
 import { addOutline } from 'ionicons/icons';
 import { useState } from 'react';
 import Store from '../../store';
-import { getContacts, getGroups } from '../../store/selectors';
+import { getContacts, getGroups, getNotifications } from '../../store/selectors';
 
 const Create = () => {
   const [present] = useIonToast();
 
   const [createContact, setCreateContact] = useState(true);
-
-  const groups = Store.useState(getGroups)
   const contacts = Store.useState(getContacts)
+  const groups = Store.useState(getGroups)
+  const notifications = Store.useState(getNotifications)
+
+  const contactIds = contacts.map((i) => i.id)
+  const notificationIds = notifications.map((i) => i.id)
 
   const [newContact, setNewContact] = useState({
+    id: Math.max(...contactIds) + 1,
     // picture
     name: '',
     surname: '',
     nickname: '',
-    phoneNum: 0,
+    phoneNum: null,
     mail: '',
     birthday: '',
-    credit: 0,
-    debit: 0,
+    credit: null,
+    debit: null,
     dateLastSeen: '',
     placeLastSeen: '',
     dateLastContact: '',
     placeLastContact: '',
     notes: '',
-    groupId: 0
+    groupId: '-1'
   });
+
+  const [newNotification, setNewNotification] = useState({
+    id: Math.max(...notificationIds) + 1,
+    title: '',
+    when: 0
+  })
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -55,7 +65,37 @@ const Create = () => {
   };
 
   const save = () => {
+    contacts.push(newContact)
+    // setNewNotification(...[{
+    //   title: 'Nuovo contatto: ' + capitalizeFirstLetter(newContact.name) + ' ' + capitalizeFirstLetter(newContact.surname),
+    //   when: now
+    // }])
     presentToast('top')
+
+    notifications.push(newNotification)
+    setNewContact({
+      id: 0,
+      // picture
+      name: '',
+      surname: '',
+      nickname: '',
+      phoneNum: null,
+      mail: '',
+      birthday: '',
+      credit: null,
+      debit: null,
+      dateLastSeen: '',
+      placeLastSeen: '',
+      dateLastContact: '',
+      placeLastContact: '',
+      notes: '',
+      groupId: '-1'
+    })
+    setNewNotification({
+      id: 0,
+      title: '',
+      when: 0
+    })
   }
 
   const switchCreateContGroup = () => {
@@ -106,12 +146,17 @@ const Create = () => {
                   clearInput={true} 
                   type="text" 
                   placeholder='Nome'
-                  onChange={(e) =>
+                  onIonChange={(e) => {
                     setNewContact({
-                      ...data,
-                      name: e.target.value,
+                      ...newContact,
+                      name: capitalizeFirstLetter(e.target.value),
                     })
-                  }
+                    setNewNotification({
+                      ...newNotification,
+                      title: 'Nuovo contatto: ' + capitalizeFirstLetter(e.target.value),
+                      when: new Date().getTime()
+                    })
+                  }}
                   value={newContact.name}
                   required
                 ></IonInput>
@@ -122,10 +167,10 @@ const Create = () => {
                   clearInput={true} 
                   type="text" 
                   placeholder='Cognome'
-                  onChange={(e) =>
+                  onIonChange={(e) =>
                     setNewContact({
-                      ...data,
-                      surname: e.target.value,
+                      ...newContact,
+                      surname: capitalizeFirstLetter(e.target.value),
                     })
                   }
                   value={newContact.surname}
@@ -138,9 +183,9 @@ const Create = () => {
                   clearInput={true} 
                   type="text" 
                   placeholder='Nickname'
-                  onChange={(e) =>
+                  onIonChange={(e) =>
                     setNewContact({
-                      ...data,
+                      ...newContact,
                       nickname: e.target.value,
                     })
                   }
@@ -154,9 +199,9 @@ const Create = () => {
                   clearInput={true} 
                   type="tel" 
                   placeholder="888-888-8888"
-                  onChange={(e) =>
+                  onIonChange={(e) =>
                     setNewContact({
-                      ...data,
+                      ...newContact,
                       phoneNum: e.target.value,
                     })
                   }
@@ -170,9 +215,9 @@ const Create = () => {
                   clearInput={true} 
                   type="email" 
                   placeholder="email@domain.com"
-                  onChange={(e) =>
+                  onIonChange={(e) =>
                     setNewContact({
-                      ...data,
+                      ...newContact,
                       mail: e.target.value,
                     })
                   }
@@ -184,7 +229,18 @@ const Create = () => {
                 <IonLabel className='fixed'>Compleanno</IonLabel>
                 <IonDatetimeButton className='w-full flex justify-end' datetime="datetime"></IonDatetimeButton>
                 <IonModal keepContentsMounted={true}>
-                  <IonDatetime id="datetime" presentation='date' showDefaultButtons={true}></IonDatetime>
+                  <IonDatetime 
+                    id="datetime" 
+                    presentation='date' 
+                    showDefaultButtons={true}
+                    onIonChange={(e) =>
+                      setNewContact({
+                        ...newContact,
+                        birthday: e.target.value,
+                      })
+                    }
+                    value={newContact.birthday}
+                  ></IonDatetime>
                 </IonModal>
               </IonItem>
               <IonItem>
@@ -193,9 +249,9 @@ const Create = () => {
                   clearInput={true} 
                   type="number" 
                   placeholder='+ 10 €'
-                  onChange={(e) =>
+                  onIonChange={(e) =>
                     setNewContact({
-                      ...data,
+                      ...newContact,
                       credit: e.target.value,
                     })
                   }
@@ -206,9 +262,9 @@ const Create = () => {
               <IonItem>
                 <IonLabel className='pr-8' position="fixed">Debito</IonLabel>
                 <IonInput clearInput={true} type="number" placeholder='- 10 €'
-                  onChange={(e) =>
+                  onIonChange={(e) =>
                     setNewContact({
-                      ...data,
+                      ...newContact,
                       debit: e.target.value,
                     })
                   }
@@ -220,7 +276,18 @@ const Create = () => {
                 <IonLabel className='fixed'>Ultima uscita</IonLabel>
                 <IonDatetimeButton className='w-full flex justify-end' datetime="datetime2"></IonDatetimeButton>
                 <IonModal keepContentsMounted={true}>
-                  <IonDatetime id="datetime2" presentation='date' showDefaultButtons={true}></IonDatetime>
+                  <IonDatetime 
+                    id="datetime2" 
+                    presentation='date' 
+                    showDefaultButtons={true}
+                    onIonChange={(e) =>
+                      setNewContact({
+                        ...newContact,
+                        dateLastSeen: e.target.value,
+                      })
+                    }
+                    value={newContact.dateLastSeen}
+                  ></IonDatetime>
                 </IonModal>
               </IonItem>
               <IonItem>
@@ -229,9 +296,9 @@ const Create = () => {
                   clearInput={true} 
                   type="text" 
                   placeholder='Luogo'
-                  onChange={(e) =>
+                  onIonChange={(e) =>
                     setNewContact({
-                      ...data,
+                      ...newContact,
                       placeLastSeen: e.target.value,
                     })
                   }
@@ -243,7 +310,18 @@ const Create = () => {
                 <IonLabel className='fixed'>Ultimo Contatto</IonLabel>
                 <IonDatetimeButton className='w-full flex justify-end' datetime="datetime3"></IonDatetimeButton>
                 <IonModal keepContentsMounted={true}>
-                  <IonDatetime id="datetime3" presentation='date' showDefaultButtons={true}></IonDatetime>
+                  <IonDatetime 
+                    id="datetime3" 
+                    presentation='date' 
+                    showDefaultButtons={true}
+                    onIonChange={(e) =>
+                      setNewContact({
+                        ...newContact,
+                        dateLastContact: e.target.value,
+                      })
+                    }
+                    value={newContact.dateLastContact}
+                  ></IonDatetime>
                 </IonModal>
               </IonItem>
               <IonItem>
@@ -252,9 +330,9 @@ const Create = () => {
                   clearInput={true} 
                   type="text" 
                   placeholder='Luogo'
-                  onChange={(e) =>
+                  onIonChange={(e) =>
                     setNewContact({
-                      ...data,
+                      ...newContact,
                       placeLastContact: e.target.value,
                     })
                   }
@@ -269,9 +347,9 @@ const Create = () => {
                   autoGrow={true} 
                   maxlength={200} 
                   placeholder='Scrivi commenti'
-                  onChange={(e) =>
+                  onIonChange={(e) =>
                     setNewContact({
-                      ...data,
+                      ...newContact,
                       notes: e.target.value,
                     })
                   }
@@ -280,7 +358,16 @@ const Create = () => {
               </IonItem>
               <IonItem>
                 <IonLabel>Collega Gruppo</IonLabel>
-                <IonSelect placeholder="Group">
+                <IonSelect 
+                  placeholder="Group"
+                  onIonChange={(e) =>
+                    setNewContact({
+                      ...newContact,
+                      groupId: e.target.value,
+                    })
+                  }
+                  value={newContact.groupId}
+                >
                   <IonSelectOption value="-1">Nessuno</IonSelectOption>
                   {groups.map((group, index) => (
                     <IonSelectOption key={index} value={group.id}>{group.name}</IonSelectOption>
