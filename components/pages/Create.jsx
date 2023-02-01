@@ -13,7 +13,7 @@ import {
 } from '@ionic/react';
 import { addOutline } from 'ionicons/icons';
 import { useState } from 'react';
-import Store from '../../store'
+import Store from '../../store';
 import { getContacts, getGroups } from '../../store/selectors';
 
 const Create = () => {
@@ -23,6 +23,24 @@ const Create = () => {
 
   const groups = Store.useState(getGroups)
   const contacts = Store.useState(getContacts)
+
+  const [newContact, setNewContact] = useState({
+    // picture
+    name: '',
+    surname: '',
+    nickname: '',
+    phoneNum: 0,
+    mail: '',
+    birthday: '',
+    credit: 0,
+    debit: 0,
+    dateLastSeen: '',
+    placeLastSeen: '',
+    dateLastContact: '',
+    placeLastContact: '',
+    notes: '',
+    groupId: 0
+  });
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -49,8 +67,8 @@ const Create = () => {
       <IonHeader>
         <IonToolbar>
           <IonTitle>
-            {createContact && <>Crea Gruppo</>}
-            {!createContact && <>Crea Contatto</>}
+            {createContact && <>Crea Contatto</>}
+            {!createContact && <>Crea Gruppo</>}
           </IonTitle>
           <IonButtons slot="end" className='right-2'>
             <IonButton id="click-trigger">
@@ -79,24 +97,88 @@ const Create = () => {
         {createContact && <>
             <IonList>
               <IonItem>
+                <label className='flex'>Immagine profilo</label>
+                <input type="file" />
+              </IonItem>
+              <IonItem>
                 <IonLabel className='pr-4' position="fixed">Nome</IonLabel>
-                <IonInput clearInput={true} type="text" placeholder='Nome'></IonInput>
+                <IonInput 
+                  clearInput={true} 
+                  type="text" 
+                  placeholder='Nome'
+                  onChange={(e) =>
+                    setNewContact({
+                      ...data,
+                      name: e.target.value,
+                    })
+                  }
+                  value={newContact.name}
+                  required
+                ></IonInput>
               </IonItem>
               <IonItem>
                 <IonLabel className='pr-4' position="fixed">Cognome</IonLabel>
-                <IonInput clearInput={true} type="text" placeholder='Cognome'></IonInput>
+                <IonInput 
+                  clearInput={true} 
+                  type="text" 
+                  placeholder='Cognome'
+                  onChange={(e) =>
+                    setNewContact({
+                      ...data,
+                      surname: e.target.value,
+                    })
+                  }
+                  value={newContact.surname}
+                  required
+                ></IonInput>
               </IonItem>
               <IonItem>
                 <IonLabel className='pr-4' position="fixed">Nickname</IonLabel>
-                <IonInput clearInput={true} type="text" placeholder='Nickname'></IonInput>
+                <IonInput 
+                  clearInput={true} 
+                  type="text" 
+                  placeholder='Nickname'
+                  onChange={(e) =>
+                    setNewContact({
+                      ...data,
+                      nickname: e.target.value,
+                    })
+                  }
+                  value={newContact.nickname}
+                  required
+                ></IonInput>
               </IonItem>
               <IonItem>
                 <IonLabel className='pr-4' position="fixed">Telefono</IonLabel>
-                <IonInput clearInput={true} type="tel" placeholder="888-888-8888"></IonInput>
+                <IonInput 
+                  clearInput={true} 
+                  type="tel" 
+                  placeholder="888-888-8888"
+                  onChange={(e) =>
+                    setNewContact({
+                      ...data,
+                      phoneNum: e.target.value,
+                    })
+                  }
+                  value={newContact.phoneNum}
+                  required
+                ></IonInput>
               </IonItem>
               <IonItem>
                 <IonLabel position="fixed">Email</IonLabel>
-                <IonInput clearInput={true} type="email" placeholder="email@domain.com"></IonInput>
+                <IonInput 
+                  clearInput={true} 
+                  type="email" 
+                  placeholder="email@domain.com"
+                  onChange={(e) =>
+                    setNewContact({
+                      ...data,
+                      mail: e.target.value,
+                    })
+                  }
+                  value={newContact.mail}
+                  required
+                ></IonInput>
               </IonItem>
               <IonItem>
                 <IonLabel className='fixed'>Compleanno</IonLabel>
@@ -107,11 +189,32 @@ const Create = () => {
               </IonItem>
               <IonItem>
                 <IonLabel className='pr-8' position="fixed">Credito</IonLabel>
-                <IonInput clearInput={true} type="number" placeholder='+ 10 €'></IonInput>
+                <IonInput 
+                  clearInput={true} 
+                  type="number" 
+                  placeholder='+ 10 €'
+                  onChange={(e) =>
+                    setNewContact({
+                      ...data,
+                      credit: e.target.value,
+                    })
+                  }
+                  value={newContact.credit}
+                  required
+                ></IonInput>
               </IonItem>
               <IonItem>
                 <IonLabel className='pr-8' position="fixed">Debito</IonLabel>
-                <IonInput clearInput={true} type="number" placeholder='- 10 €'></IonInput>
+                <IonInput clearInput={true} type="number" placeholder='- 10 €'
+                  onChange={(e) =>
+                    setNewContact({
+                      ...data,
+                      debit: e.target.value,
+                    })
+                  }
+                  value={newContact.debit}
+                  required
+                ></IonInput>
               </IonItem>
               <IonItem>
                 <IonLabel className='fixed'>Ultima uscita</IonLabel>
@@ -122,7 +225,19 @@ const Create = () => {
               </IonItem>
               <IonItem>
                 <IonLabel className='pr-4' position="fixed">Dove</IonLabel>
-                <IonInput clearInput={true} type="text" placeholder='Luogo'></IonInput>
+                <IonInput 
+                  clearInput={true} 
+                  type="text" 
+                  placeholder='Luogo'
+                  onChange={(e) =>
+                    setNewContact({
+                      ...data,
+                      placeLastSeen: e.target.value,
+                    })
+                  }
+                  value={newContact.placeLastSeen}
+                  required
+                ></IonInput>
               </IonItem>
               <IonItem>
                 <IonLabel className='fixed'>Ultimo Contatto</IonLabel>
@@ -133,13 +248,35 @@ const Create = () => {
               </IonItem>
               <IonItem>
                 <IonLabel className='pr-4' position="fixed">Dove</IonLabel>
-                <IonInput clearInput={true} type="text" placeholder='Luogo'></IonInput>
+                <IonInput 
+                  clearInput={true} 
+                  type="text" 
+                  placeholder='Luogo'
+                  onChange={(e) =>
+                    setNewContact({
+                      ...data,
+                      placeLastContact: e.target.value,
+                    })
+                  }
+                  value={newContact.placeLastContact}
+                  required
+                ></IonInput>
               </IonItem>
-              <IonItem counter={true} className='flex flex-col'>
-                <IonLabel position="fixed" >Note</IonLabel>
-                <div>
-                  <IonTextarea autoGrow={true} maxlength={200} placeholder='Scrivi commenti'></IonTextarea>
-                </div>
+              <IonItem counter={true}>
+                <IonLabel position="floating">Note</IonLabel>
+                <IonTextarea 
+                  rows={1} 
+                  autoGrow={true} 
+                  maxlength={200} 
+                  placeholder='Scrivi commenti'
+                  onChange={(e) =>
+                    setNewContact({
+                      ...data,
+                      notes: e.target.value,
+                    })
+                  }
+                  value={newContact.notes}
+                ></IonTextarea>
               </IonItem>
               <IonItem>
                 <IonLabel>Collega Gruppo</IonLabel>
