@@ -27,7 +27,6 @@
     "pullstate": "^1.25.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-phone-number-input": "^3.2.17",
     "reselect": "^4.1.7"
   },
   "devDependencies": {
