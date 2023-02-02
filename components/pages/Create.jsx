@@ -5,7 +5,7 @@ import {
   IonTitle,
   IonContent,
   IonList,
-  IonInput, IonItem, IonLabel, IonSelect, IonSelectOption, IonToggle, IonTextarea,
+  IonInput, IonItem, IonLabel, IonSelect, IonSelectOption, IonTextarea,
   IonDatetime, IonDatetimeButton, IonModal,
   IonPopover, IonButton,
   useIonToast,
@@ -20,34 +20,47 @@ const Create = () => {
   const [present] = useIonToast();
 
   const [createContact, setCreateContact] = useState(true);
-  const contacts = Store.useState(getContacts)
-  const groups = Store.useState(getGroups)
-  const notifications = Store.useState(getNotifications)
+  const tempPicContact = 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104028/QOSC/91953484-6F90-488A-8ADC-8A970BA98BD6_mckb4w.jpg'
+  const tempPicGroup = 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/8C15795B-BBFA-4C6E-81C3-9D24F4C3C904_v0hkko.jpg'
 
-  const contactIds = contacts.map((i) => i.id)
-  const notificationIds = notifications.map((i) => i.id)
+  const contacts = Store.useState(getContacts)
+  const contactIds = contacts.length == undefined ? 0 : contacts.map((i) => i.id)
+
+  const groups = Store.useState(getGroups)
+  const groupIds = groups.length == undefined ? 0 : groups.map((i) => i.id)
+
+  const notifications = Store.useState(getNotifications)
+  const notificationIds = notifications.length == undefined ? 0 : notifications.map((i) => i.id)
 
   const [newContact, setNewContact] = useState({
-    id: Math.max(...contactIds) + 1,
-    // picture
+    id: contactIds == 0 ? 999 : Math.max(...contactIds) + 1,
+    picture: tempPicContact,
     name: '',
     surname: '',
     nickname: '',
     phoneNum: null,
     mail: '',
-    birthday: '',
+    birthday: new Date().toISOString(),
     credit: null,
     debit: null,
-    dateLastSeen: '',
+    dateLastSeen: new Date().toISOString(),
     placeLastSeen: '',
-    dateLastContact: '',
+    dateLastContact: new Date().toISOString(),
     placeLastContact: '',
     notes: '',
     groupId: '-1'
   });
 
+  const [newGroup, setNewGroup] = useState({
+    id: groupIds == 0 ? 999 : Math.max(...groupIds) + 1,
+    picture: tempPicGroup,
+    name: '',
+    notes: '',
+    partecipants: ['-1']
+  });
+
   const [newNotification, setNewNotification] = useState({
-    id: Math.max(...notificationIds) + 1,
+    id: notificationIds == 0 ? 999 : Math.max(...notificationIds) + 1,
     title: '',
     when: 0
   })
@@ -56,46 +69,164 @@ const Create = () => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  const presentToast = (position) => {
+  const presentToast = (message, position) => {
     present({
-      message: createContact ? 'Contatto creato con successo!' : 'Gruppo creato con successo!',
+      message: message,
       duration: 1500,
       position: position
     });
   };
 
-  const save = () => {
-    contacts.push(newContact)
-    // setNewNotification(...[{
-    //   title: 'Nuovo contatto: ' + capitalizeFirstLetter(newContact.name) + ' ' + capitalizeFirstLetter(newContact.surname),
-    //   when: now
-    // }])
-    presentToast('top')
+  // New Contact
+  const saveContact = () => {
+    let canSave = true;
+    let alreadyToast = false;
 
-    notifications.push(newNotification)
-    setNewContact({
-      id: 0,
-      // picture
-      name: '',
-      surname: '',
-      nickname: '',
-      phoneNum: null,
-      mail: '',
-      birthday: '',
-      credit: null,
-      debit: null,
-      dateLastSeen: '',
-      placeLastSeen: '',
-      dateLastContact: '',
-      placeLastContact: '',
-      notes: '',
-      groupId: '-1'
-    })
-    setNewNotification({
-      id: 0,
-      title: '',
-      when: 0
-    })
+    if(newContact.name == '') {
+      canSave = false
+      !alreadyToast && presentToast('Inserire il Nome', 'top')
+      alreadyToast = true
+    }
+    if(newContact.surname == '') {
+      canSave = false
+      !alreadyToast && presentToast('Inserire il Cognome', 'top')
+      alreadyToast = true
+    }
+    if(newContact.nickname == '') {
+      canSave = false
+      !alreadyToast && presentToast('Inserire il Nickname', 'top')
+      alreadyToast = true
+    }
+    if(newContact.phoneNum == null) {
+      canSave = false
+      !alreadyToast && presentToast('Inserire il Numero', 'top')
+      alreadyToast = true
+    }
+    if(newContact.mail == '') {
+      canSave = false
+      !alreadyToast && presentToast('Inserire la Email', 'top')
+      alreadyToast = true
+    }
+    if(new Date(newContact.birthday).getTime() > new Date().getTime()) {
+      canSave = false
+      !alreadyToast && presentToast('Inserire un compleanno valido', 'top')
+      alreadyToast = true
+    }
+    if(newContact.credit == null) {
+      canSave = false
+      !alreadyToast && presentToast('Inserire il Credito (€)', 'top')
+      alreadyToast = true
+    }
+    if(newContact.debit == null) {
+      canSave = false
+      !alreadyToast && presentToast('Inserire il Debito (€)', 'top')
+      alreadyToast = true
+    }
+    if(new Date(newContact.dateLastSeen).getTime() > new Date().getTime()) {
+      canSave = false
+      !alreadyToast && presentToast('Inserire una data passata', 'top')
+      alreadyToast = true
+    }
+    if(newContact.placeLastSeen == '') {
+      canSave = false
+      !alreadyToast && presentToast('Inserire ultimo luogo visto', 'top')
+      alreadyToast = true
+    }
+    if(new Date(newContact.dateLastContact).getTime() > new Date().getTime()) {
+      canSave = false
+      !alreadyToast && presentToast('Inserire una data passata', 'top')
+      alreadyToast = true
+    }
+    if(newContact.placeLastContact == '') {
+      canSave = false
+      !alreadyToast && presentToast('Inserire ultimo luogo in contatto', 'top')
+      alreadyToast = true
+    }
+    // if(newContact.notes == '') {
+    //   canSave = false
+    //   !alreadyToast && presentToast('Inserire le Note', 'top')
+    //   alreadyToast = true
+    // }
+
+    if(canSave) {
+      contacts.push(newContact)
+      let g = newContact.groupId == '-1' ? '-1' : groups.filter((g) => g.id == newContact.groupId)[0].partecipants
+      if(g != '-1')
+        g.push(newContact.id)
+      notifications.push(newNotification)
+
+      presentToast(createContact ? 'Contatto creato con successo!' : 'Gruppo creato con successo!', 'top')
+
+      setNewContact({
+        id: 0,
+        // picture: '',
+        name: '',
+        surname: '',
+        nickname: '',
+        phoneNum: null,
+        mail: '',
+        birthday: new Date().toISOString(),
+        credit: null,
+        debit: null,
+        dateLastSeen: new Date().toISOString(),
+        placeLastSeen: '',
+        dateLastContact: new Date().toISOString(),
+        placeLastContact: '',
+        notes: '',
+        groupId: '-1'
+      })
+      setNewNotification({
+        id: 0,
+        title: '',
+        when: 0
+      })
+    }
+  }
+
+  // New Group
+  const saveGroup = () => {
+    let canSave = true;
+    let alreadyToast = false;
+
+    if(newGroup.name == '') {
+      canSave = false
+      !alreadyToast && presentToast('Inserire il Nome Gruppo', 'top')
+      alreadyToast = true
+    }
+    // if(newGroup.notes == '') {
+    //   canSave = false
+    //   !alreadyToast && presentToast('Inserire le Note', 'top')
+    //   alreadyToast = true
+    // }
+
+    if(canSave) {
+      groups.push(newGroup)
+      let linkedContacts = contacts.filter((f) => newGroup.partecipants.includes(f.id))
+      linkedContacts.map((c) => c.groupId = newGroup.id)
+      // let linkedSingleContact = linkedContacts.map((c) => c.groupId)
+      // for (var i = 0; i < linkedContacts.length; i++)
+      //   linkedContacts[i].groupId.push(newGroup.id)
+      // linkedSingleContact.map((l) => l.push(newGroup.id))
+      // let g = newContact.groupId == '-1' ? '-1' : groups.filter((g) => g.id == newContact.groupId)[0].partecipants
+      // if(g != '-1')
+      //   g.push(newContact.id)
+      notifications.push(newNotification)
+
+      presentToast(createContact ? 'Contatto creato con successo!' : 'Gruppo creato con successo!', 'top')
+
+      setNewGroup({
+        id: 0,
+        // picture: '',
+        name: '',
+        notes: '',
+        partecipants: ['-1']
+      })
+      setNewNotification({
+        id: 0,
+        title: '',
+        when: 0
+      })
+    }
   }
 
   const switchCreateContGroup = () => {
@@ -146,19 +277,14 @@ const Create = () => {
                   clearInput={true} 
                   type="text" 
                   placeholder='Nome'
-                  onIonChange={(e) => {
+                  onIonChange={(e) =>
                     setNewContact({
                       ...newContact,
                       name: capitalizeFirstLetter(e.target.value),
                     })
-                    setNewNotification({
-                      ...newNotification,
-                      title: 'Nuovo contatto: ' + capitalizeFirstLetter(e.target.value),
-                      when: new Date().getTime()
-                    })
-                  }}
+                  }
                   value={newContact.name}
-                  required
+                  // required
                 ></IonInput>
               </IonItem>
               <IonItem>
@@ -167,14 +293,19 @@ const Create = () => {
                   clearInput={true} 
                   type="text" 
                   placeholder='Cognome'
-                  onIonChange={(e) =>
+                  onIonChange={(e) => {
                     setNewContact({
                       ...newContact,
                       surname: capitalizeFirstLetter(e.target.value),
                     })
-                  }
+                    setNewNotification({
+                      ...newNotification,
+                      title: 'Nuovo contatto: ' + capitalizeFirstLetter(newContact.name) + ' ' + capitalizeFirstLetter(e.target.value),
+                      when: new Date().getTime()
+                    })
+                  }}
                   value={newContact.surname}
-                  required
+                  // required
                 ></IonInput>
               </IonItem>
               <IonItem>
@@ -186,11 +317,11 @@ const Create = () => {
                   onIonChange={(e) =>
                     setNewContact({
                       ...newContact,
-                      nickname: e.target.value,
+                      nickname: capitalizeFirstLetter(e.target.value),
                     })
                   }
                   value={newContact.nickname}
-                  required
+                  // required
                 ></IonInput>
               </IonItem>
               <IonItem>
@@ -206,7 +337,7 @@ const Create = () => {
                     })
                   }
                   value={newContact.phoneNum}
-                  required
+                  // required
                 ></IonInput>
               </IonItem>
               <IonItem>
@@ -222,7 +353,7 @@ const Create = () => {
                     })
                   }
                   value={newContact.mail}
-                  required
+                  // required
                 ></IonInput>
               </IonItem>
               <IonItem>
@@ -256,7 +387,7 @@ const Create = () => {
                     })
                   }
                   value={newContact.credit}
-                  required
+                  // required
                 ></IonInput>
               </IonItem>
               <IonItem>
@@ -269,7 +400,7 @@ const Create = () => {
                     })
                   }
                   value={newContact.debit}
-                  required
+                  // required
                 ></IonInput>
               </IonItem>
               <IonItem>
@@ -299,11 +430,11 @@ const Create = () => {
                   onIonChange={(e) =>
                     setNewContact({
                       ...newContact,
-                      placeLastSeen: e.target.value,
+                      placeLastSeen: capitalizeFirstLetter(e.target.value),
                     })
                   }
                   value={newContact.placeLastSeen}
-                  required
+                  // required
                 ></IonInput>
               </IonItem>
               <IonItem>
@@ -333,11 +464,11 @@ const Create = () => {
                   onIonChange={(e) =>
                     setNewContact({
                       ...newContact,
-                      placeLastContact: e.target.value,
+                      placeLastContact: capitalizeFirstLetter(e.target.value),
                     })
                   }
                   value={newContact.placeLastContact}
-                  required
+                  // required
                 ></IonInput>
               </IonItem>
               <IonItem counter={true}>
@@ -350,7 +481,7 @@ const Create = () => {
                   onIonChange={(e) =>
                     setNewContact({
                       ...newContact,
-                      notes: e.target.value,
+                      notes: capitalizeFirstLetter(e.target.value),
                     })
                   }
                   value={newContact.notes}
@@ -374,11 +505,7 @@ const Create = () => {
                   ))}
                 </IonSelect>
               </IonItem>
-              <IonItem>
-                <IonLabel>Enable Notifications</IonLabel>
-                <IonToggle slot="end"></IonToggle>
-              </IonItem>
-              <IonButton expand="block" className='m-4 h-8' onClick={() => save()}>SALVA</IonButton>
+              <IonButton expand="block" className='m-4 h-8' onClick={() => saveContact()}>SALVA</IonButton>
             </IonList>
           </>
         }
@@ -386,30 +513,64 @@ const Create = () => {
             <IonList>
               <IonItem>
                 <IonLabel className='pr-4'>Nome Gruppo</IonLabel>
-                <IonInput clearInput={true} type="text" placeholder='Nome Gruppo'></IonInput>
+                <IonInput 
+                  clearInput={true} 
+                  type="text" 
+                  placeholder='Nome Gruppo'
+                  onIonChange={(e) => {
+                    setNewGroup({
+                      ...newGroup,
+                      name: capitalizeFirstLetter(e.target.value),
+                    })
+                    setNewNotification({
+                      ...newNotification,
+                      title: 'Nuovo gruppo: ' + capitalizeFirstLetter(e.target.value),
+                      when: new Date().getTime()
+                    })
+                  }}
+                  value={newGroup.name}
+                  // required
+                ></IonInput>
               </IonItem>
               <IonItem counter={true} className='flex flex-col'>
                 <IonLabel position="fixed">Note</IonLabel>
                 <div>
-                  <IonTextarea autoGrow={true} maxlength={200} placeholder='Scrivi commenti'></IonTextarea>
+                  <IonTextarea 
+                    autoGrow={true} 
+                    maxlength={200} 
+                    placeholder='Scrivi commenti'
+                    onIonChange={(e) =>
+                      setNewGroup({
+                        ...newGroup,
+                        notes: capitalizeFirstLetter(e.target.value),
+                      })
+                    }
+                    value={newGroup.notes}
+                    // required
+                  ></IonTextarea>
                 </div>
               </IonItem>
-
               <IonItem>
                 <IonLabel>Collega Contatti</IonLabel>
-                <IonSelect placeholder="Contatti" multiple={true}>
+                <IonSelect 
+                  placeholder="Contatti" 
+                  multiple={true}
+                  onIonChange={(e) =>
+                    setNewGroup({
+                      ...newGroup,
+                      partecipants: e.target.value,
+                    })
+                  }
+                  value={newGroup.partecipants}
+                  // required
+                >
                   <IonSelectOption value="-1">Nessuno</IonSelectOption>
                   {contacts.map((contact, index) => (
                     <IonSelectOption key={index} value={contact.id}>{capitalizeFirstLetter(contact.name) + ' ' + capitalizeFirstLetter(contact.surname)}</IonSelectOption>
                   ))}
                 </IonSelect>
               </IonItem>
-
-              <IonItem>
-                <IonLabel>Enable Notifications</IonLabel>
-                <IonToggle slot="end"></IonToggle>
-              </IonItem>
-              <IonButton expand="block" className='m-4 h-8' onClick={() => save()}>SALVA</IonButton>
+              <IonButton expand="block" className='m-4 h-8' onClick={() => saveGroup()}>SALVA</IonButton>
             </IonList>
           </>
         }
