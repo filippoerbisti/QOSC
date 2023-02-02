@@ -103,13 +103,16 @@ const GroupDetail = ({ }) => {
             </IonCardHeader>
             <IonItem className='flex items-start'>
               <IonText className='mt-2'>Partecipanti</IonText>
-              <ul className='ml-6 mb-2'>
-                {partecipants.map((partecipant, index) => (
-                  <IonItem key={index} routerLink={`/tabs/home/contact/${partecipant[0].id}`}>
-                    - {capitalizeFirstLetter(partecipant[0].name)} {capitalizeFirstLetter(partecipant[0].surname)}
-                  </IonItem>
-                ))}
-              </ul>
+              {partecipants.length == 0 && <ul className='ml-6 mt-2'><em>Nessuno</em></ul>}
+              {partecipants.length > 0 &&
+                <ul className='ml-6 mb-2'>
+                  {partecipants.map((partecipant, index) => (
+                    <IonItem key={index} routerLink={`/tabs/home/contact/${partecipant[0].id}`}>
+                      - {capitalizeFirstLetter(partecipant[0].name)} {capitalizeFirstLetter(partecipant[0].surname)}
+                    </IonItem>
+                  ))}
+                </ul>
+              }
             </IonItem>
           </>
         } 
