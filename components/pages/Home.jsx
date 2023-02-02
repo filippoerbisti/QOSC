@@ -199,7 +199,6 @@ const GroupCard = ({ contacts, id, name, picture, partecipants, deleteGroup }) =
 
 const Home = () => {
   const notifications = Store.useState(getNotifications)
-
   const contacts = Store.useState(getContacts)
   const [filteredContacts, setFilteredContacts] = useState(Store.useState(getContacts));
   const groups = Store.useState(getGroups);
@@ -287,7 +286,7 @@ const Home = () => {
             <IonTitle size="large" className='mt-1'>Home</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <Notifications open={showNotifications} onDidDismiss={() => setShowNotifications(false)} />
+        <Notifications notifics={notifications} open={showNotifications} onDidDismiss={() => setShowNotifications(false)} />
 
         <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
           <IonRefresherContent></IonRefresherContent>
