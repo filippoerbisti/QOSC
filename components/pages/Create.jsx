@@ -387,6 +387,7 @@ const Create = () => {
                     })
                   }
                   value={newContact.credit}
+                  step='0.5'
                   // required
                 ></IonInput>
               </IonItem>
@@ -400,6 +401,7 @@ const Create = () => {
                     })
                   }
                   value={newContact.debit}
+                  step='0.5'
                   // required
                 ></IonInput>
               </IonItem>

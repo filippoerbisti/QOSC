@@ -161,11 +161,11 @@ const ContactDetail = ({ }) => {
         </IonItem>
         <IonItem>
           <IonLabel className='pr-8' position='fixed'>Credito</IonLabel>
-          <IonInput clearInput={true} type="number" placeholder='+ 10 €' value={loadedList.credit} disabled={onEdit}></IonInput>
+          <IonInput clearInput={true} type="number" placeholder='+ 10 €' step='0.5' value={loadedList.credit} disabled={onEdit}></IonInput>
         </IonItem>
         <IonItem>
           <IonLabel className='pr-8' position='fixed'>Debito</IonLabel>
-          <IonInput clearInput={true} type="number" placeholder='- 10 €' value={loadedList.debit} disabled={onEdit}></IonInput>
+          <IonInput clearInput={true} type="number" placeholder='- 10 €' step='0.5' value={loadedList.debit} disabled={onEdit}></IonInput>
         </IonItem>
         <IonItem>
           <IonLabel position='fixed' className='fixed-label-datapicker'>Ultima uscita</IonLabel>
