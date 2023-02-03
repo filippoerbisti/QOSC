@@ -283,7 +283,7 @@ const Create = () => {
                     //     picture: e.target.value,
                     //   })
                     // }  
-                    value={newContact.picture}
+                    // value={newContact.picture}
                   />
                 </div>
               </IonItem>
@@ -545,7 +545,7 @@ const Create = () => {
                     //     picture: e.target.value,
                     //   })
                     // }  
-                    value={newGroup.picture}
+                    // value={newGroup.picture}
                   />
                 </div>
               </IonItem>
