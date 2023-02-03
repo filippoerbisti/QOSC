@@ -1,4 +1,4 @@
-package com.example.app;
+package app.vercel.qosc;
 
 import com.getcapacitor.BridgeActivity;
 
