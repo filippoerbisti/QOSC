@@ -5,10 +5,10 @@ const config: CapacitorConfig = {
   appName: 'QOSC',
   webDir: 'out',
   bundledWebRuntime: false,
-  server: {
-		url: 'http://192.168.116.75:3000',
-		cleartext: true
-	}
+  // server: {
+	// 	url: 'http://192.168.116.75:3000',
+	// 	cleartext: true
+	// }
 };
 
 export default config;
