@@ -268,8 +268,24 @@ const Create = () => {
         {createContact && <>
             <IonList>
               <IonItem>
-                <label className='flex'>Immagine profilo</label>
-                <input type="file" />
+                {/* <label className='flex'>Immagine profilo</label>
+                <input type="file" /> */}
+                <div className='m-2 flex items-center'>
+                  <img alt="pic" src={newContact.picture} className='w-14 h-14 rounded-full' />
+                  <p className='ml-2' onClick={() => document.querySelector('#uploadContactPicture').click()}>Clicca per modificare la foto</p>
+                  <input 
+                    id='uploadContactPicture' 
+                    type="file" 
+                    hidden 
+                    // onChange={(e) => 
+                    //   setNewContact({
+                    //     ...newContact,
+                    //     picture: e.target.value,
+                    //   })
+                    // }  
+                    value={newContact.picture}
+                  />
+                </div>
               </IonItem>
               <IonItem>
                 <IonLabel className='pr-4' position="fixed">Nome</IonLabel>
@@ -513,6 +529,26 @@ const Create = () => {
         }
         {!createContact && <>
             <IonList>
+              <IonItem>
+                {/* <label className='flex'>Immagine profilo</label>
+                <input type="file" /> */}
+                <div className='m-2 flex items-center'>
+                  <img alt="pic" src={newGroup.picture} className='w-14 h-14 rounded-full' />
+                  <p className='ml-2' onClick={() => document.querySelector('#uploadGroupPicture').click()}>Clicca per modificare la foto</p>
+                  <input 
+                    id='uploadGroupPicture' 
+                    type="file" 
+                    hidden 
+                    // onChange={(e) => 
+                    //   setNewGroup({
+                    //     ...newGroup,
+                    //     picture: e.target.value,
+                    //   })
+                    // }  
+                    value={newGroup.picture}
+                  />
+                </div>
+              </IonItem>
               <IonItem>
                 <IonLabel className='pr-4'>Nome Gruppo</IonLabel>
                 <IonInput 
