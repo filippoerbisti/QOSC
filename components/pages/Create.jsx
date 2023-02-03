@@ -203,13 +203,6 @@ const Create = () => {
       groups.push(newGroup)
       let linkedContacts = contacts.filter((f) => newGroup.partecipants.includes(f.id))
       linkedContacts.map((c) => c.groupId = newGroup.id)
-      // let linkedSingleContact = linkedContacts.map((c) => c.groupId)
-      // for (var i = 0; i < linkedContacts.length; i++)
-      //   linkedContacts[i].groupId.push(newGroup.id)
-      // linkedSingleContact.map((l) => l.push(newGroup.id))
-      // let g = newContact.groupId == '-1' ? '-1' : groups.filter((g) => g.id == newContact.groupId)[0].partecipants
-      // if(g != '-1')
-      //   g.push(newContact.id)
       notifications.push(newNotification)
 
       presentToast(createContact ? 'Contatto creato con successo!' : 'Gruppo creato con successo!', 'top')
