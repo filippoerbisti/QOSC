@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
+
+    namespace 'app.vercel.qosc'
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "app.vercel.qosc"
