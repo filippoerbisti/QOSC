@@ -33,7 +33,6 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { notificationsOutline } from 'ionicons/icons';
 import { getNotifications, getContacts, getGroups, getRangeNotif } from '../../store/selectors';
 import { LocalNotifications } from '@capacitor/local-notifications';
-import { useSession } from 'next-auth/react';
 
 const ContactCard = ({ id, name, surname, picture, nickname, phoneNum, mail, deleteContact }) => {
   const [present] = useIonActionSheet();
@@ -199,7 +198,7 @@ const GroupCard = ({ contacts, id, name, picture, partecipants, deleteGroup }) =
   );
 };
 
-const Home = () => {
+const Home = ({ session }) => {
   const notifications = Store.useState(getNotifications)
   const contacts = Store.useState(getContacts)
   const [filteredContacts, setFilteredContacts] = useState(Store.useState(getContacts));
