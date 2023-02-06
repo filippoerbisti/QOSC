@@ -211,22 +211,27 @@ const Home = () => {
   const [groupQuery, setGroupQuery] = useState('');
 
   const range = Store.useState(getRangeNotif)
+  const [alreadySentNotification, setAlreadySentNotification] = useState(false)
 
   const createPushNotification = useCallback((name) => {
-    LocalNotifications.schedule({
-      notifications: [
-        {
-          title: "Avviso persona da contattare",
-          body: name,
-          id: Math.floor(Math.random() * 6000000),
-          // schedule: {
-          //   at: new Date(Date.now() + 1000 * 10), // in 5 secs
-          //   repeats: true
-          // }
-        }
-      ]
-    });
-  }, [])
+    if(!alreadySentNotification) {
+      setAlreadySentNotification(...[true])
+      console.log('c')
+      LocalNotifications.schedule({
+        notifications: [
+          {
+            title: "Avviso persona da contattare",
+            body: name,
+            id: Math.floor(Math.random() * 6000000),
+            // schedule: {
+            //   at: new Date(Date.now() + 1000 * 10), // in 5 secs
+            //   repeats: true
+            // }
+          }
+        ]
+      });
+    }
+  }, [alreadySentNotification, setAlreadySentNotification])
 
   useEffect(() => {
     let notificationContact = contacts.filter((c) => c.id == range[1].contactId)[0]
@@ -234,13 +239,13 @@ const Home = () => {
     let outTimeHours = (time / (1000 * 60 * 60 * 24)).toFixed(0)
     let name = 'Non contatti ' + capitalizeFirstLetter(notificationContact.name) + ' ' + capitalizeFirstLetter(notificationContact.surname) + ' da ' + outTimeHours + ' giorni oltre il limite'
 
-    if ((new Date().getTime() - new Date(notificationContact.dateLastContact).getTime()) > (range[1].looptime*60*60*1000))
+    if ((new Date().getTime() - new Date(notificationContact.dateLastContact).getTime()) > (range[1].looptime*60*60*1000) && !alreadySentNotification)
       createPushNotification(name)
 
     setTimeout(() => {
       setLoaded(true);
     }, 2000);
-  }, [loaded, setLoaded, contacts, range, createPushNotification])
+  }, [loaded, setLoaded, contacts, range, createPushNotification, alreadySentNotification])
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
