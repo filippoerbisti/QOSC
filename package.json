@@ -32,7 +32,6 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.0",
-    "react-toastify": "^9.1.1",
     "reselect": "^4.1.7"
   },
   "devDependencies": {
