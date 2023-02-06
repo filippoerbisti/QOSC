@@ -4,7 +4,7 @@ export const contacts = [
     name: 'filippo',
     surname: 'erbisti',
     nickname: 'pippo',
-    dateLastContact: '2022-12-10', 
+    dateLastContact: '2023-01-10', 
     dateLastSeen: '2022-12-10',
     placeLastContact: 'Whatsapp',
     placeLastSeen: 'Calcetto',
@@ -313,6 +313,11 @@ export const notifications = [
   { id: 1, title: 'Welcome to the app!', when: 1675153230529 }, //timestamp
   { id: 2, title: 'Notification test', when: 1675159230329 }, //timestamp
   // { id: 3, title: 'Contact Created', when: 1675238032392 }, //timestamp
+];
+
+export const pushRangeNotific = [
+  { id: 1, looptime: 3, contactId: 1 }, //day
+  { id: 2, looptime: 1, contactId: 1 }, //min
 ];
 
 // Some fake lists
