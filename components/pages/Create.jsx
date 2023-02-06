@@ -15,6 +15,7 @@ import { addOutline } from 'ionicons/icons';
 import { useState } from 'react';
 import Store from '../../store';
 import { getContacts, getGroups, getNotifications } from '../../store/selectors';
+import { LocalNotifications } from '@capacitor/local-notifications';
 
 const Create = () => {
   const [present] = useIonToast();
@@ -112,16 +113,16 @@ const Create = () => {
       !alreadyToast && presentToast('Inserire un compleanno valido', 'top')
       alreadyToast = true
     }
-    if(newContact.credit == null) {
-      canSave = false
-      !alreadyToast && presentToast('Inserire il Credito (€)', 'top')
-      alreadyToast = true
-    }
-    if(newContact.debit == null) {
-      canSave = false
-      !alreadyToast && presentToast('Inserire il Debito (€)', 'top')
-      alreadyToast = true
-    }
+    // if(newContact.credit == null) {
+    //   canSave = false
+    //   !alreadyToast && presentToast('Inserire il Credito (€)', 'top')
+    //   alreadyToast = true
+    // }
+    // if(newContact.debit == null) {
+    //   canSave = false
+    //   !alreadyToast && presentToast('Inserire il Debito (€)', 'top')
+    //   alreadyToast = true
+    // }
     if(new Date(newContact.dateLastSeen).getTime() > new Date().getTime()) {
       canSave = false
       !alreadyToast && presentToast('Inserire una data passata', 'top')
@@ -156,6 +157,9 @@ const Create = () => {
       notifications.push(newNotification)
 
       presentToast(createContact ? 'Contatto creato con successo!' : 'Gruppo creato con successo!', 'top')
+
+      let name = "Nuovo contatto: " + capitalizeFirstLetter(newContact.name) + ' ' + capitalizeFirstLetter(newContact.surname)
+      createNotification(name)
 
       setNewContact({
         id: 0,
@@ -207,6 +211,9 @@ const Create = () => {
 
       presentToast(createContact ? 'Contatto creato con successo!' : 'Gruppo creato con successo!', 'top')
 
+      let name = "Nuovo gruppo: " + capitalizeFirstLetter(newGroup.name)
+      createNotification(name)
+
       setNewGroup({
         id: 0,
         // picture: '',
@@ -224,6 +231,22 @@ const Create = () => {
 
   const switchCreateContGroup = () => {
     setCreateContact(...[!createContact]);
+  }
+
+  const createNotification = (name) => {
+    LocalNotifications.schedule({
+      notifications: [
+        {
+          title: "Nuova Notifica",
+          body: name,
+          id: Math.floor(Math.random() * 6000000),
+          // schedule: {
+          //   at: new Date(Date.now() + 1000 * 10), // in 5 secs
+          //   repeats: true
+          // }
+        }
+      ]
+    });
   }
 
   return (
