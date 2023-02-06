@@ -17,10 +17,11 @@ window.matchMedia("(prefers-color-scheme: dark)").addListener(async (status) => 
     await StatusBar.setStyle({
       style: status.matches ? Style.Dark : Style.Light,
     });
-  } catch {}
+  } catch { /* empty */ }
 });
 
 const AppShell = () => {
+  // eslint-disable-next-line no-unused-vars
   const { status, data: session } = useSession()
   const router = useRouter()
 
@@ -28,7 +29,7 @@ const AppShell = () => {
     if (!session?.user) {
       router.push('/login');
     }
-  }, [])
+  }, [session, router])
 
   return (
     <IonApp style={{maxWidth: '500px', margin: 'auto'}}>
