@@ -31,7 +31,8 @@ import {
 import Notifications from './Notifications';
 import { useEffect, useRef, useState } from 'react';
 import { notificationsOutline } from 'ionicons/icons';
-import { getNotifications, getContacts, getGroups } from '../../store/selectors';
+import { getNotifications, getContacts, getGroups, getRangeNotif } from '../../store/selectors';
+import { LocalNotifications } from '@capacitor/local-notifications';
 
 const ContactCard = ({ id, name, surname, picture, nickname, phoneNum, mail, deleteContact }) => {
   const [present] = useIonActionSheet();
@@ -209,11 +210,24 @@ const Home = () => {
   const [contactQuery, setContactQuery] = useState('');
   const [groupQuery, setGroupQuery] = useState('');
 
+  const range = Store.useState(getRangeNotif)
+
   useEffect(() => {
     setTimeout(() => {
       setLoaded(true);
     }, 2000);
+
+    let notificationContact = contacts.filter((c) => c.id == range[1].contactId)[0]
+    let time = new Date().getTime() - new Date(notificationContact.dateLastContact).getTime() - range[1].looptime*60*60*24*1000
+    let outTimeHours = (time / (1000 * 60 * 60 * 24)).toFixed(0)
+    let name = 'Non contatti ' + capitalizeFirstLetter(notificationContact.name) + ' ' + capitalizeFirstLetter(notificationContact.surname) + ' da ' + outTimeHours + ' giorni oltre il limite'
+    if ((new Date().getTime() - new Date(notificationContact.dateLastContact).getTime()) > (range[1].looptime*60*60*1000))
+      createNotification(name)
   }, [loaded, setLoaded])
+
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
   function handleRefresh(event) {
     setLoaded(false);
@@ -260,6 +274,22 @@ const Home = () => {
     groups.splice(index, 1);
     setFilteredGroups([...groups]);
     
+  }
+
+  const createNotification = (name) => {
+    LocalNotifications.schedule({
+      notifications: [
+        {
+          title: "Avviso persona da contattare",
+          body: name,
+          id: Math.floor(Math.random() * 6000000),
+          // schedule: {
+          //   at: new Date(Date.now() + 1000 * 10), // in 5 secs
+          //   repeats: true
+          // }
+        }
+      ]
+    });
   }
 
   return (
