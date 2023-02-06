@@ -1,8 +1,9 @@
 # QOSC
+
 QOSC - Quickly Organize Social Contacts
 
-
 Structure:
+
 - QOClient (Next js & TailwindCSS & Ionic)
 - QOServer (Laravel App)
 - Database MySQL (Heroku)
@@ -13,7 +14,7 @@ Cross platform application (using Capacitor)
 
 ![immagine](https://user-images.githubusercontent.com/80033304/200508462-001dba2e-bbea-4881-9751-fc94614a6208.png)
 
-`npm run static => next build && next export `
+`npm run static => next build && next export`
 
 (build in folder ./out)
 
@@ -25,15 +26,16 @@ Cross platform application (using Capacitor)
 
 `npx cap open android => will open ./android folder in Android Studio`
 
-### Build application in Android Studio
+## Build application in Android Studio
 
 Once you use `npx cap sync` and then `npx cap open android` will open ./android folder in Android Studio
 </br>
 Create APK in Android Studio:
+
 - In the Android menu, go to Build > Build Bundle(s) / APK (s) > Build APK(s).
 - Android Studio will start building the APK for you. Once done, a pop-up on the bottom right will notify you of its completion. Click the ‘locate’ button in this dialog.
 - The ‘locate’ button should open File Explorer with the debug folder open that contains a file called “app-debug.apk”.
 - That’s it. Rename this file and share!
 
-Output folder: 
-***\android\app\build\outputs\apk\debug***
+Output folder:
+**_\android\app\build\outputs\apk\debug_**
