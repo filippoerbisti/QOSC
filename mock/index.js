@@ -316,7 +316,7 @@ export const notifications = [
 ];
 
 export const pushRangeNotific = [
-  { id: 1, looptime: 3, contactId: 1 }, //day
+  { id: 1, looptime: 3, contactId: 1 }, //day (TODO => convert day to millisec)
   { id: 2, looptime: 1, contactId: 1 }, //min
 ];
 
