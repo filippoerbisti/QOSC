@@ -20,7 +20,7 @@ import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
   
-const ContactDetail = ({ }) => {
+const ContactDetail = ({ session }) => {
   const router = useRouter()
   const contac = Store.useState(selectors.getContacts)
   const [contacts, setContacts] = useState(contac)

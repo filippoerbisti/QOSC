@@ -20,7 +20,7 @@ import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
   
-const GroupDetail = ({ }) => {
+const GroupDetail = ({ session }) => {
   const router = useRouter()
   const grou = Store.useState(selectors.getGroups)
   const [groups, setGroups] = useState(grou)

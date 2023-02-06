@@ -47,7 +47,7 @@ const AllSettings = ({ onSelect }) => {
   );
 };
 
-const Settings = () => {
+const Settings = ({ session }) => {
   const settings = Store.useState(selectors.getSettings);
 
   return (
