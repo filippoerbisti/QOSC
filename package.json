@@ -26,6 +26,7 @@
     "ionicons": "^6.1.1",
     "mongoose": "^6.9.0",
     "next": "13.1.4",
+    "next-auth": "^4.19.2",
     "next-transpile-modules": "^10.0.0",
     "pullstate": "^1.25.0",
     "react": "18.2.0",
