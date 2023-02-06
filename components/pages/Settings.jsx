@@ -10,11 +10,14 @@ import {
   IonLabel,
   IonReorder,
   IonReorderGroup,
-  IonSelect, IonSelectOption, IonText
+  IonSelect, IonSelectOption, IonText,
+  IonButtons, IonButton, IonIcon
 } from '@ionic/react';
 import Store from '../../store';
 import * as selectors from '../../store/selectors';
 import { setSettings } from '../../store/actions';
+import { logOutOutline } from 'ionicons/icons';
+import { signOut } from "next-auth/react";
 
 const SettingEntry = ({ setting, ...props }) => (
   <IonItem routerLink={`/tabs/settings/${setting.id}`} className="list-entry">
@@ -47,7 +50,7 @@ const AllSettings = ({ onSelect }) => {
   );
 };
 
-const Settings = () => {
+const Settings = ({ session }) => {
   const settings = Store.useState(selectors.getSettings);
 
   return (
@@ -55,10 +58,16 @@ const Settings = () => {
       <IonHeader>
         <IonToolbar>
           <IonTitle>Settings</IonTitle>
+          <IonButtons slot="end" className='right-2'>
+            <IonButton id="click-trigger">
+              <IonIcon onClick={() => signOut()} icon={logOutOutline} className='w-7 h-7' style={{color: 'var(--ion-color-primary)'}} />
+            </IonButton>
+          </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonContent>
         <IonList>
+          <IonItem>Bentornato {session?.user.name}</IonItem>
           <IonItem>
             <IonLabel>Enable Notifications</IonLabel>
             <IonToggle
@@ -98,7 +107,7 @@ const Settings = () => {
           
         </IonList>
         <IonText color='medium' className='w-full text-center mb-4 bottom-0 absolute italic text-xs'>
-          <pre>Versione 2.2.0</pre>
+          <pre>Versione 2.1.3</pre>
         </IonText>
       </IonContent>
     </IonPage>

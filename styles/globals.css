@@ -269,3 +269,11 @@ ion-skeleton-text.ios {
   flex-basis: 150px !important;
 }
 
+
+
+
+input, 
+select, 
+textarea {
+  @apply rounded border p-2 outline-none ring-indigo-300 focus:ring;
+}

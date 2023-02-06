@@ -18,7 +18,7 @@ import Store from '../../store';
 import { getContacts, getGroups, getNotifications } from '../../store/selectors';
 import { LocalNotifications } from '@capacitor/local-notifications';
 
-const Create = () => {
+const Create = ({ session }) => {
   const [present] = useIonToast();
 
   const [createContact, setCreateContact] = useState(true);

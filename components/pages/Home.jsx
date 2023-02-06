@@ -198,7 +198,7 @@ const GroupCard = ({ contacts, id, name, picture, partecipants, deleteGroup }) =
   );
 };
 
-const Home = () => {
+const Home = ({ session }) => {
   const notifications = Store.useState(getNotifications)
   const contacts = Store.useState(getContacts)
   const [filteredContacts, setFilteredContacts] = useState(Store.useState(getContacts));
@@ -216,7 +216,6 @@ const Home = () => {
   const createPushNotification = useCallback((name) => {
     if(!alreadySentNotification) {
       setAlreadySentNotification(...[true])
-      console.log('c')
       LocalNotifications.schedule({
         notifications: [
           {
