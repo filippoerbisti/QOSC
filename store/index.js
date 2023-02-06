@@ -1,6 +1,6 @@
 import { Store as PullStateStore } from 'pullstate';
 
-import { lists, contacts, groups, notifications } from '../mock';
+import { lists, contacts, groups, notifications, pushRangeNotific } from '../mock';
 
 const Store = new PullStateStore({
   safeAreaTop: 0,
@@ -12,6 +12,7 @@ const Store = new PullStateStore({
   groups,
   lists,
   notifications,
+  pushRangeNotific,
   settings: {
     enableNotifications: true,
   },
