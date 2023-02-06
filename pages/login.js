@@ -1,23 +1,23 @@
 import Link from 'next/link';
 import React, { useEffect } from 'react';
-import { signIn, useSession } from 'next-auth/react';
+// import { signIn, useSession } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import { getError } from '../utils/error';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 
 const LoginSceen = () => {
 
-    const { data: session } = useSession();
+    // const { data: session } = useSession();
 
-    const router = useRouter();
-    const { redirect } = router.query;
+    // const router = useRouter();
+    // const { redirect } = router.query;
 
-    useEffect(() => {
-        if (session?.user) {
-        router.push(redirect || '/');
-        }
-    }, [router, session, redirect]);
+    // useEffect(() => {
+    //     if (session?.user) {
+    //     router.push(redirect || '/');
+    //     }
+    // }, [router, session, redirect]);
 
     const {
         handleSubmit,
@@ -27,11 +27,11 @@ const LoginSceen = () => {
 
     const submitHandler = async ({ email, password }) => {
         try {
-        const result = await signIn('credentials', {
-            redirect: false,
-            email,
-            password,
-        });
+        // const result = await signIn('credentials', {
+        //     redirect: false,
+        //     email,
+        //     password,
+        // });
         if (result.error) {
             toast.error(result.error);
         }
@@ -83,7 +83,7 @@ const LoginSceen = () => {
             </div>
             <div className="mb-4 ">
                 Don&apos;t have an account? &nbsp;
-                <Link href={`/register?redirect=${redirect || '/'}`}>Register</Link>
+                {/* <Link href={`/register?redirect=${redirect || '/'}`}>Register</Link> */}
             </div>
         </form>
     )
