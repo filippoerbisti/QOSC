@@ -6,6 +6,10 @@ import { Redirect, Route } from 'react-router-dom';
 
 import Tabs from './pages/Tabs';
 
+import { useSession } from 'next-auth/react';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+
 setupIonicReact({});
 
 window.matchMedia("(prefers-color-scheme: dark)").addListener(async (status) => {
@@ -17,11 +21,20 @@ window.matchMedia("(prefers-color-scheme: dark)").addListener(async (status) => 
 });
 
 const AppShell = () => {
+  const { status, data: session } = useSession()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!session?.user) {
+      router.push('/login');
+    }
+  }, [])
+
   return (
     <IonApp style={{maxWidth: '500px', margin: 'auto'}}>
       <IonReactRouter>
         <IonRouterOutlet id="main">
-          <Route path="/tabs" render={() => <Tabs />} />
+          <Route path="/tabs" render={() => <Tabs session={session} />} />
           <Route path="/" render={() => <Redirect to="/tabs/home" />} exact={true} />
         </IonRouterOutlet>
       </IonReactRouter>
