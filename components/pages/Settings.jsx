@@ -98,7 +98,7 @@ const Settings = () => {
           
         </IonList>
         <IonText color='medium' className='w-full text-center mb-4 bottom-0 absolute italic text-xs'>
-          <pre>Versione 2.0.0</pre>
+          <pre>Versione 2.2.0</pre>
         </IonText>
       </IonContent>
     </IonPage>
