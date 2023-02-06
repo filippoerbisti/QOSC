@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import {
   IonPage,
   IonHeader,
@@ -287,7 +288,13 @@ const Create = () => {
                 {/* <label className='flex'>Immagine profilo</label>
                 <input type="file" /> */}
                 <div className='m-2 flex items-center'>
-                  <img alt="pic" src={newContact.picture} className='w-14 h-14 rounded-full' />
+                  <Image 
+                    alt="pic" 
+                    width={56} //w-14
+                    height={56} //h-14
+                    src={newContact.picture} 
+                    className='w-14 h-14 rounded-full' 
+                  />
                   <p className='ml-2' onClick={() => document.querySelector('#uploadContactPicture').click()}>Clicca per modificare la foto</p>
                   <input 
                     id='uploadContactPicture' 
@@ -549,7 +556,13 @@ const Create = () => {
                 {/* <label className='flex'>Immagine profilo</label>
                 <input type="file" /> */}
                 <div className='m-2 flex items-center'>
-                  <img alt="pic" src={newGroup.picture} className='w-14 h-14 rounded-full' />
+                  <Image 
+                    alt="pic" 
+                    width={56} //w-14
+                    height={56} //h-14
+                    src={newGroup.picture} 
+                    className='w-14 h-14 rounded-full' 
+                  />
                   <p className='ml-2' onClick={() => document.querySelector('#uploadGroupPicture').click()}>Clicca per modificare la foto</p>
                   <input 
                     id='uploadGroupPicture' 

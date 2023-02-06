@@ -1,16 +1,17 @@
+import Image from 'next/image';
 import {
-    IonBackButton,
-    IonButtons,
-    IonContent,
-    IonHeader,
-    IonPage,
-    IonTitle,
-    IonToolbar,
-    IonCardHeader, IonCardSubtitle, IonCardTitle,
-    IonFab, IonFabButton, IonFabList, IonIcon, IonInput, IonItem, IonLabel,
-    IonDatetimeButton, IonDatetime, IonModal, IonTextarea, IonButton, IonSelect, IonSelectOption,
-    useIonToast,
-    IonText
+  IonBackButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonCardHeader, IonCardSubtitle, IonCardTitle,
+  IonFab, IonFabButton, IonFabList, IonIcon, IonInput, IonItem, IonLabel,
+  IonDatetimeButton, IonDatetime, IonModal, IonTextarea, IonButton, IonSelect, IonSelectOption,
+  useIonToast,
+  IonText
 } from '@ionic/react';
 import { chevronDownCircle, create, logoWhatsapp, mail, call, trash } from 'ionicons/icons';
 import Store from '../../store';
@@ -111,7 +112,13 @@ const ContactDetail = ({ }) => {
 
         {onEdit &&
           <IonCardHeader class='flex items-center'>
-            <img alt="pic" src={loadedList.picture} className='w-14 h-14 rounded-full' />
+            <Image 
+              alt="pic" 
+              width={56} //w-14
+              height={56} //h-14
+              src={loadedList.picture} 
+              className='w-14 h-14 rounded-full' 
+            />
             <div className='ml-4'>
               <IonCardTitle>{capitalizeFirstLetter(loadedList.name)} {capitalizeFirstLetter(loadedList.surname)}</IonCardTitle>
               <IonCardSubtitle>{capitalizeFirstLetter(loadedList.nickname)}</IonCardSubtitle>
@@ -122,7 +129,13 @@ const ContactDetail = ({ }) => {
         {!onEdit && <>
           <IonItem>
             <div className='m-2 flex items-center'>
-              <img alt="pic" src={loadedList.picture} className='w-14 h-14 rounded-full' />
+              <Image 
+                alt="pic" 
+                width={56} //w-14
+                height={56} //h-14
+                src={loadedList.picture} 
+                className='w-14 h-14 rounded-full' 
+              />
               <p className='ml-2' onClick={() => document.querySelector('#uploadPicture').click()}>Clicca per modificare la foto</p>
               <input id='uploadPicture' type="file" hidden  />
               {/* onChange={(e) => loadedList.picture = (e.target.files)} */}

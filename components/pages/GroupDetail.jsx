@@ -1,16 +1,17 @@
+import Image from 'next/image';
 import {
-    IonBackButton,
-    IonButtons,
-    IonContent,
-    IonHeader,
-    IonPage,
-    IonTitle,
-    IonToolbar,
-    IonButton,
-    IonCardHeader, IonCardTitle,
-    IonFab, IonFabButton, IonFabList, IonIcon, IonItem, IonLabel, IonInput, IonTextarea, IonSelect, IonSelectOption,
-    useIonToast,
-    IonText
+  IonBackButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonButton,
+  IonCardHeader, IonCardTitle,
+  IonFab, IonFabButton, IonFabList, IonIcon, IonItem, IonLabel, IonInput, IonTextarea, IonSelect, IonSelectOption,
+  useIonToast,
+  IonText
 } from '@ionic/react';
 import { chevronDownCircle, create, trash } from 'ionicons/icons';
 import Store from '../../store';
@@ -96,7 +97,13 @@ const GroupDetail = ({ }) => {
 
         {onEdit && <>
             <IonCardHeader class='flex items-center'>
-              <img alt="pic" src={loadedList.picture} className='w-14 h-14 rounded-full' />
+              <Image 
+                alt="pic" 
+                width={56} //w-14
+                height={56} //h-14
+                src={loadedList.picture} 
+                className='w-14 h-14 rounded-full' 
+              />
               <div className='ml-4'>
                 <IonCardTitle>{capitalizeFirstLetter(loadedList.name)}</IonCardTitle>
               </div>
@@ -120,7 +127,13 @@ const GroupDetail = ({ }) => {
         {!onEdit && <>
           <IonItem>
             <div className='m-2 flex items-center'>
-              <img alt="pic" src={loadedList.picture} className='w-14 h-14 rounded-full' />
+              <Image 
+                alt="pic" 
+                width={56} //w-14
+                height={56} //h-14
+                src={loadedList.picture} 
+                className='w-14 h-14 rounded-full' 
+              />
               <p className='ml-2' onClick={() => document.querySelector('#uploadPicture').click()}>Clicca per modificare la foto</p>
               <input id='uploadPicture' type="file" hidden  />
               {/* onChange={(e) => loadedList.picture = (e.target.files)} */}
