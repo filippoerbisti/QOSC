@@ -21,7 +21,9 @@ import '@ionic/react/css/display.css';
 import '../styles/globals.css';
 import '../styles/variables.css';
 
-function MyApp({ Component, pageProps }) {
+import { SessionProvider } from 'next-auth/react';
+
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <>
       <Head>
@@ -30,7 +32,11 @@ function MyApp({ Component, pageProps }) {
           content="width=device-width, initial-scale=1.0, viewport-fit=cover"
         ></meta>
       </Head>
-      <Component {...pageProps} />
+
+      <SessionProvider session={session}>
+        <Component {...pageProps} />
+      </SessionProvider>
+
       <Script
         type="module"
         src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"
