@@ -159,7 +159,7 @@ const Create = () => {
       presentToast(createContact ? 'Contatto creato con successo!' : 'Gruppo creato con successo!', 'top')
 
       let name = "Nuovo contatto: " + capitalizeFirstLetter(newContact.name) + ' ' + capitalizeFirstLetter(newContact.surname)
-      createNotification(name)
+      createPushNotification(name)
 
       setNewContact({
         id: 0,
@@ -212,7 +212,7 @@ const Create = () => {
       presentToast(createContact ? 'Contatto creato con successo!' : 'Gruppo creato con successo!', 'top')
 
       let name = "Nuovo gruppo: " + capitalizeFirstLetter(newGroup.name)
-      createNotification(name)
+      createPushNotification(name)
 
       setNewGroup({
         id: 0,
@@ -233,7 +233,7 @@ const Create = () => {
     setCreateContact(...[!createContact]);
   }
 
-  const createNotification = (name) => {
+  const createPushNotification = (name) => {
     LocalNotifications.schedule({
       notifications: [
         {

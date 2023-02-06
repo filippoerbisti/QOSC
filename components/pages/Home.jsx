@@ -29,7 +29,7 @@ import {
   IonBadge
 } from '@ionic/react';
 import Notifications from './Notifications';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { notificationsOutline } from 'ionicons/icons';
 import { getNotifications, getContacts, getGroups, getRangeNotif } from '../../store/selectors';
 import { LocalNotifications } from '@capacitor/local-notifications';
@@ -213,6 +213,23 @@ const Home = () => {
   const range = Store.useState(getRangeNotif)
   const [countAlert, setCountAlert] = useState(0)
 
+  const createPushNotification = useCallback((name) => {
+    if(countAlert > 1)
+      LocalNotifications.schedule({
+        notifications: [
+          {
+            title: "Avviso persona da contattare",
+            body: name,
+            id: Math.floor(Math.random() * 6000000),
+            // schedule: {
+            //   at: new Date(Date.now() + 1000 * 10), // in 5 secs
+            //   repeats: true
+            // }
+          }
+        ]
+      });
+  }, [countAlert])
+
   useEffect(() => {
     setTimeout(() => {
       setLoaded(true);
@@ -225,9 +242,9 @@ const Home = () => {
 
     if ((new Date().getTime() - new Date(notificationContact.dateLastContact).getTime()) > (range[1].looptime*60*60*1000) && countAlert < 1) {
       setCountAlert(...[countAlert + 1])
-      createNotification(name)
+      createPushNotification(name)
     }
-  }, [loaded, setLoaded, countAlert, setCountAlert, contacts, range, createNotification])
+  }, [loaded, setLoaded, countAlert, setCountAlert, contacts, range, createPushNotification])
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -279,23 +296,6 @@ const Home = () => {
     setFilteredGroups([...groups]);
     
   }
-
-  const createNotification = useCallback((name) => {
-    if(countAlert > 1)
-      LocalNotifications.schedule({
-        notifications: [
-          {
-            title: "Avviso persona da contattare",
-            body: name,
-            id: Math.floor(Math.random() * 6000000),
-            // schedule: {
-            //   at: new Date(Date.now() + 1000 * 10), // in 5 secs
-            //   repeats: true
-            // }
-          }
-        ]
-      });
-  }, [countAlert])
 
   return (
     <IonPage>
