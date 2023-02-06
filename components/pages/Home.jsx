@@ -200,12 +200,6 @@ const GroupCard = ({ contacts, id, name, picture, partecipants, deleteGroup }) =
 };
 
 const Home = () => {
-
-  const { status, data: session } = useSession()
-
-  console.log('status', status)
-  console.log('sess', session)
-
   const notifications = Store.useState(getNotifications)
   const contacts = Store.useState(getContacts)
   const [filteredContacts, setFilteredContacts] = useState(Store.useState(getContacts));
@@ -333,17 +327,6 @@ const Home = () => {
         <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
           <IonRefresherContent></IonRefresherContent>
         </IonRefresher>
-
-        <div>
-          {status === 'loading' ? (
-            'Loading'
-            ) : session?.user ? (
-              session.user.name
-            ) : (
-              'Login'
-            )
-          }
-        </div>
 
         <div className='mx-2'>
           <IonSegment value={segment} swipe-gesture={true} onIonChange={handleSwipeSegment}>
