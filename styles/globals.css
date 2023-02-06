@@ -275,5 +275,5 @@ ion-skeleton-text.ios {
 input, 
 select, 
 textarea {
-  @apply rounded border p-2 outline-none ring-indigo-300 focus:ring;
+  @apply rounded border p-2 outline-none;
 }
