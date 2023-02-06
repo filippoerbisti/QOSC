@@ -67,7 +67,7 @@ const Settings = ({ session }) => {
       </IonHeader>
       <IonContent>
         <IonList>
-          <IonItem>Bentornato {session.user.name}</IonItem>
+          <IonItem>Bentornato {session?.user.name}</IonItem>
           <IonItem>
             <IonLabel>Enable Notifications</IonLabel>
             <IonToggle
