@@ -227,7 +227,7 @@ const Home = () => {
       setCountAlert(...[countAlert + 1])
       createNotification(name)
     }
-  }, [loaded, setLoaded])
+  }, [loaded, setLoaded, countAlert, setCountAlert, contacts, range, createNotification])
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -280,7 +280,7 @@ const Home = () => {
     
   }
 
-  const createNotification = (name) => {
+  const createNotification = useCallback((name) => {
     if(countAlert > 1)
       LocalNotifications.schedule({
         notifications: [
@@ -295,7 +295,7 @@ const Home = () => {
           }
         ]
       });
-  }
+  }, [countAlert])
 
   return (
     <IonPage>
