@@ -19,6 +19,7 @@
     "@ionic/react": "^6.5.0",
     "@ionic/react-router": "^6.5.0",
     "@next/font": "13.1.4",
+    "@vercel/analytics": "^0.1.8",
     "bcryptjs": "^2.4.3",
     "classnames": "^2.3.2",
     "eslint": "8.32.0",
