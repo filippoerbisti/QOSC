@@ -43,8 +43,8 @@ const LoginSceen = () => {
     // FIX BOX SHADOW
 
     return (
-        <div className='h-screen w-screen p-4 flex flex-col justify-center items-center bg-stone-300'>
-            <div className=' py-8 px-11 rounded-xl shadow-md bg-stone-200 shadow-stone-400'>
+        <div className='h-screen w-screen max-w-lg p-2.5 flex flex-col justify-center items-center bg-stone-300'>
+            <div className='w-full py-8 px-11 rounded-xl shadow-md bg-stone-200 shadow-stone-400'>
                 <h1 className="mb-4 text-3xl font-semibold text-gray-700 text-center underline cursor-pointer">QOSC</h1>
                 <h3 className="text-xl text-center font-semibold text-gray-700">Login</h3>
                 <form className='mx-auto max-w-screen-md space-y-5' onSubmit={handleSubmit(submitHandler)}>
@@ -71,7 +71,7 @@ const LoginSceen = () => {
                     <div>
                         <div className="flex justify-between mb-1">
                             <label htmlFor="password" className="text-sm font-semibold text-gray-500">Password</label>
-                            <a href="#" className="text-sm text-blue-600 hover:underline">Forgot Password?</a>
+                            <a href="#" onClick={() => alert('TODO')} className="text-sm text-blue-600 hover:underline">Forgot Password?</a>
                         </div>
                         <input
                             type="password"
@@ -97,6 +97,7 @@ const LoginSceen = () => {
                     <div>
                     <button
                         type="submit"
+                        onClick={handleSubmit(submitHandler)}
                         className="w-full px-4 py-2 font-semibold text-white transition-colors duration-300 bg-blue-500 rounded-md shadow"
                     >
                         Log in
@@ -112,6 +113,7 @@ const LoginSceen = () => {
                             <a
                                 href="#"
                                 className="flex items-center justify-center px-4 py-2 space-x-2 transition-colors duration-300 border border-gray-800 rounded-md"
+                                onClick={() => alert('TODO')}
                             >
                                 <span>
                                     <svg 
