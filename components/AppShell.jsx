@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { StatusBar, Style } from '@capacitor/status-bar';
 
