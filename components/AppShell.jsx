@@ -20,7 +20,7 @@ window.matchMedia("(prefers-color-scheme: dark)").addListener(async (status) => 
   } catch { /* empty */ }
 });
 
-const AppShell = () => {
+const AppShell = ({ users, products }) => {
   // eslint-disable-next-line no-unused-vars
   const { status, data: session } = useSession()
   const router = useRouter()
