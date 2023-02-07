@@ -36,6 +36,9 @@ import { notificationsOutline } from 'ionicons/icons';
 import { getNotifications, getContacts, getGroups, getRangeNotif } from '../../store/selectors';
 import { LocalNotifications } from '@capacitor/local-notifications';
 
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
+
 const ContactCard = ({ id, name, surname, picture, nickname, phoneNum, mail, deleteContact }) => {
   const [present] = useIonActionSheet();
   const slidingItem = useRef(null);
@@ -200,7 +203,17 @@ const GroupCard = ({ contacts, id, name, picture, partecipants, deleteGroup }) =
   );
 };
 
-const Home = ({ session }) => {
+const Home = ({  }) => {
+    // eslint-disable-next-line no-unused-vars
+    const { status, data: session } = useSession()
+    const router = useRouter()
+  
+    useEffect(() => {
+      if (!session?.user) {
+        router.push('/login');
+      }
+    }, [session, router])
+
   const notifications = Store.useState(getNotifications)
   const contacts = Store.useState(getContacts)
   const [filteredContacts, setFilteredContacts] = useState(Store.useState(getContacts));

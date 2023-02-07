@@ -97,7 +97,7 @@ const GroupDetail = ({ session }) => {
         }
 
         {onEdit && <>
-            <IonCardHeader class='flex items-center'>
+            <IonCardHeader className='flex items-center'>
               <Image 
                 alt="pic" 
                 width={56} //w-14

@@ -69,9 +69,9 @@ const LoginSceen = () => {
                         )}
                     </div>
                     <div>
-                        <div class="flex justify-between mb-1">
-                            <label htmlFor="password" class="text-sm font-semibold text-gray-500">Password</label>
-                            <a href="#" class="text-sm text-blue-600 hover:underline">Forgot Password?</a>
+                        <div className="flex justify-between mb-1">
+                            <label htmlFor="password" className="text-sm font-semibold text-gray-500">Password</label>
+                            <a href="#" className="text-sm text-blue-600 hover:underline">Forgot Password?</a>
                         </div>
                         <input
                             type="password"
@@ -92,7 +92,7 @@ const LoginSceen = () => {
                             id="remember"
                             className="w-4 h-4 transition duration-300 rounded-md cursor-pointer"
                         />
-                        <label for="remember" className="text-sm font-semibold text-gray-500 cursor-pointer">Remember me</label>
+                        <label htmlFor="remember" className="text-sm font-semibold text-gray-500 cursor-pointer">Remember me</label>
                     </div>
                     <div>
                     <button

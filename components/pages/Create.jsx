@@ -264,7 +264,7 @@ const Create = ({ session }) => {
               <IonIcon icon={addOutline} className='w-7 h-7' style={{color: 'var(--ion-color-primary)'}} />
             </IonButton>
             <IonPopover trigger="click-trigger" triggerAction="click" dismissOnSelect>
-              <IonContent class="ion-padding" forceOverscroll={false}>
+              <IonContent className="ion-padding" forceOverscroll={false}>
                 <a onClick={() => switchCreateContGroup()} style={{color: 'var(--ion-color-primary)'}} className='cursor-pointer underline'>
                   {createContact && <>Crea Gruppo</>}
                   {!createContact && <>Crea Contatto</>}
