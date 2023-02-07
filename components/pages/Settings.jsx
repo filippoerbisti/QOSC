@@ -54,14 +54,18 @@ const AllSettings = ({ onSelect }) => {
 const Settings = ({ session }) => {
   const settings = Store.useState(selectors.getSettings);
 
+  const logoutClickHandler = () => {
+    signOut({ callbackUrl: '/login' })
+  }
+
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonTitle>Settings</IonTitle>
           <IonButtons slot="end" className='right-2'>
-            <IonButton id="click-trigger">
-              <IonIcon onClick={() => signOut()} icon={logOutOutline} className='w-7 h-7' style={{color: 'var(--ion-color-primary)'}} />
+            <IonButton id="click-trigger" onClick={logoutClickHandler}>
+              <IonIcon icon={logOutOutline} className='w-7 h-7' style={{color: 'var(--ion-color-primary)'}} />
             </IonButton>
           </IonButtons>
         </IonToolbar>
