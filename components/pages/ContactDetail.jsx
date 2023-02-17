@@ -15,21 +15,19 @@ import {
   IonText
 } from '@ionic/react';
 import { chevronDownCircle, create, logoWhatsapp, mail, call, trash } from 'ionicons/icons';
-import Store from '../../store';
-import * as selectors from '../../store/selectors';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
   
-const ContactDetail = ({ session }) => {
+const ContactDetail = ({ session, contacts, groups }) => {
   const router = useRouter()
-  const contac = Store.useState(selectors.getContacts)
-  const [contacts, setContacts] = useState(contac)
-  const groups = Store.useState(selectors.getGroups)
+  // const contacts = Store.useState(selectors.getContacts)
+  const [contac, setContacts] = useState(contacts)
+  // const groups = Store.useState(selectors.getGroups)
   const [onEdit, setOnEdit] = useState(true);
   const params = useParams();
   const { id } = params;
-  const loadedList = contac.find(l => l.id == id);
+  const loadedList = contacts.find(l => l.id == id);
   let userGroupId = -1
   if(loadedList.groupId != -1)
     userGroupId = groups.find(group => group.id == loadedList.groupId) == undefined ? -1 : groups.find(group => group.id == loadedList.groupId)

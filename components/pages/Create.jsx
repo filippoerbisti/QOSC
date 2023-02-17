@@ -19,17 +19,17 @@ import Store from '../../store';
 import { getContacts, getGroups, getNotifications } from '../../store/selectors';
 import { LocalNotifications } from '@capacitor/local-notifications';
 
-const Create = ({ session }) => {
+const Create = ({ session, contacts, groups }) => {
   const [present] = useIonToast();
 
   const [createContact, setCreateContact] = useState(true);
   const tempPicContact = 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104028/QOSC/91953484-6F90-488A-8ADC-8A970BA98BD6_mckb4w.jpg'
   const tempPicGroup = 'https://res.cloudinary.com/dl38nyo08/image/upload/v1669104026/QOSC/8C15795B-BBFA-4C6E-81C3-9D24F4C3C904_v0hkko.jpg'
 
-  const contacts = Store.useState(getContacts)
+  // const contacts = Store.useState(getContacts)
   const contactIds = contacts.length == undefined ? 0 : contacts.map((i) => i.id)
 
-  const groups = Store.useState(getGroups)
+  // const groups = Store.useState(getGroups)
   const groupIds = groups.length == undefined ? 0 : groups.map((i) => i.id)
 
   const notifications = Store.useState(getNotifications)

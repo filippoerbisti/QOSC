@@ -21,7 +21,7 @@ window.matchMedia("(prefers-color-scheme: dark)").addListener(async (status) => 
   } catch { /* empty */ }
 });
 
-const AppShell = ({ users, products }) => {
+const AppShell = ({ users, contacts, groups }) => {
   // eslint-disable-next-line no-unused-vars
   const { status, data: session } = useSession()
   const router = useRouter()
@@ -36,7 +36,7 @@ const AppShell = ({ users, products }) => {
     <IonApp style={{maxWidth: '500px', margin: 'auto'}}>
       <IonReactRouter>
         <IonRouterOutlet id="main">
-          <Route path="/tabs" render={() => <Tabs session={session} />} />
+          <Route path="/tabs" render={() => <Tabs session={session} contacts={contacts} groups={groups} />} />
           <Route path="/" render={() => <Redirect to="/login" />} exact={true} />
         </IonRouterOutlet>
       </IonReactRouter>

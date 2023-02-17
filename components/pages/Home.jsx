@@ -200,11 +200,11 @@ const GroupCard = ({ contacts, id, name, picture, partecipants, deleteGroup }) =
   );
 };
 
-const Home = ({ session }) => {
+const Home = ({ session,  contacts, groups  }) => {
+  // const groups = Store.useState(getGroups);
+  // const contacts = Store.useState(getContacts)
   const notifications = Store.useState(getNotifications)
-  const contacts = Store.useState(getContacts)
   const [filteredContacts, setFilteredContacts] = useState(Store.useState(getContacts));
-  const groups = Store.useState(getGroups);
   const [filteredGroups, setFilteredGroups] = useState(Store.useState(getGroups));
   const [showNotifications, setShowNotifications] = useState(false);
   const [loaded, setLoaded] = useState(false);

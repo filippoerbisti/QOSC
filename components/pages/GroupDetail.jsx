@@ -15,21 +15,19 @@ import {
   IonText
 } from '@ionic/react';
 import { chevronDownCircle, create, trash } from 'ionicons/icons';
-import Store from '../../store';
-import * as selectors from '../../store/selectors';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
   
-const GroupDetail = ({ session }) => {
+const GroupDetail = ({ session, contacts, groups }) => {
   const router = useRouter()
-  const grou = Store.useState(selectors.getGroups)
-  const [groups, setGroups] = useState(grou)
-  const contacts = Store.useState(selectors.getContacts)
+  // const groups = Store.useState(selectors.getGroups)
+  const [grou, setGroups] = useState(groups)
+  // const contacts = Store.useState(selectors.getContacts)
   const [onEdit, setOnEdit] = useState(true);
   const params = useParams();
   const { id } = params;
-  const loadedList = grou.find(l => l.id == id);
+  const loadedList = groups.find(l => l.id == id);
   const partecipants = []
   var ids = contacts.map(c => c.id)
   var groupPartecipants = loadedList.partecipants.map(p => {
