@@ -32,6 +32,9 @@ const AppShell = ({ users, contacts, groups }) => {
   //   }
   // }, [session, router])
 
+  console.log(contacts)
+  console.log(groups)
+
   return (
     <IonApp style={{maxWidth: '500px', margin: 'auto'}}>
       <IonReactRouter>
