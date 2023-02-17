@@ -5,9 +5,9 @@ export default async (req, res) => {
     const client = await db;
     const database = client.db("contacts");
 
-    const contacts = await db.collection("contacts").find({}).limit(20).toArray();
+    const contacts = await database.collection("contacts").find({}).limit(20).toArray();
 
-    res.json(post);
+    res.json(contacts);
   } catch (e) {
     console.error(e);
     throw new Error(e).message;

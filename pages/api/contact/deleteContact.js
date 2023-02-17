@@ -7,11 +7,11 @@ export default async (req, res) => {
     const database = client.db("contacts");
     const { id } = req.query;
 
-    const contact = await db.collection("contacts").deleteOne({
+    const contact = await database.collection("contacts").deleteOne({
         _id: ObjectId(id),
     });
 
-    res.json(post);
+    res.json(contact);
   } catch (e) {
     console.error(e);
     throw new Error(e).message;

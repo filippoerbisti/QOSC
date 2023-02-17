@@ -20,7 +20,7 @@ export default async (req, res) => {
       }
     );
 
-    res.json(post);
+    res.json(contact);
   } catch (e) {
     console.error(e);
     throw new Error(e).message;
