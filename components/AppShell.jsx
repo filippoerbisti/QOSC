@@ -26,14 +26,11 @@ const AppShell = ({ users, contacts, groups }) => {
   const { status, data: session } = useSession()
   const router = useRouter()
 
-  // useEffect(() => {
-  //   if (!session?.user) {
-  //     router.push('/login');
-  //   }
-  // }, [session, router])
-
-  console.log(contacts)
-  console.log(groups)
+  useEffect(() => {
+    if (!session?.user) {
+      router.push('/login');
+    }
+  }, [session, router])
 
   return (
     <IonApp style={{maxWidth: '500px', margin: 'auto'}}>
