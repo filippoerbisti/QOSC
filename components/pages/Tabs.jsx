@@ -6,7 +6,6 @@ import Home from './Home';
 import ContactDetail from './ContactDetail';
 import GroupDetail from './GroupDetail';
 import Create from './Create';
-import ListDetail from './ListDetail';
 import Settings from './Settings';
 
 const Tabs = ({ session, contacts, groups }) => {
@@ -18,7 +17,6 @@ const Tabs = ({ session, contacts, groups }) => {
         <Route path="/tabs/home/group/:id" render={() => <GroupDetail session={session} contacts={contacts} groups={groups} />} exact={true} />
         <Route path="/tabs/create" render={() => <Create session={session} contacts={contacts} groups={groups} />} exact={true} />
         <Route path="/tabs/settings" render={() => <Settings session={session} />} exact={true} />
-        <Route path="/tabs/settings/:settingId" render={() => <ListDetail session={session} />} exact={true} />
         <Route path="/tabs" render={() => <Redirect to="/tabs/home" />} exact={true} />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">

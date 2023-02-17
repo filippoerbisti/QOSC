@@ -9,8 +9,6 @@ import {
   IonList,
   IonToggle,
   IonLabel,
-  IonReorder,
-  IonReorderGroup,
   IonSelect, IonSelectOption, IonText,
   IonButtons, IonButton, IonIcon
 } from '@ionic/react';
@@ -19,37 +17,6 @@ import * as selectors from '../../store/selectors';
 import { setSettings } from '../../store/actions';
 import { logOutOutline } from 'ionicons/icons';
 import { signOut } from "next-auth/react";
-
-const SettingEntry = ({ setting, ...props }) => (
-  <IonItem routerLink={`/tabs/settings/${setting.id}`} className="list-entry">
-    <IonLabel>{setting.name}</IonLabel>
-    <IonReorder slot="end"></IonReorder>
-  </IonItem>
-);
-
-const AllSettings = ({ onSelect }) => {
-  const settings = Store.useState(selectors.getLists);
-
-  function handleReorder(event) {
-    // The `from` and `to` properties contain the index of the item
-    // when the drag started and ended, respectively
-    console.log('Dragged from index', event.detail.from, 'to', event.detail.to);
-
-    // Finish the reorder and position the item in the DOM based on
-    // where the gesture ended. This method can also be called directly
-    // by the reorder group
-    event.detail.complete();
-  }
-
-  return (
-    // The reorder gesture is disabled by default, enable it to drag and drop items
-    <IonReorderGroup disabled={false} onIonItemReorder={handleReorder}>
-      {settings.map((setting, i) => (
-        <SettingEntry setting={setting} key={i} />
-      ))}
-    </IonReorderGroup>
-  );
-};
 
 const Settings = ({ session }) => {
   const settings = Store.useState(selectors.getSettings);
@@ -108,11 +75,9 @@ const Settings = ({ session }) => {
               <IonSelectOption value="">Last Contact Desc</IonSelectOption>
             </IonSelect>
           </IonItem>
-          <AllSettings />
-          
         </IonList>
         <IonText color='medium' className='w-full text-center mb-4 bottom-0 absolute italic text-xs'>
-          <pre>Versione 2.1.3</pre>
+          <pre>Versione 2.1.4</pre>
         </IonText>
       </IonContent>
     </IonPage>
