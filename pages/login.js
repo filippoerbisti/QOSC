@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { getError } from '../utils/error';
 import { useRouter } from 'next/router';
 
-const LoginSceen = () => {
+const Login = () => {
 
     const { data: session } = useSession();
 
@@ -136,4 +136,4 @@ const LoginSceen = () => {
     )
 }
 
-export default LoginSceen
+export default Login
